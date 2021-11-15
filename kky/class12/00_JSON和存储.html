@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			button{
+				color: #fff;
+				background-color: #008000;
+			}
+			#d2{
+				margin: 10px;
+			}
+			#d2>table{
+				border: 1px solid red;
+				border-collapse: collapse;
+				width: 500px;
+			}
+			#d2>table th,
+			#d2>table>tbody>tr>td
+			{
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div id="d1">
+				<label>
+					姓名:<input type="text" id="user" />
+				</label>
+				<button type="button" id="add">添加</button>
+			</div>
+			<div id="d2">
+				<table>
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th>ID</th>
+							<th>姓名</th>
+							<th>添加时间</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody id="tbody">
+						<!-- <tr>
+							<td>1</td>
+							<td>123</td>
+							<td>吴泽民</td>
+							<td>2021-11-05 16:02</td>
+							<td>
+								<button type="button">删除</button>
+							</td>
+						</tr> -->
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<script>
+			var add=document.getElementById("add");
+			var user=document.getElementById("user");
+			// console.log("add:",add,"user:",user);
+			// var userValue1=user.value;
+			// console.log("userValue1:",userValue1);
+			
+			//获取localStorage
+			// console.log("localStorage:",localStorage);
+			// console.log("有没有数据:",localStorage.arr20211105);
+			if(localStorage.arr20211105){
+				// console.log("localStorage有数据");
+				var str=localStorage.arr20211105;
+				// console.log("str:",str);
+				var arr0=JSON.parse(str);
+				showPage(arr0);
+			}else{
+				// console.log("localStorage没有数据")
+				// var arr=[];//用来存放每次添加的数据(每次添加的都是一个对象);
+				localStorage.arr20211105=JSON.stringify([]);
+			}
+			
+			
+			add.onclick=function(){
+				var userValue=user.value;
+				// console.log("userValue:",userValue);
+				if(userValue){
+					//用来描述每一次添加的对象(姓名和id);用对象存要添加的信息
+					var obj={
+						user:userValue,
+						id:new Date().getTime()
+					}
+					// console.log("obj:",obj);
+					// console.log("123arr:",arr);
+					
+					 
+					if(!localStorage.arr20211105){
+						localStorage.arr20211105=JSON.stringify([]);
+					} 
+					
+					
+					var str=localStorage.arr20211105;
+					// console.log("str:",str);
+					var arr=JSON.parse(str);
+					
+					arr.push(obj);
+					// console.log("arr:",arr);
+					
+					//存入localStroage
+					var str=JSON.stringify(arr);
+					localStorage.arr20211105=str;
+					//渲染页面
+					showPage(arr);
+					
+					//清空输入框
+					user.value="";
+				}else{
+					alert("请输入信息");
+				}
+			}
+			
+			//渲染页面
+			function showPage(arr){
+				// console.log("我是渲染页面",arr);
+				var tbody=document.getElementById("tbody");
+				var trs="";
+				for(var i=0;i<arr.length;i++){
+					// console.log("arr["+i+"]:",arr[i]);
+					trs+=`
+						<tr>
+							<td>${i+1}</td>
+							<td>${arr[i].id}</td>
+							<td>${arr[i].user}</td>
+							<td>${time(arr[i].id)}</td>
+							<td>
+								<button type="button" onclick=del(${arr[i].id}) >删除</button>
+							</td>
+						</tr>
+					`;
+				}
+				// console.log("html结构的字符串",trs);
+				tbody.innerHTML=trs;
+			}
+			
+			//删除函数
+			function del(id){
+				// console.log("id:",id);
+				var str=localStorage.arr20211105;
+				// console.log("str:",str);
+				var arr=JSON.parse(str);
+				// console.log("arr:",arr);
+				for(var i=0;i<arr.length;i++){
+					// console.log("arr["+i+"]:",arr[i],arr[i].id);
+					if(arr[i].id==id){
+						// console.log("我要删除arr中下标是",i,"的这条数据");
+						arr.splice(i,1);
+						break;
+					}
+				}
+				// console.log("删除后的数据arr:",arr);
+				//重新渲染页面
+				showPage(arr);
+				//将新数据存入localStroage
+				var str2=JSON.stringify(arr);
+				localStorage.arr20211105=str2;
+			}
+			
+			//时间函数(格式化时间)
+			function time(n){
+				// console.log("n:",n);
+				var d=new Date(n);
+				var year=d.getFullYear();
+				var month=d.getMonth()+1;
+				var date=d.getDate();
+				var hours=d.getHours();
+				var minutes=d.getMinutes();
+				var seconds=d.getSeconds();
+				//console.log("year:",year,"month:",month,"date:",date,bu0(date),"hours:",hours,"minutes:",minutes,"seconds:",seconds);
+				
+				var month2=bu0(month);
+				var date2=bu0(date);
+				var hours2=bu0(hours);
+				var minutes2=bu0(minutes);
+				var seconds2=bu0(seconds);
+				
+				
+				return year+"-"+month2+"-"+date2+" "+hours2+":"+minutes2+":"+seconds2;
+				//return year+"-"+bu0(month)+"-"+bu0(date)+" "+bu0(hours)+":"+bu0(minutes)+":"+bu0(seconds);
+				//return d.getFullYear()+"-"+bu0(d.getMonth()+1);
+			}
+			//补0函数
+			function bu0(n){
+				// if(n<10){
+				// 	return "0"+n
+				// }else{
+				// 	return ;
+				// }
+				return (n<10)?("0"+n):n;
+			}
+			
+			
+			/* 
+			 1.功能
+				1.用户输入姓名,点击添加按钮,获取到数据并渲染到页面
+				2.且所有数据存储到localStroage
+				3.页面第一次打开/或刷新时,先从localStroage获取数据,
+					然后渲染到页面
+				4.删除功能
+					功能:点击删除按钮,删除所在行数据,
+					从localStroage中找到数据,arr,并找到要删除的数据下标,根据下标删除
+					
+			 2.页面结构和样式
+				div#d1 label input button
+				div#d2 table thead th  tbody td button
+				
+			 3.步骤
+				1.找到要操作/使用的dom input#user,button#add
+				2.判断localStroagez中有没有数据
+					2.1 没有数据,给localStroage,存一个数据(是个空数组)
+					2.2 有数据,先从localStroage获取,并渲染页面
+				3.点击button#add,执行函数
+					3.1 获取姓名
+					3.2 判断是否为空
+						3.2.1为空,则提示"请输入姓名"
+						3.2.2不为空
+							3.2.2.1 创建对象obj,
+								存放每一次添加的数据(user,id);
+							3.2.2.2 先从localStroage获取,arr,
+									并将新数据obj,添加到arr中(arr.push(obj))
+							3.2.2.3 将arr重新存入localStroage中
+							3.2.2.4 根据arr重新渲染页面
+							
+				4.渲染页面的函数
+					4.1 获取要渲染的数据arr
+					4.2 找到要添加的tbody(要操作的dom)
+					4.3 遍历arr,生成html结构的字符串trs
+					4.4 将trs添加/渲染到tbody中
+				
+				5.时间函数(格式化时间)
+					作用:根据得到的时间戳,转化为指定格式的时间
+					参数: 有1个,数字类型,时间戳
+					返回值:有,返回指定格式的时间 yyyy-mm-dd HH::MM:SS 
+					5.1 根据得到的时间戳,生成一个对应的时间对象
+					5.2 获取年月日,时分秒
+					5.3 是否需要补0,调用补0函数, 返回指定格式的时间
+				
+				6.补0函数
+					作用:一个数字是否需要补0
+					参数:有1个,月/日/时/分/秒 数字
+					返回值: return 数字/"0"+数字
+					6.1 判断是否小于10
+						6.1.1 小于10  rerutn "0"+数字
+						6.1.2 不小于10 return 数字
+					
+					
+				7.删除步骤
+					7.1 创建删除函数del,根据id进行删除
+					7.2 在渲染页面时,添加删除函数del(方便调用)
+				
+					
+				
+				8.删除函数del
+					作用:
+						根据得到的id,删除数据
+						将新数据渲染页面,
+						并将新数据存入localStroage
+					参数:有1个参数,id
+					返回值: 没有
+					
+					步骤
+					8.1 打印要删除的id
+					8.2 从localStroage获取数据,arr
+					8.3 从获取到的数据arr中找到要删除数据的下标,并删除
+					8.4 将新数据渲染页面
+					8.5 并将新数据存入localStroage
+					
+				
+				
+			 */
+			
+		</script>
+	</body>
+</html>

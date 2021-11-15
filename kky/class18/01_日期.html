@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/* 
+			2021-10-22 00:00:00
+			跳过 周六,周日
+			求:18个 工作日 后 是什么时间?
+			 
+			 */
+			kaoShiTime1();
+			function kaoShiTime1(){
+				var d1=new Date("2021-10-22 00:00:00");
+				var t1=d1.getTime();
+				// console.log("t1:",t1);
+				// var w1=d1.getDay();
+				// console.log("w1:",w1);
+				var n=1;//计算工作日
+				for(var i=1;;i++){//天数
+					var t2=t1+i*24*3600*1000;
+					var d2=new Date(t2);
+					var w2=d2.getDay();//周几
+					if(w2!=0&&w2!=6){//判断是不是周六/周日
+						n++;
+					}
+					// console.log("i:",i,"w2:",w2,"n:",n);
+					if(n==19){
+						break;
+					}
+				}
+				// console.log("i:",i);
+				var t3=t1+i*24*3600*1000;
+				var d3=new Date(t3);
+				// console.log("d3:",d3);
+				var year=d3.getFullYear();
+				var month=d3.getMonth()+1;
+				var date=d3.getDate();
+				var hours=d3.getHours();
+				var minutes=d3.getMinutes();
+				var seconds=d3.getSeconds();
+				console.log(year+"-"+month+"-"+date+" "+hours+":"+minutes+":"+seconds);
+			}
+			
+			kaoShiTime2();
+			function kaoShiTime2(){
+				var d1=new Date("2021-10-22 00:00:00");
+				var t1=d1.getTime();
+				// console.log("t1:",t1);
+				// var w1=d1.getDay();
+				// console.log("w1:",w1);
+				var n=1;//计算工作日
+				for(var i=1;;i++){//天数
+					var t2=t1+i*24*3600*1000;
+					var d2=new Date(t2);
+					var w2=d2.getDay();//周几
+					if(w2==0||w2==6){
+						continue
+					}
+					n++;
+					// console.log("i:",i,"w2:",w2,"n:",n);
+					if(n==19){
+						break;
+					}
+				}
+				// console.log("i:",i);
+				var t3=t1+i*24*3600*1000;
+				var d3=new Date(t3);
+				// console.log("d3:",d3);
+				var year=d3.getFullYear();
+				var month=d3.getMonth()+1;
+				var date=d3.getDate();
+				var hours=d3.getHours();
+				var minutes=d3.getMinutes();
+				var seconds=d3.getSeconds();
+				console.log(year+"-"+month+"-"+date+" "+hours+":"+minutes+":"+seconds);
+			}
+			kaoShiTime3();
+			function kaoShiTime3(){
+				var d1=new Date("2021-10-22 00:00:00");
+				var t1=d1.getTime();
+				// console.log("t1:",t1);
+				// var w1=d1.getDay();
+				// console.log("w1:",w1);
+				var n=1;//计算工作日
+				for(var i=1;;i++){//天数
+					var t2=t1+i*24*3600*1000;
+					var d2=new Date(t2);
+					var w2=d2.getDay();//周几
+					if(w2==0||w2==6){
+						continue
+					}
+					n++;
+					// console.log("i:",i,"w2:",w2,"n:",n);
+					if(n==19){
+						break;
+					}
+				}
+				// console.log("i:",i);
+				var d3=new Date(t2);
+				// console.log("d3:",d3);
+				var year=d3.getFullYear();
+				var month=d3.getMonth()+1;
+				var date=d3.getDate();
+				var hours=d3.getHours();
+				var minutes=d3.getMinutes();
+				var seconds=d3.getSeconds();
+				console.log(year+"-"+month+"-"+date+" "+hours+":"+minutes+":"+seconds);
+			}
+			
+		</script>
+	</body>
+</html>

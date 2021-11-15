@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.d2a{
+				color: red;
+			}
+			.d2toggle{
+				font-size: 32px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app" class="a b c d e">
+			<div id="d1">
+				<h1>className</h1>
+				<button type="button" id="btn1">获取className</button>
+				<button type="button" id="btn2">设置className</button>
+			</div>
+			<div id="d2">
+				<h1>classList</h1>
+				<button type="button" id="btn3">添加</button>
+				<button type="button" id="btn4">判断是否包含某个class名</button>
+				<button type="button" id="btn5">item 返回类名在元素中的索引值</button>
+				<button type="button" id="btn6">删除</button>
+				<button type="button" id="btn9">删除(多个)</button>
+				<button type="button" id="btn7">切换</button>
+				<button type="button" id="btn8">切换(true)</button>
+				<button type="button" id="btn10">切换(false)</button>
+			</div>
+		</div>
+		<script>
+/* 
+			 innerHTML:设置或获取位于对象起始和结束标签内的 HTML 
+3.设置或获取HTML属性
+	obj.attr="新属性值";attr指属性名,如src;class;id;name,value,type,href,rel,type,alt,width,heigth等
+	
+	
+	obj.attributes	返回一个元素的属性数组
+	obj.hasAttribute()	如果元素中存在指定的属性返回 true，否则返回false。
+	obj.hasAttributes()	如果元素有任何属性返回true，否则返回false。
+	
+	obj.setAttribute();//设置属性
+	obj.getAttribute();//获取属性
+	obj.removeAttribute();//删除属性
+		
+		
+	
+4.设置或获取HTML样式
+	obj.style.property="新样式";property指color;font-size;background等
+	
+	var styleAll=div.style;
+	var styleB=div.style.border;
+	var styleFS=div.style["font-size"];
+	var styleFW=div.style.fontWeight;
+	
+5.element.className	设置或返回元素的class属性
+	获取属性值：
+	HTMLElementObject.className
+	设置属性值：
+	HTMLElementObject.className=classname
+	
+6.element.classList	返回元素的类名，作为 DOMTokenList 对象。
+	获取
+	var x = document.getElementById("myDIV").classList;
+	length	返回类列表中类的数量
+	var x = document.getElementById("myDIV").classList.length;
+	
+	方法							描述
+	add(class1, class2, ...)	在元素中添加一个或多个类名。
+					如果指定的类名已存在，则不会添加
+		document.getElementById("myDIV").classList.add("mystyle", "anotherClass", "thirdClass");
+	
+	contains(class)		返回布尔值，判断指定的类名是否存在。
+					可能值：
+					true - 元素包已经包含了该类名
+					false - 元素中不存在该类名
+		var x = document.getElementById("myDIV").classList.contains("mystyle");
+	
+	item(index)		返回类名在元素中的索引值。索引值从 0 开始。
+					如果索引值在区间范围外则返回 null
+		var x = document.getElementById("myDIV").classList.item(0);
+		var x = document.getElementById("myDIV").classList[0];
+	
+	remove(class1, class2, ...)移除元素中一个或多个类名。
+					注意： 移除不存在的类名，不会报错。
+		document.getElementById("myDIV").classList.remove("mystyle");
+		document.getElementById("myDIV").classList.remove("mystyle", "anotherClass", "thirdClass");
+	
+	toggle(class, true|false)	在元素中切换类名。
+					第一个参数为要在元素中移除的类名，并返回 false。 
+					如果该类名不存在则会在元素中添加类名，并返回 true。 
+					第二个是可选参数，是个布尔值用于设置元素是否强制添加或移除类，不管该类名是否存在。例如：
+					移除一个 class: element.classList.toggle("classToRemove", false); 
+					添加一个 class: element.classList.toggle("classToAdd", true);
+		document.getElementById("myDIV").classList.toggle("newClassName"); 
+ */
+			var btn1=document.getElementById("btn1");
+			var btn2=document.getElementById("btn2");
+			var app=document.getElementById("app");
+			
+			btn1.onclick=function(){
+				var appClassName=app.className;
+				console.log("appClassName:",appClassName);
+			}
+			btn2.onclick=function(){
+				// app.className="app";
+				// app.className="a b c d e f";
+				app.className+=" f";
+			}
+			
+			var btn3=document.getElementById("btn3");
+			var btn4=document.getElementById("btn4");
+			var btn5=document.getElementById("btn5");
+			var btn6=document.getElementById("btn6");
+			var btn7=document.getElementById("btn7");
+			var btn8=document.getElementById("btn8");
+			var btn9=document.getElementById("btn9");
+			var btn10=document.getElementById("btn10");
+			var d2=document.getElementById("d2");
+			btn3.onclick=function(){
+				console.log("d2:",d2);
+				d2.classList.add("d2a");
+				d2.classList.add("d2b","d2c","d2a","d2del","d2del1","d2del2");
+				console.log("d2.classList:",d2.classList);
+			}
+			btn4.onclick=function(){
+				var f=d2.classList.contains("d2a");
+				console.log("f:",f);
+			}
+			btn5.onclick=function(){
+				var class1=d2.classList.item(1);
+				var class2=d2.classList[1];
+				console.log("class1:",class1,"class2:",class2);
+			}
+			btn6.onclick=function(){
+				d2.classList.remove("d2del");
+			}
+			btn9.onclick=function(){
+				d2.classList.remove("d2del1","d2del2");
+			}
+			btn7.onclick=function(){
+				d2.classList.toggle("d2toggle");
+			}
+			btn8.onclick=function(){
+				d2.classList.toggle("d2toggle",true);//只能添加
+			}
+			btn10.onclick=function(){
+				d2.classList.toggle("d2toggle",false);//只能移除
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<div id="d1">
+				<label>
+					姓名:<input type="text" id="user"  onkeydown="fn1()" onkeyup="fn2()" />
+				</label>
+			</div>
+		</div>
+		<script>
+			/*  
+1.键盘事件key
+
+属性				描述	
+onkeydown		某个键盘按键被按下
+onkeypress		某个键盘按键被按下并松开。
+onkeyup			某个键盘按键被松开。
+
+事件相关的事件发生次序：
+onkeydown
+onkeypress
+onkeyup
+
+onkeydown     				onkeypress
+1、前者不区分输入内容的大小写   	 	后者区分输入内容的大小写    返回keycode是不同的
+2、前者识别任何按键     			后者不识别功能键
+3、主要使用前者
+			 */
+			
+			window.onkeydown=function(e){
+				console.log("downe:",e);
+			}
+			window.onkeyup=function(e){
+				console.log("upe:",e);
+			}
+			
+			var user=document.getElementById("user");
+			user.onkeydown=function(){
+				user.style.backgroundColor="red";
+				user.style.color="#fff";
+			}
+			user.onkeyup=function(){
+				user.style.backgroundColor="";
+				user.style.color="#000";
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			pre{
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<pre>
+15.	函数的文档注释
+/**
+ * 求两个数的和
+ * @param {number} a 数值1
+ * @param {number} b 数值2
+ * @returns {number}
+ */
+function sum( a, b )
+{
+   return a + b;
+}
+
+养成良好的注释习惯有助于，更好的维护代码和团队后作，可以更好的让其它成员更好的了解函数意图，和更恰当的使用别人的代码。
+如果上面的例子没有注释的情况下被定义成下面的样子：
+function sum( a, b )
+{
+   return a * b;
+}
+明明取了一个sum（求和）的皮，却给了个求乘积的内心，你到底是闹哪样？
+			
+		</pre>
+	</body>
+</html>

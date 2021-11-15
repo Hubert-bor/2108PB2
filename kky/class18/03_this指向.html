@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			<!-- this指向3 -->
+			<button type="button" id="btn1" onclick="fn1()">按钮1</button>
+			<br>
+			<button type="button" id="btn2" >按钮2</button>
+			<button type="button" id="btn3" onclick="fn3(this)">按钮3</button>
+		</div>
+		<script>
+			/* 
+			 this指向: 谁调用此函数   this指向谁；
+			//// 1.全局中指向 Window
+			 
+			 函数内部另一个特殊对象是this , this引用的是函数调用时所处的作用域。
+			 当在全局作用域中调用函数时，this对象引用的就是window.
+			 
+			//// 2. 在绑定的事件中   this指 向触发此事件的元素
+			 
+			 在绑定的事件中   this指 向触发此事件的元素   白话就是：谁调用此函数   this指向谁；
+			 
+			 在HTML中绑定事件,此时this指向触发此事件的元素,但要通过实参传递
+			 
+			//// 3.当函数作为对象的方法调用时，this指的是拥有此方法的 这个对象
+			 
+			 在对象的方法中   this指向该对象；
+			 
+			 
+			 在 对象函数 内部 再次声明 一个函数时   内部函数中的this指向window；
+			 */
+		
+			//this指向1
+			console.log("1this:",this);//Window
+			
+			
+			//this指向2
+			// window.fn1();
+			fn1();
+			
+			function fn1(){
+				console.log("2this:",this);//Window
+			}
+			
+			var btn2=document.getElementById("btn2");
+			btn2.onclick=function(){
+				console.log("3this:",this);
+			}
+			
+			function fn3(t){
+				console.log("4this:",this,"t:",t);
+			}
+			
+			var obj={
+				user:"kky",
+				age:18,
+				sex:0,
+				say:function(){
+					console.log("5this:",this,"我的今年",this.age,"岁");
+				},
+				speak:function(){
+					fn5();
+					function fn5(){
+						console.log("6:this:",this);
+					}
+				}
+			}
+			
+			var arr=[];
+			console.log("arrr:",arr);
+			
+			console.log("obj:",obj,"say:");
+			obj.say();
+			console.log("///////////////");
+			obj.speak();
+			
+		</script>
+		
+	</body>
+</html>

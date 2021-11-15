@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			table#tab{
+				width: 600px;
+				border-collapse: collapse;
+				border: 1px solid red;
+			}
+			table#tab th,
+			table#tab td{
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div id="title">
+				<h1>2108B P2 班级管理系统</h1>
+			</div>
+			<div id="entry">
+				<div>
+					<label>
+						姓名:<input type="text" id="user" />
+					</label>
+				</div>
+				<div>
+					<button type="button" id="add">添加</button>
+				</div>
+			</div>
+			<div id="show">
+				<table id="tab">
+					<tbody>
+						<tr>
+							<th>序号</th>
+							<th>ID</th>
+							<th>姓名</th>
+							<th>操作</th>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>1635840736589</td>
+							<td>kky</td>
+							<td>
+								<button type="button">删除</button>
+								<button type="button">修改</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<script>
+			var arr=[];
+			// var  arr=["a","b"];
+			// var arr=[{id:1,user:"a"}]
+			;(function(){
+				var user=document.getElementById("user");//
+				var add=document.getElementById("add");//
+				// console.log("user:",user);
+				// console.log("add:",add);
+				add.onclick=function(){
+					var userValue=user.value;
+					// console.log("userValue:",userValue);
+					// console.log("Boolean(userValue):",Boolean(userValue));
+					// console.log("Boolean(userValue):",Boolean(userValue),userValue=="");
+					if(userValue){
+						var obj={
+							user:userValue,
+							id:+new Date()//new Date().getTime()
+						}
+						// console.log("obj:",obj);
+						arr.push(obj);
+						console.log("arr:",arr);
+					}else{
+						alert("请先填写姓名");
+					}
+				}
+				
+			}());
+		</script>
+	</body>
+</html>

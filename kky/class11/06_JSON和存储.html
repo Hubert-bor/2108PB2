@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			button{
+				color: #fff;
+				background-color: #008000;
+			}
+			#d2{
+				margin: 10px;
+			}
+			#d2>table{
+				border: 1px solid red;
+				border-collapse: collapse;
+				width: 500px;
+			}
+			#d2>table th,
+			#d2>table>tbody>tr>td
+			{
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div id="d1">
+				<label>
+					姓名:<input type="text" id="user" />
+				</label>
+				<button type="button" id="add">添加</button>
+			</div>
+			<div id="d2">
+				<table>
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th>ID</th>
+							<th>姓名</th>
+							<th>添加时间</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody id="tbody">
+						<!-- <tr>
+							<td>1</td>
+							<td>123</td>
+							<td>吴泽民</td>
+							<td>2021-11-05 16:02</td>
+							<td>
+								<button type="button">删除</button>
+							</td>
+						</tr> -->
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<script>
+			var add=document.getElementById("add");
+			var user=document.getElementById("user");
+			// console.log("add:",add,"user:",user);
+			// var userValue1=user.value;
+			// console.log("userValue1:",userValue1);
+			
+			//获取localStorage
+			
+			// console.log("localStorage:",localStorage);
+			// console.log("有没有数据:",localStorage.arr20211105);
+			if(localStorage.arr20211105){
+				// console.log("localStorage有数据");
+				var str=localStorage.arr20211105;
+				console.log("str:",str);
+				var arr0=JSON.parse(str);
+				showPaeg(arr0);
+			}else{
+				console.log("localStorage没有数据")
+				// var arr=[];//用来存放每次添加的数据(每次添加的都是一个对象);
+				localStorage.arr20211105=JSON.stringify([]);
+			}
+			
+			
+			add.onclick=function(){
+				var userValue=user.value;
+				// console.log("userValue:",userValue);
+				if(userValue){
+					var obj={//用来描述每一次添加的对象(姓名和id);用对象存要添加的信息
+						user:userValue,
+						id:new Date().getTime()
+					}
+					// console.log("obj:",obj);
+					// console.log("123arr:",arr);
+					
+					var str=localStorage.arr20211105;
+					console.log("str:",str);
+					var arr=JSON.parse(str);
+					
+					arr.push(obj);
+					// console.log("arr:",arr);
+					
+					//存入localStroage
+					var str=JSON.stringify(arr);
+					localStorage.arr20211105=str;
+					//渲染页面
+					showPaeg(arr);
+				}else{
+					alert("请输入信息");
+				}
+			}
+			
+			function showPaeg(arr){
+				console.log("我是渲染页面",arr);
+				var tbody=document.getElementById("tbody");
+				var trs="";
+				for(var i=0;i<arr.length;i++){
+					console.log("arr["+i+"]:",arr[i]);
+					trs+=`
+						<tr>
+							<td>${i+1}</td>
+							<td>${arr[i].id}</td>
+							<td>${arr[i].user}</td>
+							<td>${time(arr[i].id)}</td>
+							<td>
+								<button type="button">删除</button>
+							</td>
+						</tr>
+					`;
+				}
+				// console.log("html结构的字符串",trs);
+				tbody.innerHTML=trs;
+				
+			}
+			function showPage(arr){
+				console.log("我是渲染页面",arr);
+				var tbody=document.getElementById("tbody");
+				var trs="";
+				for(var i=0;i<arr.length;i++){
+					console.log("arr["+i+"]:",arr[i]);
+					trs+=`
+						<tr>
+							<td>${i+1}</td>
+							<td>${arr[i].id}</td>
+							<td>${arr[i].user}</td>
+							<td>${arr[i].id}</td>
+							<td>
+								<button type="button">删除</button>
+							</td>
+						</tr>
+					`;
+				}
+				console.log("html结构的字符串",trs);
+				tbody.innerHTML=trs;
+				
+			}
+			
+			function time(n){
+				console.log("n:",n);
+				var d=new Date(n);
+				var year=d.getFullYear();
+				var month=d.getMonth()+1;
+				var date=d.getDate();
+				var hours=d.getHours();
+				var minutes=d.getMinutes();
+				var seconds=d.getSeconds();
+				return year+"-"+month+"-"+date+" "+hours+":"+minutes+":"+seconds;
+			}
+			
+			/* 
+			 1.功能
+				1.用户输入姓名,点击添加按钮,获取到数据并渲染到页面
+				2.且所有数据存储到localStroage
+				3.页面第一次打开/或刷新时,先从localStroage获取数据,
+					然后渲染到页面
+			 
+			 2.页面结构和样式
+				div#d1 label input button
+				div#d2 table thead th  tbody td button
+				
+			 3.步骤
+				1.找到要操作/使用的dom input#user,button#add
+				2.判断localStroagez中有没有数据
+					2.1 没有数据,给localStroage,存一个数据(是个空数组)
+					2.2 有数据,先从localStroage获取,并渲染页面
+				3.点击button#add,执行函数
+					3.1 获取姓名
+					3.2 判断是否为空
+						3.2.1为空,则提示"请输入姓名"
+						3.2.2不为空
+							3.2.2.1 创建对象obj,存放每一次添加的数据(user,id);
+							3.2.2.2 先从localStroage获取,arr,
+									并将新数据obj,添加到arr中(arr.push(obj))
+							3.2.2.3 将arr重新存入localStroage中
+							3.2.2.4 根据arr重新渲染页面
+							
+				4.渲染页面的函数
+					4.1 获取要渲染的数据arr
+					4.2 找到要添加的tbody(要操作的dom)
+					4.3 遍历arr,生成html结构的字符串trs
+					4.4 将trs添加/渲染到tbody中
+				
+				5.时间函数(格式化时间)
+				
+			 */
+		</script>
+	</body>
+</html>

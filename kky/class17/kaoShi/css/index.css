@@ -1,0 +1,9 @@
+html,body{
+	margin: 0px;
+	padding: 0px;
+}
+
+#app{
+	width: 800px;
+	margin: auto;
+}

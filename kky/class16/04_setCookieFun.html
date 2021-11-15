@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/* 
+			setCookie();
+			 作用: 设置/添加/修改 cookie,
+				将某个属性名和属性值,存入cookie,并且在规定时间内有效
+			 参数: 有3个
+				cName,要存入cookie属性名
+				cValue,要存入cookie属性值
+				expires,要存入cookie有效时间
+			没有返回值
+				
+		 */
+			var cName1="userName";
+			var cValue1="1357";
+				
+			var cName2="age";
+			var cValue2="18";
+			
+			var cName3="sex";
+			var cValue3="0";
+			
+			var n=60;//单位是秒  10*60;
+			var expires=(new Date(+new Date()+n*1000)).toGMTString();
+			var expires2=new Date(+new Date()+n*1000);
+			
+			
+			
+		
+			console.log("expires:",expires);
+			console.log("expires2:",expires2);
+			
+			setCookie(cName1,cValue1,expires);
+			setCookie(cName2,cValue2,expires);
+			setCookie(cName3,cValue3,expires);
+			
+			
+			
+			function setCookie(cName,cValue,expires){
+				document.cookie=cName+"="+cValue+";expires="+expires
+			}
+		</script>
+	</body>
+</html>

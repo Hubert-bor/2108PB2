@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			pre{
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<pre>
+	函数定义
+	函数是由事件驱动的或者当它被调用时执行的可重复使用的代码块。
+	
+函数是可被调用执行的可重复使用的代码块
+JavaScript代码由语句组成，多条语句组合在一起，用花括号包起来，并给它一个响亮的名字，那么这货就变身为函数了。
+
+
+
+为什么需要用函数？
+1、避免页面一加载就执行程序
+2、可以重复执行
+	
+	系统函数（全局函数）
+什么是系统函数？
+系统函数也称全局函数，是由JavaScript提供的函数。
+
+任何全局变量和全局函数都是window的属性或方法。在书写程序时，window可以省略掉。
+省略和不省略的区别：如果是不存在的变量，加上window不会报错，不加window会报错，如：
+console.log(a)			//a is not defined
+console.log(window.a)	//undefined
+
+	常见的系统函数
+parseInt：将以数字开头的字符串或浮点数(小数)转换为整数。从数字的开始查找到非数字结尾，如：
+	var str="1.99abc";
+	console.log(parseInt(str));		//1
+	如果不是数字开头，则会返回NaN
+	var str="aa1.99abc";
+	console.log(parseInt(str));		//NaN
+
+parseFloat：将以数字开头的字符串转换成浮点数，如：
+	var str="1.99abc";
+	console.log(parseFloat(str));	//1.99
+
+
+Number：将其他类型转换成数值类型，如：
+	var str="1.99";
+	console.log(Number(str));	//1.99
+
+	但不能包含非字符，如：
+	var str="1.99aa";
+	console.log(Number(str));	//NaN
+
+
+String：转行成字符串类型
+
+Boolean：转行成boolean类型，如：
+	//空字符串转换，结果为false，非空字符串转换，结果为true
+	var f = "";
+	console.log(Boolean(f));		//false
+	
+	//数字0转换，结果为false，其他数字转换，结果为true
+	var f = 0;
+	console.log(Boolean(f));		//false
+	
+	//空数组和空对象转换，结果为true
+	var f = [];
+	console.log(Boolean(f));		//true
+	
+	//特殊值undefined、NaN、null转换，结果都为false
+	var f = NaN;
+	console.log(Boolean(f));		//false
+
+
+isNaN：判断某个值是否是非数字值。NaN=Not a Number
+	console.log(isNaN("a123"))			//true
+	
+	eval
+eval：把字符串做为JavaScript代码执行。
+如：eval("var a = 0; alert(a);");
+运行会弹出0
+用eval可以将json转换成对象，如：
+var a = '{"name":"张三", "age":23}';
+		var a = eval("("+a+")");
+console.log(a);  //object
+
+加上圆括号的目的是迫使eval函数在处理JavaScript代码的时候强制将括号内的表达式（expression）转化为对象，
+而不是作为语句（statement）来执行。举一个例子，例如对象字面量{}，如若不加外层的括号，
+那么eval会将大括号识别为JavaScript代码块的开始和结束标记，那么{}将会被认为是执行了一句空语句。
+所以下面两个执行结果是不同的： 
+alert(eval("{}"); 			// return undefined 
+alert(eval("({})");		// return object[Object] 
+
+		</pre>
+		<script>
+			var str="var a = 0; alert(a);";
+			eval(str);
+			
+alert(eval("{}")); 			// return undefined 
+alert(eval("({})"));		// return object[Object] 
+		</script>
+	</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#d1{
+				width: 200px;
+				height: 200px;
+				background-color: red;
+				margin: 10px;
+			}
+			#d2{
+				width: 200px;
+				height: 200px;
+				background-color: blue;
+				margin: 10px;
+			}
+			#d3{
+				width: 200px;
+				height: 200px;
+				background-color: pink;
+				margin: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div id="d1" onclick="fn1(event,this)"></div>
+			<div id="d2" ></div>
+			<div id="d3" ></div>
+		</div>
+		<script>
+		
+	/* 
+
+	 
+	 
+	 1.事件对象
+	 	在触发DOM上的某个事件时，会产生一个事件对象event。
+	 	这个对象中包含着所有与事件有关的信息。
+	 	包括导致事件的元素，事件的类型以及其他与特定事件相关的信息。
+	 	Event 对象代表事件的状态，
+	 	比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。
+	 	
+	 	事件对象的兼容写法
+	 	function(e){
+	 		var et=e||window.event;//前者兼容谷歌,后者兼容火狐
+	 		console.log("et:",et);
+	 	}
+	 	
+	 
+	 */	
+			function fn1(e,t){
+				console.log("1e:",e,"\n1t:",t,"1this:",this);
+			}
+			
+			var d2=document.getElementById("d2");
+			d2.onclick=function(){
+				console.log("2event:",event,"2this:",this);
+			}
+			var d3=document.getElementById("d3");
+			d3.onclick=function(e){
+				// console.log("3event:",event,"e:",e,"3this:",this);
+				var et=e||window.event;//;//前者兼容谷歌,后者兼容火狐
+				console.log("et:",et);
+				console.log("-=-=-=-=-=-=-=-=-=-=-=");
+				
+				////获取鼠标距离页面左侧距离
+				var clientX=et.clientX;
+				
+				////获取鼠标距离页面顶部距离
+				var clientY=et.clientY;
+				console.log("clientX:",clientX);
+				console.log("clientY:",clientY);
+				
+				
+				////获取触发该事件的元素;都是指向触发事件的元素
+				var target=et.target;
+				var srcElement=et.srcElement;
+				console.log("target:",target);
+				console.log("srcElement:",srcElement);
+			}
+		</script>
+	</body>
+</html>

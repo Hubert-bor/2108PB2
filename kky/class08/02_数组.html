@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/* 
+			数组
+			
+			js中数据类型
+			1.基本数据类型	string,number,boolean,undefined,null
+			2.引用数据类型	Array,object,function
+			
+			JS内置对象
+			Array, 数组
+			String, 字符串
+			Math, 计算
+			Date, 日期时间
+			Function, 函数
+			Object, 对象
+			RegExp 正则表达式
+			
+			数组声明
+			var arr1=[];
+			var arr2=new Array(5);
+			var d=new Date();
+			arr1 [0]="1";
+			arr2.push("2");
+			
+			数组遍历
+			循环,for,while
+			forEach
+			
+			
+			 */
+			
+			var d=new Date();
+			console.log("d:",d);
+			var arr2=new Array(5);
+			console.log("arr2:",arr2);
+			var arr3=new Array(5,6);
+			console.log("arr3:",arr3);
+			
+			var arr1=["a","b","c","d"];
+			for(var i=0;i<arr1.length;i++){
+				console.log("i:",i,"arr[i]:",arr1[i]);
+			}
+			
+			console.log("//////////////////////");
+			
+			var arr2=["a","b","c","d"];
+			for(var j=0,len=arr2.length;j<len;j++){
+				console.log("j:",j,"arr2[j]:",arr2[j]);
+			}
+			
+			console.log("//////////////////////");
+			var arr3=["a","b","c","d"];
+			arr3.forEach(function(value,key,t){
+				console.log("value:",value,"key:",key);
+			})
+			
+			console.log("//////////////////////");	
+			var arr4=["a","b","c","d"];
+			for(var o in arr4){
+				console.log("arr4[o]:",arr4[o],"o:",o,);
+			}
+			console.log("//////////////////////");
+			
+			/* 
+			 
+			 对象
+			 0.用来 描述事物
+			 1.{}表示
+			 2.属性名:属性值,多个属性之间用逗号隔开
+			 
+			 获取属性值的方式3种
+			 1.对象.属性名
+			 2.对象["属性名"]
+			 
+			 
+			 3.var 变量名="属性名"
+				对象[变量名]
+			 
+			 	对象[变量名]
+			 设置/修改/添加 属性值的方式3种
+			 1.对象.属性名="新属性值"
+			 2.对象["属性名"]="新属性值"
+			 3.var 变量名="属性名"
+			 	对象[变量名]="新属性值"
+			 
+			 for...in 用来 遍历 对象
+			 
+			 */
+			
+			
+			var obj={
+				user:"kky",
+				age:18,
+				sex:"男"
+			}
+			for(var o2 in obj){
+				console.log("o2:",o2,"obj[o2]:",obj[o2]);
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#app>div{
+				border: 1px solid red;
+				padding: 10px;
+				margin: 10px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div id="d1">1 onclick 当用户点击某个对象时调用的事件句柄</div>
+			<div id="d2">2 oncontextmenu 在用户点击鼠标右键打开上下文菜单时触发</div>
+			<div id="d3">3 ondblclick 当用户双击某个对象时调用的事件句柄</div>
+			<div id="d4">4 onmousedown 鼠标按钮被按下</div>
+			<div id="d5">5 onmouseenter 当鼠标指针移动到元素上时触发</div>
+			<div id="d6">6 onmouseleave 当鼠标指针移出元素时触发</div>
+			<div id="d7">7 onmousemove 鼠标被移动</div>
+			<div id="d8">8 onmouseover 鼠标移到某元素之上</div>
+			<div id="d9">9 onmouseout 鼠标从某元素移开</div>
+			<div id="d10">10 onmouseup 鼠标按键被松开</div>
+		</div>
+		<script>
+			/* 
+			 onclick			当用户点击某个对象时调用的事件句柄。
+			 
+			 ondblclick		当用户双击某个对象时调用的事件句柄。
+			 onmousedown		鼠标按钮被按下。
+			 onmouseenter		当鼠标指针移动到元素上时触发。通常与mouseleave事件一同使用
+			 onmouseleave		当鼠标指针移出元素时触发
+			 onmousemove		鼠标被移动。
+			 onmouseover		鼠标移到某元素之上。
+			 onmouseout		鼠标从某元素移开。
+			 onmouseup		鼠标按键被松开。
+			 
+			 */
+			
+			var d1=document.getElementById("d1");
+			var d2=document.getElementById("d2");
+			var d3=document.getElementById("d3");
+			var d4=document.getElementById("d4");
+			var d5=document.getElementById("d5");
+			var d6=document.getElementById("d6");
+			var d7=document.getElementById("d7");
+			var d8=document.getElementById("d8");
+			var d9=document.getElementById("d9");
+			var d10=document.getElementById("d10");
+			
+			d1.onclick=function(){
+				console.log("鼠标左键的单击事件");
+			}
+			d2.oncontextmenu=function(e){
+				console.log("鼠标右键的单击事件");
+				e.preventDefault();//阻止默认事件
+			}
+			d3.ondblclick=function(){
+				console.log("左键的双击事件");
+			}
+			var t1,t2;
+			d4.onmousedown=function(e){
+				t1=+new Date();
+				console.log("鼠标左键被按下");
+			}
+			d4.onmouseup=function(e){
+				t2=+new Date();
+				console.log("鼠标左键被松开");
+				if(t2-t1>=2000){
+					d4.style.backgroundColor="red";
+				}else{
+					d4.style.backgroundColor="";
+				}
+			}
+			
+			console.log("////onmouseenter和onmouseleave");
+			d5.onmouseenter=function(){
+				console.log("当鼠标指针移动到元素上时触发");
+			}
+			d6.onmouseleave=function(){
+				console.log("当鼠标指针移出元素时触发");
+			}
+			console.log("////");
+			
+			d7.onmousemove=function(){
+				console.log(" 鼠标被移动");
+			}
+			
+			console.log("//onmouseover和onmouseout");
+			d8.onmouseover=function(){
+				console.log("鼠标移到某元素之上");
+			}
+			d9.onmouseout=function(){
+				console.log("鼠标从某元素移开");
+			}
+			console.log("///////////////");
+			d10.onmouseup=function(){
+				console.log("鼠标左键被松开");
+			}
+			
+		</script>
+	</body>
+</html>

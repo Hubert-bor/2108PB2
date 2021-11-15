@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/* 
+			 switch 多分支
+			 switch( 表达式 ){
+				 case 值1:{
+					 ...
+				 }
+				 break;
+				 case 值2:{
+					 ....
+				 	break;				 
+				 }
+				 case 值3:{
+					 ....
+				 	break;				 
+				 }
+				 default:{
+					 
+				 }
+				 
+			 }
+			 
+			 */
+			var n1=prompt("请输入1-7之间的数字",1);
+			// var n=1;
+			console.log("n1:",n1,typeof n1);
+			// var n2=n1/1;//
+			// console.log("n2:",n2,typeof n2);
+			
+			switch( n1/1 ){
+				case 1:console.log("周一");//n2===1
+				break;//停止
+				case 2:console.log("周二");
+				break;
+				case 3:console.log("周三");
+				break;
+				case 4:console.log("周四");
+				break;
+				case 5:console.log("周五");
+				break;
+				case 6:
+				case 7:console.log("周末");
+				break;
+				case "a":console.log("周日");
+				break;
+				case "b":console.log("周日");
+				break;
+				default:console.log("你输入错了");
+			}
+			
+			
+						
+			var str;
+			switch(n1/1){
+				case 1:str="周一";
+				break;
+				case 2:str="周二";
+				break;
+				case 3:str="周三";
+				break;
+				case 4:str="周四";
+				break;
+				case 5:str="周五";
+				break;
+				case 6:str="周六";
+				break;
+				case 7:str="周日";
+				break;
+				default:str="你输入错了";
+			}
+			console.log("今天是",str);
+			
+		</script>
+	</body>
+</html>

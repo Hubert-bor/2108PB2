@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="js04.js"></script>
+		<script>
+			/* 
+			 1.函数的作用,求任意两个数之间的和(数字范围是1-100)整数;
+				
+			 */
+			qiuHe(1,10);
+			qiuHe(1,100);
+			function qiuHe(x,y){
+				var h=0;
+				for(var a1=x;a1<=y;a1++){
+					// console.log("a1:",a1);
+					h+=a1;// h=h+a1;
+				}
+				console.log("1+2+3+…+10的和:",h);
+			}
+			
+/* 			var h=0;
+			for(var a1=1;a1<=10;a1++){
+				console.log("a1:",a1);
+				h+=a1;// h=h+a1;
+			}
+			console.log("1+2+3+…+10的和:",h); */
+			
+			tuxing(5);
+			tuxing(7);
+			tuxing(9);
+			function tuxing(n){
+				for(var a=1;a<=n;a++){
+					for(var b=1;b<=n;b++){
+						document.write("*&nbsp;&nbsp;");
+					}
+					document.write("<br>");
+				}
+			}
+			
+/* 			for(var a=1;a<=5;a++){
+				for(var b=1;b<=5;b++){
+					document.write("*&nbsp;&nbsp;");
+				}
+				document.write("<br>");
+			} */
+		</script>
+	</body>
+</html>

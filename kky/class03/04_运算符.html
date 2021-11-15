@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var a=1;
+			var b=1;
+			var c=3;
+			var d=3;
+			var n1=a++;//先赋值(n1=a,此时a=1)	后计算a=a+1;,a=2
+			var n2=++b;//先计算(b=b+1,此时b=2)	后赋值n2=b,此时b=2,n2则等于2
+			console.log("n1",n1,"a:",a);
+			console.log("n2",n2,"b",b);
+			var n3=c--;
+			var n4=--d;
+			console.log("n3:",n3,"c:",c);
+			console.log("n4:",n4,"d:",d);
+			
+			var a2=13.34;
+			var n5=a2%2;
+			console.log("n5:",n5);
+			console.group("isNaN");
+			var str="a"-"b";
+			console.log("str:",str,isNaN(str));
+			console.log("NaN==NaN",NaN==NaN);
+			console.log("NaN===NaN",NaN===NaN);
+			console.log("undefined==undefined:",undefined==undefined);
+			console.log("undefined===undefined:",undefined===undefined);
+			console.log("null==null:",null==null);
+			console.log("null===null:",null===null);
+			console.groupEnd();
+			
+		</script>
+	</body>
+</html>

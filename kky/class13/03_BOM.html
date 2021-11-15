@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body{
+				height: 3000px;
+				width: 3000px;
+			}
+			div#btn{
+				/* height: 100px; */
+				position: fixed;
+				top: 100px;
+				left: 0px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<button type="button" id="add1">open()方法1</button>
+			<button type="button" id="add2">open()方法2</button>
+			<br>
+			<button type="button" id="btn3">moveBy</button>
+			<button type="button" id="btn4">moveTo</button>
+			<br>
+			<button type="button" id="btn5">print</button>
+			<br>
+			<div id="btn">
+				<button type="button" id="btn6">scrollBy</button>
+				<button type="button" id="btn7">scrollTo</button>
+			</div>
+			
+		</div>
+		<script>
+		/* 
+		打开窗口
+		open()		打开一个新的浏览器窗口或查找一个已命名的窗口。
+		close()		关闭浏览器窗口。
+		moveBy()	可相对窗口的当前坐标把它移动指定的像素。
+		moveTo()	把窗口的左上角移动到一个指定的坐标。
+		print()		打印当前窗口的内容。
+		scrollBy()	按照指定的像素值来滚动内容。
+		scrollTo()	把内容滚动到指定的坐标。 
+		 */	
+		
+				/*
+open() 方法用于打开一个新的浏览器窗口或查找一个已命名的窗口。
+语法
+window.open(URL,name)
+
+参数	说明
+URL	可选。打开指定的页面的URL。如果没有指定URL，打开一个新的空白窗口
+name	可选。指定target属性或窗口的名称。支持以下值：
+				 */
+		var add1=document.getElementById("add1");
+		add1.onclick=function(){
+			window.open("https://www.baidu.com")
+		}
+		
+		var add2=document.getElementById("add2");
+		add2.onclick=function(){
+			var mywindow1=window.open("https://www.baidu.com","","width=200,height=200,top=250,left=250");
+			setTimeout(function(){
+				mywindow1.close();
+			},3000);
+		}
+		
+		var btn3=document.getElementById("btn3");
+		btn3.onclick=function(){
+			var mywindow2=window.open("https://www.baidu.com","","width=300,height=300");
+			mywindow2.moveBy(0,200);
+		}
+		
+		var btn4=document.getElementById("btn4");
+		btn4.onclick=function(){
+			var mywindow3=window.open("https://www.baidu.com","","width=300,height=300");
+			mywindow3.moveTo(0,200);
+		}
+		
+		var btn5=document.getElementById("btn5");
+		btn5.onclick=function(){
+			print();
+		}
+		
+		var btn6=document.getElementById("btn6");
+		btn6.onclick=function(){
+			scrollBy(0,100);
+		}
+		var btn7=document.getElementById("btn7");
+		btn7.onclick=function(){
+			scrollTo(0,100);
+		}
+		
+		
+		</script>
+	</body>
+</html>

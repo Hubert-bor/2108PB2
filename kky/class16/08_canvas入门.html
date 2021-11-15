@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#can1,#can2,#can3{
+				border: 1px solid red;
+				margin: 5px;
+			}
+			#can2{
+				width: 300px;
+				height: 150px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div id="d1">
+				<canvas id="can1"></canvas>
+				<canvas id="can2"></canvas>
+			</div>
+		</div>
+		<script>
+		/* 
+		 1.创建canvas画布,标签,并添加id
+		 2.可以通过 属性(不是样式)width,height设置画布大小
+		
+		3.获取canvas dom 对象
+		4.创建context对象(这个对象具有绘制能力)
+		5.开始绘制
+			具体绘制内容不同,绘制方法也不同
+		 */
+			;(function(){
+					var can1=document.getElementById("can1");
+					// console.dir(can1);
+					var ctx=can1.getContext("2d");//创建ctx,
+					//ctx是context对象,拥有绘制的方法
+					
+					ctx.fillStyle="red";
+					ctx.fillRect(0,0,100,100);
+					
+					
+			}());
+			
+			
+			;(function(){
+					var can2=document.getElementById("can2");
+					console.dir(can2);
+					var ctx=can2.getContext("2d");//创建ctx,
+					//ctx是context对象,拥有绘制的方法
+					
+					
+					ctx.fillStyle="blue";
+					ctx.fillRect(0,0,100,100);
+					
+					
+			}());
+		</script>
+	</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/* 
+			获取属性值的方式3种
+			1.对象.属性名
+			2.对象["属性名"]
+			3.var 变量名="属性名"
+				对象[变量名]
+			
+				对象[变量名]
+			设置/修改/添加 属性值的方式3种
+			1.对象.属性名="新属性值"
+			2.对象["属性名"]="新属性值"
+			3.var 变量名="属性名"
+				对象[变量名]="新属性值" 
+			 */
+		
+			var obj={
+				user:"非凡",
+				age:18,
+				sex:"男"
+			}
+			//获取属性的3种方式
+			//1
+			console.log("obj.user:",obj.user);
+			
+			//2
+			console.log("obj['age']:",obj["age"]);
+			
+			//3
+			var str="sex";
+			console.log("obj[str]:",obj[str]);
+			
+			console.log("/////////////////////////");
+			
+			//设置属性的3种方式
+			//1.
+			obj.user="天伟";
+			
+			//2.
+			obj["age"]=16;
+			
+			//3
+			var str2="sex";
+			obj[str]="女";
+			
+			console.log("obj:",obj);
+			
+		</script>
+	</body>
+</html>

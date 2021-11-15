@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			pre{
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<pre>
+3.	自定义函数
+
+JavaScript 函数语法
+函数就是包裹在花括号中的代码块，前面使用了关键词 function：
+function functionname(){
+	执行代码
+}
+当调用该函数时，会执行函数内的代码。
+可以在某事件发生时直接调用函数（比如当用户点击按钮时），并且可由 JavaScript 在任何位置进行调用。
+JavaScript 对大小写敏感。关键词 function 必须是小写的，并且必须以与函数名称相同的大小写来调用函数。
+
+
+自定义函数语法：
+function 函数名称(){
+	/*code*/
+} //函数名称 遵循 变量规范
+
+例:
+function test(){ 
+	alert(‘函数体’); 
+}
+调用方式: 函数名称()
+例:test()
+
+行内调用&lt;button onclick="函数名称()">点击&lt;/button>
+
+1、用户点击按钮时，向用户显示“欢迎登录”。
+2、编写函数，根据月份，判断并输出当前季节。
+1~3：春季
+4~6：夏季
+7~9：秋季
+10~12：冬季。
+如果月份超出范围，应给出提示。
+
+4.	匿名函数
+function(){
+	alert(1)	
+}
+
+调 用方式:
+1.将这个匿名函数上个牌照（赋给变量），再通过变量来调用
+var a = function(){};
+a();
+
+2.函数自运行/自调用函数:让匿名函数自嗨（自己执行）.
+;(function (){			//函数表达式
+	alert(1)			//一般用来写插件，形成闭包保护变量
+}());
+
+避免污染全局变量
+
+var m=5,a=33;
+;(function(n){
+	var a=3;
+	console.log("n:",n,"a:",a);
+}(m));
+console.log("1window:",window);
+		</pre>
+		<script>
+			var m=5,a=33;
+			;(function(n){
+				var a=3;
+				console.log("n:",n,"a:",a);
+			}(m));
+			console.log("1window:",window);
+		</script>
+	</body>
+</html>

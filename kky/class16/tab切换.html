@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#d1{
+				border: 1px solid red;
+				height: 50px;
+			}
+			#d2>div{
+				border: 1px solid pink;
+				height: 30px;
+				display: none;
+			}
+			#d2>div.show{
+				display: block;
+			}
+			#d1>button.xz{
+				background-color: skyblue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div id="d1">
+				<button type="button" class="xz">上单</button>
+				<button type="button">打野</button>
+				<button type="button">中单</button>
+				<button type="button">辅助</button>
+				<button type="button">射手</button>
+			</div>
+			<div id="d2">
+				<div class="show">上单带线不知去向</div>
+				<div>打野gank离奇失踪</div>
+				<div>中单支援闪现空大</div>
+				<div>辅助插眼至今未归</div>
+				<div>射手输出掉头就溜</div>
+			</div>
+		</div>
+		<script>
+			/**
+			 * 1.获取按钮和展示框
+			 * 2.给每个按钮一个点击事件
+			 * 3.点击按钮之后取消所有css.给自身添加相应的css
+			 * 4.完了
+			 */
+			//获取dom
+			var btns = document.querySelectorAll("#d1>button");
+			// console.log("btns",btns);
+			var divs = document.querySelectorAll("#d2>div");
+			// console.log("divs",divs);
+			for(var i=0;i<btns.length;i++){
+				btns[i].index=i;
+				// console.log("aaaaaaaa"btns[i]);
+				btns[i].onclick=function(){
+					// console.log("i",i);
+					// alert("点击事件test");
+					for(var j=0;j<btns.length;j++){
+						btns[j].classList.remove("xz");
+						divs[j].classList.remove("show");
+					}
+					this.classList.add("xz");
+					divs[this.index].classList.add("show");
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/* 
+			js 三大流程
+			1.顺序流程
+			
+			2.分支控制
+				单分支
+				双分支
+				多分支
+			 
+			3.循环控制
+			 
+			 
+			 
+			 */
+			
+			/* 
+			 1.单分支
+			 if 语句
+			 if (条件表达式) {
+				 
+			 }
+			 */
+			var n1=0;
+			// var n1=prompt("请输入100以内的数",0);
+			
+			if (n1<=100) {
+				console.log("1你输入的符合要求,n1:",n1);
+			}
+				
+			/* 
+			 2.双分支
+			 if 语句
+			 if (条件表达式) {
+				 
+			 }else{
+				 
+			 }
+			 */
+			if (n1<=100) {
+				console.log("2你输入的符合要求,n1:",n1);
+			} else {
+				console.log("2你输入的不符合要求,n1:",n1);
+			}
+			
+			/*
+			 3.多分支
+			 if 语句
+			 if (条件表达式) {
+				 
+			 }else if(){
+				 
+			 }else{
+				 
+			 }
+			 */
+			var n2=prompt("请输入1-7",1);
+			if(n2==1){
+				console.log("周一");
+			} else if(n2==2){
+				console.log("周二");
+			}else if(n2==3){
+				console.log("周三");
+			}else if(n2==4){
+				console.log("周四");
+			}else if(n2==5){
+				console.log("周五");
+			}else if(n2==6){
+				console.log("周六");
+			}else if(n2==7){
+				console.log("周日");
+			}else{
+				console.log("你输入的不符合要求");
+			}
+			
+			/* 
+			 复合条件
+			 早上九点到十一点之间或者21点到23点之间
+			 
+			 */
+			// 0-23;
+			var shijian=10;
+			if((shijian>9 && shijian<11) || (shijian>21&&shijian<23)){
+				
+			}
+			
+			if((shijian>9 && shijian<11) || (shijian>21&&shijian<23)){
+				console.log("打家辉")
+			}else{
+				console.log("咱们都歇会");
+			}
+			
+			/* 
+			 分支语句
+			嵌套 
+			 */
+			var jieqian=0;//
+			var duoshao=100;
+			if(jieqian){
+				if(duoshao<=100){
+					console.log("打个借条吧");
+				}else{
+					console.log("钱不够");
+				}
+			}else{
+				console.log("不借");
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

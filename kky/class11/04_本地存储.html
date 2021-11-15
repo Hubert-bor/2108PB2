@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			console.log(localStorage);
+			console.log(sessionStorage);
+			
+			/* 
+			 本地存储
+			 localStorage
+				存/设置/获取 4种方法
+				
+			 sessionStorage
+			 cookie
+			 
+			 Application 应用程序
+			 
+			 只能存字符串(属性名)
+			 */
+			//对象属性三方法
+			//1
+			 localStorage.user="kky202111051127";
+			 //2
+			 localStorage["age"]=18;
+			 //3
+			 var str="job";
+			 localStorage[str]="IT";
+			 fgx();
+			//自身方法
+			//4
+			localStorage.setItem("sex",0);
+		
+			fgx("key");
+			// console.log("key()",localStorage.key(0));
+			// console.log("key()",localStorage.key(1));
+			// console.log("key()",localStorage.key(2));
+			// console.log("key()",localStorage.key(3));
+			// console.log("key()",localStorage.key(4));
+			// console.log(localStorage.length);
+			
+			for(var i=0;i<localStorage.length;i++){
+				console.log("方式3属性名:",localStorage.key(i),localStorage[localStorage.key(i)]);
+				console.log("方式4属性名:",localStorage.key(i),localStorage.getItem(localStorage.key(i)));
+			}
+			
+			fgx();
+			console.log("localStorage:",localStorage);
+			for(var o in localStorage){
+				// console.log("o:",o,localStorage[o],typeof localStorage[o]);
+				if(typeof localStorage[o]!="function"&& o!="length"){
+					console.log("o:",o,localStorage[o]);
+				}
+			}
+			
+			
+			function fgx(str){
+				str||(str="");
+				console.log(str+"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+			}
+		</script>
+	</body>
+</html>

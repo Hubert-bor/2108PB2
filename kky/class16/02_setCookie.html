@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/* 
+				user:"kky",pwd:123456,expires=30s
+				
+			 
+			 */
+			var t1=new Date().getTime()+30*1000;
+			var d1=new Date(t1);
+			var expires=d1.toGMTString();
+			document.cookie="=kky;expires="+expires;
+			document.cookie="pwd=123456;expires="+expires;
+			
+		</script>
+	</body>
+</html>

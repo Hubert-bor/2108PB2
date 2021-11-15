@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/* 
+			 函数创建
+				function 函数名 (){
+					
+				}
+				
+				var fun2=function(a){
+					
+				}
+				fun2(10);
+				
+				var fun1;
+				fun1=function(){
+					
+				}	
+				
+				在js中
+				在html
+				在js先获取到html中元素
+				在js中先获取要操作的dom,dom.onclick=function(){
+					
+				}
+				
+				形参		函数 创建 时
+				
+				实参		函数 调用 时
+				
+				return 
+				
+				arguments
+				
+			函数自运行
+				避免污染全局变量
+				;(function(){
+						
+				}());
+			 
+			 */
+			console.log("1./////////////////////////////");
+			function add1(a,b){
+				return a+b;
+			}
+			function sub(a,b){
+				return a-b;
+			}
+			function mul(a,b){
+				return a*b;
+			}
+			function div1(a,b){
+				if(b==0){
+					return "除数不能问为0"
+				}
+				return a/b;
+			}
+			function div2(a,b){
+				//return b==0?"除数不能问为0":a/b;
+				return b ? (a/b) : "除数不能问为0";
+			}
+			console.log(div2(2,0));
+			
+			var r2=div2(3,0);
+			console.log("r2:",r2);
+			
+			console.log(jisuanqi(4,"+",2));
+			console.log(jisuanqi(4,"-",2));
+			console.log(jisuanqi(4,"*",2));
+			console.log(jisuanqi(4,"/",2));
+			console.log(jisuanqi(4,"/",0));
+			
+			
+			function jisuanqi(a,type,b){
+				if(type=="+"){
+					return a+b;
+				}
+				if(type=="-"){
+					return a-b;
+				}	
+				if(type=="*"){
+					return a*b;
+				}
+				if(type=="/"){
+					return b?a-b:"除数不能为0";
+				}
+			}
+			
+			console.log("2./////////////////////////////");
+			
+			function bijiao(){
+				var a=prompt("请输入0-10之间的数字",0);
+				var b=prompt("请输入0-10之间的数字",0);
+				// var c=prompt("请输入0-10之间的数字",0);
+				console.log("1a:",a,"b:",b);
+				var d;
+				if(a>b){
+					d=a;//
+					a=b;
+					b=d;
+				}
+				console.log("2a:",a,"b:",b);
+			}
+			
+			console.log("3./////////////////////////////");
+			
+			// xiaoChaoShi();
+			function xiaoChaoShi(){
+				//角色:店员  
+				var yingshou=prompt("店员请输入金额")/1;//99
+				var shifu=prompt("用户请输入金额")/1;//98
+				console.log("yingshou:",yingshou);
+				console.log("shifu:",shifu);
+				if(yingshou>=500){
+					yingshou*=0.8;
+				}
+				
+				// console.log("yingshou:",yingshou,"shifu:",shifu,"yingshou>shifu:",yingshou>shifu);
+				
+				if(yingshou>shifu){
+					// console.log("1yingshou:",yingshou,"shifu:",shifu);
+					console.log("顾客你好,还差",(yingshou-shifu),"元,不付腿打折");
+					// console.log("");
+				}else if(yingshou==shifu){
+					console.log("欢迎下次光临");
+				}else {
+					// console.log("2yingshou:",yingshou,"shifu:",shifu);
+					console.log("找零",(shifu-yingshou),"元");
+				}
+			}
+			
+			console.log("4.//////////////////////////////////")
+			
+			jiajian();//1-2+3-4+5;
+			function jiajian(){
+				var n=prompt("请输入数字1--10")/1;
+				var s=0;
+				for(var i=1;i<=n;i++){
+					/* s+=1;
+					s-=2;
+					s+=3;
+					s-=4; */
+					if(i%2==0){
+						s-=i;
+					}else{
+						s+=i;
+					}
+				}
+				// console.log("s:",s);
+				return s;
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			/* 
+			1.作用域链 
+			 1.方法体
+			 2.形参==>实参
+			 3.全局
+			 4.window
+			 */
+			var a=1;
+			var b=2;
+			var c=3;
+			var e=4;
+			fun(b,b);
+			function fun(b,c){
+				var a=1;
+				console.log("a:",a,"b:",b,"c:",c,"e:",e,"name:",name);
+				console.log(window);
+			}
+			
+			;(function(){
+				console.log("window",window);
+			}());
+			
+		</script>
+	</body>
+</html>

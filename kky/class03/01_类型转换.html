@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/* 	var a=1,b=2;
+			console.log("a:",a,"b:",b);
+			alert("a:"+a+" b:"+b);
+			alert("a:"+a+"\nb:"+b); */
+			
+			
+			/* 
+			toString()
+			转换成字符串，所有的类型都会转为string类型 
+			 
+			 parseInt()
+			 解析出一个string或number的整数部分
+			 如果没有可以转换的部分，则返回NaN(not a number)
+			 从左往右扫描，var p="5em",一旦碰到一个非数字的话，就会返回
+			 
+			 Number()
+			把一个string解析为number, 如果包含非数字，则返回NaN
+			 */
+			
+			console.group("1.toString()");
+			var n1=10;
+			console.log("n1:",n1,"类型:",typeof(n1));
+			
+			var s1=n1+"";
+			console.log("s1:",s1,"类型:",typeof(s1));
+			
+			var s2=n1.toString();//n1通过toString()方法,将自身转换为字符串类型
+			console.log("s2:",s2,"类型:",typeof(s2));
+			
+			var s3=String(n1);//String()方法将n1转换为字符串类型
+			console.log("s3:",s3,"类型:",typeof(s3));
+			
+			console.groupEnd();
+			
+			
+			/* 
+			parseInt()
+			解析出一个string或number的 整数部分 
+			如果没有可以转换的部分，则返回NaN(not a number)
+			从左往右扫描，var p="5px",一旦碰到一个非数字的话，就会返回 NaN
+			 */
+			console.group("2.parseInt()");
+			var a1=1.23,a2="2",a3="3px",a4="10.55",a5="123.5s";
+			var b1="¥100";
+			var a11=parseInt(a1);
+			console.log("a11:",a11);
+			var a12=parseInt(a2);
+			var a12_0=a2-0;
+			console.log("a12:",a12,"a12_0:",a12_0);
+			var a13=parseInt(a3);
+			var a14=parseInt(a4);
+			var a15=parseInt(a5);
+			console.log("a13:",a13);
+			console.log("a14:",a14);
+			console.log("a15:",a15);
+			var b11=parseInt(b1);
+			console.log("b11:",b11);
+			
+			console.groupEnd();
+			
+			/* 
+			Number();
+			把一个不是number类型解析为numbere类型, 
+			如果包含非数字，则返回NaN
+			
+			String();
+			把一个不是string类型解析为string类型
+			
+			Boolean();
+			把一个不是boolean类型解析为boolean类型
+			除了以下5个值的转换结果为false，其他的值全部为true
+			undefined，null，-0，0或+0，NaN，''/""（空字符串） false
+			
+			 */
+			console.group("3.Number()和String()和Boolean()");
+			var a21=1.23,a22="2",a23="3px",a24="10.55",a25="123.5s";
+			var a31=Number(a21);
+			console.log("a31:",a31);
+			var a32=Number(a22);
+			console.log("a32:",a32);
+			var a33=Number(a23);
+			console.log("a33:",a33);
+			var a34=Number(a24);
+			console.log("a34:",a34);
+			var a35=Number(a25);
+			console.log("a35:",a35);	
+			var a36=Number(true);
+			console.log("a36:",a36);	
+			var a37=Number(false);
+			console.log("a37:",a37);	
+			var a38=Number(null);
+			console.log("a38:",a38);	
+			var a39=Number(undefined);
+			console.log("a39:",a39);
+			console.log("通过Boolean()可以转为false的内容");
+			var f1=Boolean(0);
+			console.log("f1:",f1);
+			var f2=Boolean("");
+			console.log("f2:",f2);
+			var f3=Boolean(undefined);
+			console.log("f3:",f3);
+			var f4=Boolean(null);
+			console.log("f4:",f4);
+			var f5=Boolean(NaN);
+			console.log("f5:",f5);
+			var f6=Boolean(false);
+			console.log("f6:",f6);
+			console.log("//////////////////");
+			var f7=Boolean([]);
+			var f8=Boolean({});
+			console.log("f7:",f7);
+			console.log("f8:",f8);
+			console.groupEnd();
+			
+		</script>
+		<!--
+		 1.js概念
+		 
+		 
+		 2.变量
+		 
+		 3.JS基本数据类型
+		 
+		 
+		 4.js 运算符
+		 + - * / %
+		 + +=
+		 > >= < <= ==  !=   ===  !==
+		 
+		 
+		 
+		 
+		 4.document.write(1+2+3)
+		 
+		 5.alert(),confirm(),prompt()
+		 
+		 6.console.log()
+		 console.group();
+		 console.groupEnd();
+		 
+		 
+		 5.数据类型转换
+			隐式转换
+			
+		 
+		 
+		 -->
+	</body>
+</html>

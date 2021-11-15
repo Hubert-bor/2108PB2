@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			table#tab{
+				width: 500px;
+				border-collapse: collapse;
+			}
+			table#tab,
+			table#tab th,
+			table#tab td{
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+<!--		<table id="tab">
+			<tr>
+				<th>姓名</th>
+				<th>年龄</th>
+				<th>性别</th>
+			</tr>
+			<tr>
+				<td>kky</td>
+				<td>20</td>
+				<td>男</td>
+			</tr>
+		</table>-->
+		<script>
+			//var name="kky2",age=220,sex="男";
+			
+			var str1='<table id="tab"><tr><th>姓名</th><th>年龄</th><th>性别</th></tr>';
+			var str2='<tr><td>'+name+'</td><td>'+age+'<td>'+sex+'</td></tr>';
+			var str3='</table>';
+			var str=str1+str2+str3;
+			document.write(str);
+		</script>
+	</body>
+</html>

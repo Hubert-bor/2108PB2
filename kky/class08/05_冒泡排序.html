@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var arr=[2,6,1,5,3,8];
+			//
+			//冒泡排序
+			for(var a=0;a<arr.length;a++){
+				// console.log("a:",a,"arr[a]=arr["+a+"]=",arr[a]);
+				console.log("a:",a);
+				for(var b=a+1;b<arr.length;b++){
+					// console.log("b:",b,"arr[b]=arr["+b+"]=",arr[b]);
+					console.log("b:",b,"arr[b]=arr["+b+"]=",arr[b],"arr[a]=arr["+a+"]=",arr[a]);
+					var c;
+					if(arr[a]>arr[b]){
+						c=arr[a];
+						arr[a]=arr[b];
+						arr[b]=c;
+					}
+					console.log("1arr:",arr);
+				}
+				console.log("2arr:",arr);
+				// console.log("\n");
+			}
+			console.log("3arr:",arr);
+			/* 
+			var arr=[2,6,1,5,3,8];
+			 当a=0
+				b=1,arr[b]=arr[1]=6,arr[a]=arr[0]=2;arr[a]>arr[b] =>false; arr=[2,6,1,5,3,8]
+				b=2;arr[b]=arr[2]=1;arr[a]=arr[0]=2;arr[a]>arr[b] =>true; arr=[1,6,2,5,3,8]
+				b=3;arr[b]=arr[3]=5;arr[a]=arr[0]=1;arr[a]>arr[b] =>false;arr=[1,6,2,5,3,8]
+				b=4;arr[b]=arr[4]=3;arr[a]=arr[0]=1;arr[a]>arr[b] =>false;arr=[1,6,2,5,3,8]
+				b=5;arr[b]=arr[5]=8;arr[a]=arr[0]=1;arr[a]>arr[b] =>false;arr=[1,6,2,5,3,8]
+			 当a=1;
+				b=2;arr[b]=arr[2]=2;arr[a]=arr[1]=6;arr[a]>arr[b] =>true; arr=[1,2,6,5,3,8]
+				b=3;arr[b]=arr[3]=5;arr[a]=arr[1]=2;arr[a]>arr[b] =>false;arr=[1,2,6,5,3,8]
+				b=4;arr[b]=arr[4]=3;arr[a]=arr[1]=2;arr[a]>arr[b] =>false;arr=[1,2,6,5,3,8]
+				b=5;arr[b]=arr[5]=8;arr[a]=arr[1]=2;arr[a]>arr[b] =>false;arr=[1,2,6,5,3,8]
+			
+			 当a=2;
+			 */
+			
+			
+			
+			
+			
+			;(function(){
+					var a=1;
+					var b=2;
+					var c;
+					c=a;
+					a=b;
+					b=c;
+					
+					
+			}());
+			
+				var r2=maoPao();
+				console.log("r2:",r2);
+					//冒泡排序
+				function maoPao(){
+					var arr=[2,6,1,5,3,8];
+					for(var a=0;a<arr.length;a++){
+						for(var b=a+1;b<arr.length;b++){
+							console.log("b:",b,"arr[b]=arr["+b+"]=",arr[b],"arr[a]=arr["+a+"]=",arr[a]);
+							var c;
+							if(arr[a]>arr[b]){
+								c=arr[a];
+								arr[a]=arr[b];
+								arr[b]=c;
+							}
+						}
+					};
+					// console.log("arr:",arr);
+					return arr;
+				}
+			
+		</script>
+	</body>
+</html>

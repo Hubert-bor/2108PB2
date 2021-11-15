@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/* 
+			每个函数中都有call,apply,bind
+			
+			相同点:都可以改变this指向,且每个函数都一定存在
+			不同点
+			 call 参数是任意值,用逗号隔开
+				xx函数.call(新对象,参数1,参数2,参数3);
+			 apply 参数必须是数组
+				xx函数.apply(新对象,[参数1,参数2,参数3]);
+			 
+			 bind 参数是任意值,但 返回的是个函数,必须手动执行
+			 必须添加()才能执行
+				xx函数.bind(新对象,参数1,参数2,参数3)();
+				
+				
+			 react中使用
+			 
+			 改变this指向
+			 
+			 
+			 */
+			var obj2={
+				user:"对象2",
+				age:81,
+				say1:function(){//var say1=function(){}
+					
+				},
+				say2(){//function say2()
+					console.log("");
+				}
+			}
+			
+			var duixiang1={
+				user:"对象1",
+				getAge:function(){
+					console.log("0this:",this);
+					return this.age+"此时this指向的user是"+this.user;
+				}
+			}
+			
+			//此时调用getAge函数this指向 duixiang1
+			console.log("0000",duixiang1.getAge());
+			console.log('///////////////////////////');
+			
+			console.log("1111:",duixiang1);
+			
+			
+			//此时调用getAge函数,并通过call改变this指向,此时this指向obj2
+			console.log("2222:",duixiang1.getAge.call(obj2));
+			
+			//此时调用getAge函数,并通过apply改变this指向,此时this指向obj2
+			console.log("3333:",duixiang1.getAge.apply(obj2));
+			
+			//此时调用getAge函数,并通过apply改变this指向,此时this指向obj2
+			console.log("4444:",duixiang1.getAge.bind(obj2)());
+			
+			console.log("////////////////////////////");
+			console.log("////////////////////////////");
+			console.log("////////////////////////////");
+			console.log("////////////////////////////");
+			function add(a,b,str){
+				console.log("a+b:",(a+b));
+				console.log("1this:",this,"str:",str);
+			}
+			function sub(a,b){
+				console.log("2this:",this);
+			}
+			add(2,3);//window调用add,此时1this指向 window
+			console.log("////////////////////////////");
+			//window调用add,但是通过call改变this,指向,此时指向sub,参数用逗号隔开
+			window.add.call(sub,3,1,"我是call");
+			console.log("////////////////////////////");
+			//window调用add,但是通过apply改变this,指向,此时指向sub,参数用数组包括
+			window.add.apply(sub,[3,1,"我是apply"]);
+			console.log("////////////////////////////");
+			window.add.bind(sub,3,1,"我是bind")();
+			
+			
+			
+		</script>
+	</body>
+</html>

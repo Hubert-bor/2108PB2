@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#d1,
+			#d2,
+			#d3,
+			#d4,
+			#d5
+			{
+				border: 1px solid red;
+				padding: 5px;
+				margin: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div id="d1">
+				<label>
+					姓名:<input type="text"  id="user" />
+				</label>
+				<label>
+					年龄:<input type="number"  id="age" min=0 step=1 max=1000  />
+				</label>
+				<label>
+					密码:<input type="password"  id="pwd" />
+				</label>
+				<label>
+					颜色:<input type="color"  id="color" />
+				</label>
+				<br>
+				<label>
+					日期:<input type="date"  id="date" />
+				</label>	
+				<label>
+					日期+时间:<input type="datetime-local"  id="datetimeLocal" />
+				</label>	
+				<label>
+					月份:<input type="month"  id="month" />
+				</label>
+				<label>
+					周:<input type="week"  id="week" />
+				</label>
+				<br>
+				<label>
+					时间:<input type="time"  id="time" />
+				</label>
+				<label>
+					音量:<input type="range"  id="range" step=0.5  min=1 max=10  />
+				</label>
+				<br>
+				<div>
+					<button type="button" id="btn1">1获取input中的value值</button>
+					<button type="button" id="btn2">2设置input中的value值(指定默认值)</button>
+				</div>
+			</div>
+			
+			<div id="d2">
+				<span>性别:</span>
+				<label>
+					小哥哥<input type="radio" name="sex" value="1" checked />
+				</label>
+				<label>
+					小姐姐<input type="radio" name="sex" value="0" />
+				</label>
+				<div>
+					<button type="button" id="btn3">3.获取性别if...else</button>
+					<button type="button" id="btn4">4.获取性别for...break</button>
+					<button type="button" id="btn5">5.设置(默认)性别</button>
+				</div>
+			</div>
+			
+			<div id="d3">
+				<div>兴趣爱好:</div>
+				<div id="hobby">
+					<label>
+						学习<input type="checkbox" value="h1" />
+					</label>
+					<label>
+						工作<input type="checkbox" value="h2" checked />
+					</label>
+					<label>
+						加班<input type="checkbox" value="h3" />
+					</label>
+					<label>
+						游泳<input type="checkbox" value="h4" />
+					</label>
+					<label>
+						健身<input type="checkbox" value="h5" />
+					</label>
+					<label>
+						吃饭<input type="checkbox" value="h6" />
+					</label>
+					<label>
+						睡觉<input type="checkbox" value="h7" />
+					</label>
+				</div>
+				<div>
+					<button type="button" id="btn6">获取选中项的值</button>
+					<button type="button" id="btn7">设置选中项</button>
+				</div>
+				<div>
+					<label>
+						全选/全不选<input type="checkbox" />
+					</label>
+				</div>
+				<div>
+					<button type="button" id="btn8">反选</button>
+				</div>
+			</div>
+			
+			<div id="d4">
+				<div>
+					<span>蜜雪冰城 金桔柠檬 </span>
+					<select id="sel1">
+						<option value="">----请选择----</option>
+						<option value="1000ml">超大杯</option>
+						<option value="800ml">大杯</option>
+						<option value="500ml">中杯</option>
+						<option value="200ml">小杯</option>
+					</select>
+				</div>
+				<div>
+					<span>蜜雪美食城</span>
+					<select id="sel2" >
+						<optgroup label="饮料">
+							<option value="yinliao1">金桔柠檬</option>
+							<option value="yinliao2">黑糖珍珠奶茶</option>
+							<option value="yinliao3">柠檬水</option>
+							<option value="yinliao4">杨枝甘露</option>
+						</optgroup>
+						<optgroup label="火锅">
+							<option value="huoguo1">烩面锅</option>
+							<option value="huoguo2">安徽板面</option>
+							<option value="huoguo3">重庆鸡公煲</option>
+							<option value="huoguo4">王婆大虾</option>
+						</optgroup>
+						<optgroup label="面食">
+							<option value="mianshi1">烩面</option>
+							<option value="mianshi2">兰州拉面</option>
+							<option value="mianshi3">热干面</option>
+							<option value="mianshi4">饸络面</option>
+						</optgroup>
+						<optgroup label="饼类">
+							<option value="bing1">肉夹馍</option>
+							<option value="bing2">山东大煎饼</option>
+							<option value="bing3">山东杂粮饼</option>
+							<option value="bing4">新疆大烤馕</option>
+						</optgroup>
+					</select>
+				</div>
+				<div>
+					<span>蜜雪美食城</span>
+					<select id="sel3" multiple  size="10">
+						<optgroup label="饮料">
+							<option value="yinliao1">金桔柠檬</option>
+							<option value="yinliao2">黑糖珍珠奶茶</option>
+							<option value="yinliao3">柠檬水</option>
+							<option value="yinliao4">杨枝甘露</option>
+						</optgroup>
+						<optgroup label="火锅">
+							<option value="huoguo1">烩面锅</option>
+							<option value="huoguo2">安徽板面</option>
+							<option value="huoguo3">重庆鸡公煲</option>
+							<option value="huoguo4">王婆大虾</option>
+						</optgroup>
+						<optgroup label="面食">
+							<option value="mianshi1">烩面</option>
+							<option value="mianshi2">兰州拉面</option>
+							<option value="mianshi3">热干面</option>
+							<option value="mianshi4">饸络面</option>
+						</optgroup>
+						<optgroup label="饼类">
+							<option value="bing1">肉夹馍</option>
+							<option value="bing2">山东大煎饼</option>
+							<option value="bing3">山东杂粮饼</option>
+							<option value="bing4">新疆大烤馕</option>
+						</optgroup>
+					</select>
+				</div>
+				<div>
+					<button type="button" id="btn9">9获取选中项的值</button>
+					<button type="button" id="btn10">10设置选中项</button>
+				</div>
+			</div>
+			
+			<div id="d5">
+				<textarea id="ttaa"></textarea>
+				<div>
+					<button type="button" id="btn11">11获取值</button>
+					<button type="button" id="btn12">12设置值</button>
+				</div>
+			</div>
+			
+		</div>
+		<script>
+		/* 
+		  获取 input值
+		  dom.value;
+		  
+		  设置input值
+		  dom.value="新值";
+		
+			性别如何知道选中了哪一个?
+			
+			dom.checked ==true 选中
+			设置 性别 iptSex[1].checked=true;
+			
+		 */
+		
+			console.groupCollapsed("1.input");
+			fgx("1.先获取dom");
+			var user=document.getElementById("user");
+			console.log("user:",user);
+			var age=document.getElementById("age");
+			console.log("age:",age);
+			var pwd=document.getElementById("pwd");
+			console.log("pwd:",pwd);
+			var color=document.getElementById("color");
+			console.log("color:",color);
+			var date=document.getElementById("date");
+			console.log("date:",date);
+			var datetimeLocal=document.getElementById("datetimeLocal");
+			console.log("datetimeLocal:",datetimeLocal);
+			var month=document.getElementById("month");
+			console.log("pwd:",pwd);
+			var week=document.getElementById("week");
+			console.log("week:",week);
+			var time=document.getElementById("time");
+			console.log("time:",time);
+			var range=document.getElementById("range");
+			console.log("range:",range);
+			
+			
+			
+			fgx("2.获取按钮btn1,添加点击事件");
+			var btn1=document.getElementById("btn1");
+			btn1.onclick=function(){
+				fgx("3.获取值,并打印到控制台");
+				var userValue=user.value;
+				console.log("userValue:",userValue);
+				var ageValue=age.value;
+				console.log("ageValue:",ageValue);
+				var pwdValue=pwd.value;
+				console.log("pwdValue:",pwdValue);
+				var colorValue=color.value;
+				console.log("colorValue:",colorValue);
+				var dateValue=date.value;
+				console.log("dateValue:",dateValue);
+				var datetimeLocalValue=datetimeLocal.value;
+				console.log("datetimeLocalValue:",datetimeLocalValue);
+				var monthValue=month.value;
+				console.log("monthValue:",monthValue);
+				var weekValue=week.value;
+				console.log("weekValue:",weekValue);
+				var timeValue=time.value;
+				console.log("timeValue:",timeValue);
+				var rangeValue=range.value;
+				console.log("rangeValue:",rangeValue);
+				
+			}
+			
+			fgx("4.获取按钮btn2,添加点击事件");
+			fgx("5.给对应的input设置默认值")
+			var btn2=document.getElementById("btn2");
+			btn2.onclick=function(){
+				user.value="默认1";//user.value="";//清空
+				age.value=18;
+				pwd.value="123";
+				color.value="#ff9900";
+				date.value="2022-11-04";
+				datetimeLocal.value="2022-11-04T18:00";
+				month.value="2022-01";
+				week.value="2022-W46";
+				time.value="16:03";
+				range.value="9";
+			}
+			
+			console.groupEnd();
+			console.groupCollapsed("2.获取性别");
+			var iptSex=document.querySelectorAll("#d2>label>input");
+			// console.log("iptSex:",iptSex,iptSex[0],iptSex[0].checked,iptSex[1],iptSex[1].checked);
+			
+			var btn3=document.getElementById("btn3");
+			
+			btn3.onclick=function(){
+				var sexValue;
+				console.log("1111男:",iptSex[0].checked,"女:",iptSex[1].checked);
+				if(iptSex[0].checked){//是否选中
+					sexValue=iptSex[0].value;//自身的值(告诉后台的具体数据)
+				}else{
+					sexValue=iptSex[1].value;
+				}
+				console.log("3你选中的性别:",sexValue,sexValue/1?"小哥哥":"小姐姐");
+			}
+			
+			var btn4=document.getElementById("btn4");
+			btn4.onclick=function(){
+				var sexValue;
+				for(var i=0;i<iptSex.length;i++){
+					// console.log("iptSex["+i+"]:",iptSex[i]);
+					if(iptSex[i].checked){
+						sexValue=iptSex[i].value;
+						break;
+					}
+				}
+				console.log("4你选中的性别:",sexValue,sexValue/1?"小哥哥":"小姐姐");
+			}
+			fgx("选中小姐姐");
+			var btn5=document.getElementById("btn5");
+			btn5.onclick=function(){
+				iptSex[1].checked=true;
+			}
+			
+			
+			console.groupEnd();
+			console.groupCollapsed("3兴趣爱好");
+			var btn6=document.getElementById("btn6");
+			var btn7=document.getElementById("btn7");
+			var ipts=document.querySelectorAll("#hobby>label>input");
+			// console.log("btn6:",btn6,"btn7:",btn7,"ipts:",ipts);
+			btn6.onclick=function(){
+				var arr=[];//用来存放选中项的值
+				for(var i=0;i<ipts.length;i++){
+					// console.log("ipts["+i+"]",ipts[i],"是否被选中",ipts[i].checked);
+					if(ipts[i].checked){
+						arr.push(ipts[i].value);
+					}
+				}
+				console.log("爱好arr:",arr);
+			}
+			
+			
+			btn7.onclick=function(){
+				ipts[0].checked=true;
+				ipts[2].checked=true;
+				ipts[4].checked=true;
+			}
+			console.groupEnd();
+			
+			console.groupCollapsed("4.下拉列表");
+			var btn9=document.getElementById("btn9");
+			var btn10=document.getElementById("btn10");
+			var sel1=document.getElementById("sel1");
+			var sel2=document.getElementById("sel2");
+			var sel3=document.getElementById("sel3");
+			// console.log("btn9:",btn9,"btn10:",btn10,"sel1:",sel1,"sel2:",sel2);
+			
+			btn9.onclick=function(){
+				 // console.log("sel1:",sel1);
+				// console.dir(sel1);
+				var sel1Value=sel1.value;
+				console.log("你选中了 金桔柠檬:",sel1Value);
+				fgx();
+				console.dir(sel2);
+				var sel2Value=sel2.value;
+				console.log("你选中了 :",sel2Value);
+				fgx("下拉列表多选");
+				console.dir(sel3);
+				var arr=[];
+				for(var i=0;i<sel3.length;i++){
+					// console.log("sel3["+i+"]:",sel3[i],"是否被选中",sel3[i].selected);
+					if(sel3[i].selected){
+						arr.push(sel3[i].value);
+					}
+				}
+				console.log("你都选中了arr:",arr)
+				
+			}
+			
+			btn10.onclick=function(){
+				sel1.selectedIndex=3;
+				sel2.selectedIndex=3;
+				
+				sel3[3].selected=true;
+				sel3[5].selected=true;
+				sel3[7].selected=true;
+				
+			}
+			console.groupEnd();
+			console.groupCollapsed("5.文本域");
+			var btn11=document.getElementById("btn11");
+			var btn12=document.getElementById("btn12");
+			var ttaa=document.getElementById("ttaa");
+			
+			btn11.onclick=function(){
+				console.dir(ttaa);
+				var ttaaValue=ttaa.value;
+				console.log("ttaaValue:",ttaaValue);
+			}
+			btn12.onclick=function(){
+				// console.dir(ttaa);
+				ttaa.value="留言";
+			}
+			
+			console.groupEnd();
+			
+			
+			
+			function fgx(str){
+				str||(str="");
+				console.log(str+"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+			}
+		</script>
+	</body>
+</html>

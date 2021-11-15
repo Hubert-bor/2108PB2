@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<h1>07_1</h1>
+			<a href="07_BOM_1.html">07_1</a>
+			<a href="07_BOM_2.html">07_2</a>
+			<a href="07_BOM_3.html">07_3</a>
+			<div>
+				<button type="text" id="btn1">后退</button>
+				<button type="text" id="btn2">前进</button>
+				<button type="text" id="btn3">去go(-1)页面</button>
+				<button type="text" id="btn4">去go(0)刷新页面</button>
+				<button type="text" id="btn5">去go(1)页面</button>
+			</div>
+		</div>
+		<script>
+		/* 
+BOM：Browser Object Model (浏览器对象模型)  
+	浏览器对象模型提供了可以与浏览器窗口进行互动的对象结构。
+	BOM由多个对象组成，其中代表浏览器窗口的Window对象是BOM的顶层对象，其他对象都是该对象的子对象。
+	
+	History对象
+	History 对象包含用户（在浏览器窗口中）访问过的 URL。
+	History 对象是 window 对象的一部分，可通过 window.history 属性对其进行访问。
+	注意： 没有应用于History对象的公开标准，不过所有浏览器都支持该对象。
+	length	返回历史列表中的网址数
+
+	方法			说明
+	back()		加载 history 列表中的前一个 URL
+	forward()	加载 history 列表中的下一个 URL
+	go()		加载 history 列表中的某个具体页面
+		 */
+			var btn1=document.getElementById("btn1");
+			var btn2=document.getElementById("btn2");
+			var btn3=document.getElementById("btn3");
+			var btn4=document.getElementById("btn4");
+			var btn5=document.getElementById("btn5");
+			
+			var btn6=document.getElementById("btn6");
+			btn1.onclick=function(){
+				history.back();
+			}
+			btn2.onclick=function(){
+				history.forward();
+			}
+			btn3.onclick=function(){
+				history.go(-1);
+			}
+			btn4.onclick=function(){
+				history.go(0);
+			}
+			btn5.onclick=function(){
+				history.go(1);
+			}
+		</script>
+	</body>
+</html>

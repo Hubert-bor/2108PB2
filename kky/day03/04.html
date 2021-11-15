@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			pre{
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<pre>
+10.	递归函数  
+递归就 是函数自己调用自己
+var f = function(x){
+	if(x == 1){
+		return 1;
+	}else{
+		return x * f(x-1);
+	}
+}
+console.log(f(10));
+上例为计算1至任意指定数字之间所有数字的乘积的函数。
+			function sum(x){
+				if(x==1){
+					var s=0;
+					return s+=x;
+				}else{
+					return x+sum(x-1)
+				}
+			}
+			console.log(sum(4));
+
+	函数递归 	在函数内部调用函数本身的函数；
+程序调用自身的编程技巧称为递归（ recursion）。
+一个过程或函数在其定义或说明中有直接或间接调用自身的一种方法，
+它通常把一个大型复杂的问题层层转化为一个与原问题相似的规模较小的问题来求解，
+递归策略只需少量的程序就可描述出解题过程所需要的多次重复计算，大大地减少了程序的代码量。
+递归的能力在于用有限的语句来定义对象的无限集合。
+一般来说，递归需要有边界条件、递归前进段和递归返回段。
+当边界条件不满足时，递归前进；当边界条件满足时，递归返回。
+函数递归过程中，如果函数名不改变是没有问题的，但一旦改变函数名，内部的自身调用需要逐一修改。
+为了解决这个问题，我们可以使用arguments.callee来代替。
+     function box(num){
+           if(num==1){
+               return 1;
+           } else {
+               return num*arguments.callee(num-1);//使用callee来执行自身
+           }
+     }
+
+	
+	11.作用域:作用域可访问变量的集合。
+
+在 JavaScript 中, 对象和函数同样也是变量。
+在 JavaScript 中, 作用域为可访问变量，对象，函数的集合。
+JavaScript 函数作用域: 作用域在函数内修改。
+
+	
+js变量作用域可分为："全局作用域"和"局部作用域"
+全局变量：在函数外声明的变量，可以在整个页面中访问。关闭页面后，变量被释放。
+在函数外声明的变量是全局变量，网页上的所有脚本和函数都能访问它。
+变量在函数外定义，即为全局变量。
+全局变量有 全局作用域: 网页中所有脚本和函数均可使用。 
+
+
+
+
+局部变量：在函数内声明的变量，只能在该函数中访问。退出函数后，变量被释放。
+局部 JavaScript 变量
+在 JavaScript 函数内部声明的变量（使用 var）是局部变量，所以只能在函数内部访问它。（该变量的作用域是局部的）。
+您可以在不同的函数中使用名称相同的局部变量，因为只有声明过该变量的函数才能识别出该变量。
+只要函数运行完毕，本地变量就会被删除。
+变量在函数内声明，变量为局部作用域。
+局部变量：只能在函数内部访问。
+因为局部变量只作用于函数内，所以不同的函数可以使用相同名称的变量。
+局部变量在函数开始执行时创建，函数执行完后局部变量会自动销毁。
+
+在声明变量时凡是没有var关键字，而直接赋值的变量均为全局变量,
+变量在函数内没有声明（没有使用 var 关键字），该变量为全局变量。
+若是在函数中声明的,需要先执行该函数
+
+JavaScript 变量的生存期
+JavaScript 变量的生命期从它们被声明的时间开始。
+局部变量会在函数运行以后被删除。
+全局变量会在页面关闭后被删除。
+
+如果在函数外和函数内声明了相同名称的变量，函数内的变量会覆盖函数外的变量（就近原则）。
+var a=1;//全局变量
+function main(){
+	var a=2;//局部变量
+	var b=3;//局部变量
+
+    console.log(a);//2
+  	console.log(b);//3
+} 
+main();
+console.log(a);//1
+console.log(b);//error: b is not defined
+
+函数参数
+函数参数只在函数内起作用，是局部变量。
+
+////////////////////////////////
+var a=10;
+b=100;
+function fn1(){
+	c=1000;//在声明变量时凡是没有var关键字，而直接赋值的变量均为全局变量
+	var d=10000;
+	console.log("0window:",window);
+}
+fn1();
+function fn2(){
+	console.log("a:",a,"b:",b,"c:",c);
+	console.log("a:",a,"b:",b,"c:",c,"d:",d);
+}
+console.log("1window:",window);
+fn2();
+		</pre>
+		<script>
+			var a=10;
+			b=100;
+			function fn1(){
+				c=1000;//在声明变量时凡是没有var关键字，而直接赋值的变量均为全局变量
+				var d=10000;
+				console.log("0window:",window);
+			}
+			fn1();
+			function fn2(){
+				console.log("a:",a,"b:",b,"c:",c);
+				console.log("a:",a,"b:",b,"c:",c,"d:",d);
+			}
+			console.log("1window:",window);
+			fn2();
+			
+			function parseInt(a){
+				console.log("$"+a);
+			}
+			parseInt(10.12);
+			
+			function sum(x){
+				if(x==1){
+					var s=0;
+					return s+=x;
+				}else{
+					return x+sum(x-1)
+				}
+			}
+			console.log(sum(4));
+			
+			function sum100(x){
+				if(x==4){
+					var s=4;
+					return s+=x;
+				}else{
+					return x+sum100(x+1);
+				}
+			}
+			console.log("4:",sum100(1));
+			
+		</script>
+	</body>
+</html>

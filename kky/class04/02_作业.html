@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/* 
+			 判断4位年份是否为闰年。
+			 闰年计算公式：能够被4整除但不能被100整除，或者 能被400整除的年份是闰年
+			 
+			能被400整除的年份是闰年 				year%400==0
+			或者									||
+			能够被4整除 且 不能被100整除，		( year%4==0&&year%100!=0 )
+			
+			 ( year%4==0&& !year%100==0 )
+			 
+			 */
+			
+			var year=prompt("请输入年份",2000);
+			console.log("year:",year);
+			//(year%4==0&&year%100!==0||year%400==0)?console.log("闰年"):console.log("平年");
+			
+			// if( (year!=null) && (year%400==0 || ( year%4==0&&year%100!=0 ))){
+			// 	console.log(year," 是闰年");
+			// }else{
+			// 	console.log(year,"是平年或year=null");
+			// }
+			
+			if(year==null){
+				console.log(year,"year=null,请输入年份");
+			}else{
+				if(year%400==0 || ( year%4==0&&year%100!=0 )){
+					console.log(year," 是闰年");
+				}else{
+					console.log(year," 是平年");
+				}
+			}
+			
+			// if(year%400==0 || ( year%4==0&&year%100!=0 ) && year!=null ){
+			
+		</script>
+	</body>
+</html>

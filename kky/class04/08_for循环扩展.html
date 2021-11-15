@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/* 
+			 1.
+			 
+			 */
+			
+			for(var a1=0;a1<=3;a1++){
+				console.log("a1:",a1);
+			}
+			console.log("///////////////");
+			//1.for变形1
+			var b1=0;
+			for(;b1<=3;b1++){
+				console.log("b1:",b1);
+			}	
+			console.log("///////////////");
+			//1.for变形2
+			var c1=0;
+			for(;c1<=3;){
+				console.log("c1:",c1);
+				c1++;//
+			}	
+			console.log("///////////////");
+			//1.for变形3 
+			var d1=0;
+			for(;;){
+				console.log("d1:",d1);
+				d1++;
+				if(d1>3){
+					break;
+				}
+			}
+			
+/* 			var e1=1;
+			var arr=[];
+			for(;;){
+				if(e1%3==0){
+					arr.push(e1);//放入数组
+				}
+				if(arr.length==100){
+					break;
+				}
+				e1++;
+			}
+			console.log("arr:",arr); */
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<div id="d1">
+				<video src="img/kky.mp4" id="video"  width="300" height="" controls>
+					<source src="img/kky.mp4" type="video/mp4"></source>
+				</video>
+			</div>
+			<canvas id="c1" width="800"></canvas>
+			<div>
+				<button type="button" id="jiequ">截取当前视频播放画面</button>
+			</div>
+		</div>
+		<script>
+			var jiequ=document.getElementById("jiequ");
+			var video=document.getElementById("video");
+			var c1=document.getElementById("c1");
+			
+			var ctx=c1.getContext("2d");
+			ctx.fillStyle="red";
+			ctx.fillRect(0,0,100,100);
+			
+			jiequ.onclick=function(){
+				ctx.clearRect(0,0,300,300);//清空这个画布
+				ctx.drawImage(video,0,0,300,300);
+			}
+			
+		</script>
+	</body>
+</html>

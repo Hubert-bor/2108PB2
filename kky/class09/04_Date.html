@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			;(function(){
+					//100天后是几月几号
+					var d1=new Date();
+					console.log("d1:",d1);
+					var t1=d1.getTime();
+					console.log("t1:",t1);
+					var a=10000;
+					var t2=a*24*3600*1000;
+					var t3=t1+t2;
+					console.log("t3:",t3);
+					
+					var d2=new Date(t3);
+					console.log("d2:",d2);
+					var year=d2.getFullYear();
+					var month=d2.getMonth()+1;
+					var date=d2.getDate();
+					
+					console.log("year:",year,"month:",month,"date",date);
+			}());
+			
+			
+			;(function(){
+				//距离2022年元旦的天数
+					var d1=new Date();
+					var d2=new Date("2022-1-1");
+					fgx();
+					console.log("d1:",d1);
+					fgx();
+					var t1=d1.getTime();
+					console.log("d2:",d2);
+					var t2=d2.getTime();
+					console.log("t1:",t1);
+					console.log("t2:",t2);
+					var t3=t2-t1;
+					console.log("t3:",t3);
+					var t4=t3/1000;
+					console.log("t4:",t4);
+					var t5=t4/(24*3600);
+					var n=parseInt(t5);
+					console.log("n:",n);
+			}());
+			
+			
+			;(function(){
+					var a=1;
+					var a1=60*60;
+					fgx();
+					var n1=1;//0:0:1
+					var t3=parseInt(n1/3600);
+					console.log("t3:",t3);
+					var t2=parseInt(n1/60);
+					console.log("t2:",t2);
+					var t1=n1%60;
+					console.log("t1:",t1);
+					console.log(t3+":"+t2+":"+t1);
+					fgx();
+					
+					var n2=61;//0:1:1
+					var t3=n2%60;
+					console.log("t3:",t3);
+					var t4=Math.floor(n2/60);
+					console.log("t4",t4);
+					var t5=Math.floor(n2/3600);
+					console.log("t5",t5);
+					console.log(t5+":"+t4+":"+t3);
+					
+					fgx();
+					
+					
+					var n3=3600;//1:0:0
+					var n4=3601;//1:0:1
+					fgx();
+					var n5=3661;//1:1:1
+					var tt1=(n5%3600)%60;
+					console.log("tt1:",tt1);
+					var tt2=parseInt(n5%3600/60);
+					console.log("tt2:",tt2);
+					var tt3=parseInt(n5/3600);
+					console.log("tt3",tt3);
+					fgx();
+					var n6=24*3600;//1天
+					var n7=24*3600+3661;//1天 1:1:1
+					
+					
+					
+					
+					
+			}());
+			
+			
+			function fgx(str){
+				str||(str="");
+				console.log(str+"//////////////////////////////////");
+			}
+		</script>
+	</body>
+</html>

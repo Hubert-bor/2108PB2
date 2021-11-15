@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#d1,
+			#d2
+			{
+				border: 1px solid red;
+				padding: 5px;
+				margin: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div id="d1">
+				<label>
+					姓名:<input type="text"  id="user" />
+				</label>
+				<label>
+					年龄:<input type="number"  id="age" min=0 step=1 max=1000  />
+				</label>
+				<label>
+					密码:<input type="password"  id="pwd" />
+				</label>
+				<label>
+					颜色:<input type="color"  id="color" />
+				</label>
+				<br>
+				<label>
+					日期:<input type="date"  id="date" />
+				</label>	
+				<label>
+					日期+时间:<input type="datetime-local"  id="datetimeLocal" />
+				</label>	
+				<label>
+					月份:<input type="month"  id="month" />
+				</label>
+				<label>
+					周:<input type="week"  id="week" />
+				</label>
+				<br>
+				<label>
+					时间:<input type="time"  id="time" />
+				</label>
+				<label>
+					音量:<input type="range"  id="range" step=0.5  min=1 max=10  />
+				</label>
+				<br>
+				<div>
+					<button type="button" id="btn1">1获取input中的value值</button>
+					<button type="button" id="btn2">2设置input中的value值(指定默认值)</button>
+				</div>
+			</div>
+			
+			<div id="d2">
+				<span>性别:</span>
+				<label>
+					小哥哥<input type="radio" name="sex" value="1" checked />
+				</label>
+				<label>
+					小姐姐<input type="radio" name="sex" value="0" />
+				</label>
+				<div>
+					<button type="button" id="btn3">3.获取性别if...else</button>
+					<button type="button" id="btn4">4.获取性别for...break</button>
+					<button type="button" id="btn5">5.设置(默认)性别</button>
+				</div>
+			</div>
+		</div>
+		<script>
+		/* 
+		  获取 input值
+		  dom.value;
+		  
+		  设置input值
+		  dom.value="新值";
+		
+			性别如何知道选中了哪一个?
+			
+			dom.checked ==true 选中
+			设置 性别 iptSex[1].checked=true;
+			
+		 */
+		
+			console.groupCollapsed("1.input");
+			fgx("1.先获取dom");
+			var user=document.getElementById("user");
+			console.log("user:",user);
+			var age=document.getElementById("age");
+			console.log("age:",age);
+			var pwd=document.getElementById("pwd");
+			console.log("pwd:",pwd);
+			var color=document.getElementById("color");
+			console.log("color:",color);
+			var date=document.getElementById("date");
+			console.log("date:",date);
+			var datetimeLocal=document.getElementById("datetimeLocal");
+			console.log("datetimeLocal:",datetimeLocal);
+			var month=document.getElementById("month");
+			console.log("pwd:",pwd);
+			var week=document.getElementById("week");
+			console.log("week:",week);
+			var time=document.getElementById("time");
+			console.log("time:",time);
+			var range=document.getElementById("range");
+			console.log("range:",range);
+			
+			
+			
+			fgx("2.获取按钮btn1,添加点击事件");
+			var btn1=document.getElementById("btn1");
+			btn1.onclick=function(){
+				fgx("3.获取值,并打印到控制台");
+				var userValue=user.value;
+				console.log("userValue:",userValue);
+				var ageValue=age.value;
+				console.log("ageValue:",ageValue);
+				var pwdValue=pwd.value;
+				console.log("pwdValue:",pwdValue);
+				var colorValue=color.value;
+				console.log("colorValue:",colorValue);
+				var dateValue=date.value;
+				console.log("dateValue:",dateValue);
+				var datetimeLocalValue=datetimeLocal.value;
+				console.log("datetimeLocalValue:",datetimeLocalValue);
+				var monthValue=month.value;
+				console.log("monthValue:",monthValue);
+				var weekValue=week.value;
+				console.log("weekValue:",weekValue);
+				var timeValue=time.value;
+				console.log("timeValue:",timeValue);
+				var rangeValue=range.value;
+				console.log("rangeValue:",rangeValue);
+				
+			}
+			
+			fgx("4.获取按钮btn2,添加点击事件");
+			fgx("5.给对应的input设置默认值")
+			var btn2=document.getElementById("btn2");
+			btn2.onclick=function(){
+				user.value="默认1";//user.value="";//清空
+				age.value=18;
+				pwd.value="123";
+				color.value="#ff9900";
+				date.value="2022-11-04";
+				datetimeLocal.value="2022-11-04T18:00";
+				month.value="2022-01";
+				week.value="2022-W46";
+				time.value="16:03";
+				range.value="9";
+			}
+			
+			console.groupEnd();
+			console.groupCollapsed("2.获取性别");
+			var iptSex=document.querySelectorAll("#d2>label>input");
+			// console.log("iptSex:",iptSex,iptSex[0],iptSex[0].checked,iptSex[1],iptSex[1].checked);
+			
+			var btn3=document.getElementById("btn3");
+			
+			btn3.onclick=function(){
+				var sexValue;
+				// console.log("男:",iptSex[0].checked,"女:",iptSex[1].checked);
+				if(iptSex[0].checked){
+					sexValue=iptSex[0].value;
+				}else{
+					sexValue=iptSex[1].value;
+				}
+				console.log("3你选中的性别:",sexValue,sexValue/1?"小哥哥":"小姐姐");
+			}
+			
+			var btn4=document.getElementById("btn4");
+			btn4.onclick=function(){
+				var sexValue;
+				for(var i=0;i<iptSex.length;i++){
+					// console.log("iptSex["+i+"]:",iptSex[i]);
+					if(iptSex[i].checked){
+						sexValue=iptSex[i].value;
+						break;
+					}
+				}
+				console.log("4你选中的性别:",sexValue,sexValue/1?"小哥哥":"小姐姐");
+			}
+			fgx("选中小姐姐");
+			var btn5=document.getElementById("btn5");
+			btn5.onclick=function(){
+				iptSex[1].checked=true;
+			}
+			
+			
+			console.groupEnd();
+			
+			
+			
+			function fgx(str){
+				str||(str="");
+				console.log(str+"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+			}
+		</script>
+	</body>
+</html>

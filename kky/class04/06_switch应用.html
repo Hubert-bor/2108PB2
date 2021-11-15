@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var dog={
+				mingzi:"小狗",
+				nianling:1,
+				yanse:"red"
+			}
+			var shuxingming=prompt("请输入你要查询的属性名","mingzi");
+			// console.log("你要查询的狗的属性:",dog[shuxingming]);
+			var shuxingzhi;
+			switch(shuxingming){
+				case "mingzi":{
+					shuxingzhi="小狗,又名狗狗";
+				};
+				break;
+				case "nianling":{
+					shuxingzhi="年龄1"
+					break;
+				}
+				case "yanse":{
+					shuxingzhi="颜色红色"
+					break;
+				}
+				default:{
+					shuxingzhi="没有该属性"
+				}
+			}
+			console.log("你要查询的狗的属性 ",shuxingzhi)
+		</script>
+	</body>
+</html>

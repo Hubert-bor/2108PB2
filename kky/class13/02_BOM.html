@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body{
+				height: 3000px;
+				width: 2000px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			
+		</div>
+		<script>
+		/* 
+innerheight	返回窗口的文档显示区的高度。
+innerwidth	返回窗口的文档显示区的宽度。
+注意：使用 outerWidth 和 outerHeight 属性获取加上工具条与滚动条窗口的宽度与高度。
+
+window.innerWidth
+window.innerHeight
+
+注意:不支持IE8 */
+		;(function(){
+				var w1=window.innerWidth;
+				var h1=window.innerHeight;
+				console.log("w1:",w1,"h1:",h1);
+		}());
+		/* 
+		 outerHeight属返回一个窗口的外部高度，包括所有界面元素（如工具栏/滚动条）。
+		 outerWidth属性窗口的外部宽度，包括所有的界面元素（如工具栏/滚动）。
+		 注意： 使用 innerWidth 和 innerHeight 属性获取去除工具条与滚动条的窗口高度与宽度。
+		 语法
+		 获取:
+		 window.outerWidth
+		 window.outerHeight
+		 
+		 注意:不支持IE8
+		 
+		 */
+		;(function(){
+				var w2=window.outerWidth;
+				var h2=window.outerHeight;
+				console.log("w2:",w2,"h2:",h2);
+		}());
+						/*
+		pageXOffset 和 pageYOffset 属性返回文档在窗口左上角水平和垂直方向滚动的像素。
+		pageXOffset 设置或返回当前页面相对于窗口显示区左上角的 X 位置。pageYOffset 设置或返回当前页面相对于窗口显示区左上角的 Y 位置。
+		pageXOffset 和 pageYOffset 属性相等于 scrollX 和 scrollY 属性。
+		这些属性是只读的。
+		语法
+		window.pageXOffset
+		window.pageYOffset
+		
+		 IE 8 及 更早 IE 版本不支持该属性,
+		 但可以使用 document.documentElement.scrollLeft 和 document.documentElement.scrollTop 属性 。
+						 */
+						
+		;(function(){
+				var mypageXOffset1=window.pageXOffset;
+				var mypageYOffset1=window.pageYOffset;
+				console.log("mypageXOffset:",mypageXOffset1);
+				console.log("mypageYOffset:",mypageYOffset1);
+		}());	
+					
+		;(function(){
+			if(window.pageXOffset){
+				console.log("该浏览器支持window.pageXOffset");
+				var mypageXOffset2=window.pageXOffset;
+				var mypageYOffset2=window.pageYOffset;
+			}else{
+				console.log("该浏览器不支持window.pageXOffset");
+				var mypageXOffset3=document.documentElement.scrollLeft;
+				var mypageYOffset2=document.documentElement.scrollTop;
+			}
+				
+		}());			
+		;(function(){
+			var w3=window.pageXOffset||document.documentElement.scrollLeft;
+			var h3=window.pageYOffset||document.documentElement.scrollTop;
+		}());
+		</script>
+	</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			pre{
+				font-size: 20px;
+			}
+			table#tab{
+				width: 500px;
+				border-collapse: collapse;
+			}
+			table#tab,
+			table#tab th,
+			table#tab td
+			{
+				border: 1px solid red;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<h1>js与HTML页面交互</h1>
+	用户名:<input type="text" id="userName" />
+	年龄:<input type="text" id="age" />
+	性别:<input type="text" id="sex" />
+	<button type="button" onclick="add()">添加</button>
+	<div>
+		<table id="tab">
+			<tr>
+				<th>姓名</th>
+				<th>年龄</th>
+				<th>性别</th>
+			</tr>
+		</table>
+	</div>
+		<script>
+			var userName=document.getElementById("userName");
+			var age=document.getElementById("age");
+			var sex=document.getElementById("sex");
+			var tab=document.getElementById("tab");
+			
+			function add(){
+				var nameV=userName.value;
+				var ageV=age.value;
+				var sexV=sex.value;
+				var tr=document.createElement("tr");
+				tr.innerHTML="<td>"+nameV+"</td><td>"+ageV+"</td><td>"+sexV+"</td>";
+				tab.appendChild(tr);
+			}
+		</script>
+	</body>
+</html>

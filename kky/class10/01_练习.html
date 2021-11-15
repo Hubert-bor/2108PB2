@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			var url1="http://www.baidu.com?user=kky&age=18&sex=0&job";
+			var url2="http://www.baidu.com?user=wtw&age=16&sex=1&job=xueSheng";
+			
+			/* 
+			 函数三要素
+			 1.函数的作用
+			 2.有没有参数,若有,有几个
+			 3.有没有返回值
+			 */
+			
+			
+			//fn1 ==>url={}
+			var r1=fn1(url1);//调用
+			console.log("r1:",r1);
+			// document.write(r1);
+			fgx();
+			var r2=fn2(url2);
+			console.log("r2:",r2);
+			
+			function fn1(url){
+				// console.log("url:",url);
+				var arr1=url.split("?");
+				// console.log("arr1:",arr1);
+				var str=arr1[1];
+				// console.log("str:",str);
+				var arr2=str.split("&");
+				// console.log("arr2:",arr2);
+				
+				//重要
+				var obj={};
+				for(var i=0;i<arr2.length;i++){
+					// console.log("i:",i,"arr["+i+"]:",arr2[i]);
+					var arr3=arr2[i].split("=");
+					// console.log("9999arr3:",arr3);
+					//重要
+					obj[arr3[0]]=arr3[1];
+				}
+				// console.log("obj:",obj);
+				
+				return obj;
+			}
+			
+			
+			function fn2(url){
+				// console.log("url:",url);
+				var arr1=url.split("?");
+				// console.log("arr1:",arr1);
+				var str=arr1[1];
+				// console.log("str:",str);
+				var arr2=str.split("&");
+				// console.log("arr2:",arr2);
+				
+				//重要
+				var arr=[];
+				for(var i=0;i<arr2.length;i++){
+					// console.log("i:",i,"arr["+i+"]:",arr2[i]);
+					var arr3=arr2[i].split("=");
+					// console.log("9999arr3:",arr3);
+					arr.push(arr3);
+				}
+				// console.log("arr:",arr);
+				return arr;
+			}
+			
+			
+			
+			
+			//fn2 ==> url=[[],[]];
+			
+			
+			function fgx(str){
+				str?str:(str="");
+				console.log(str+"/////////////////////////////");
+			}
+			
+		</script>
+	</body>
+</html>

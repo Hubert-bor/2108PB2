@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<label>
+				查询内容<input type="text" placeholder="不区分大小写" id="reg" />
+			</label>
+			<button type="button" id="regSearch">查询</button>
+		</div>
+		<script>
+		/* 
+		 search()
+		 replace()
+		 都是字符串的方法
+		 
+		 */
+			;(function(){
+				console.group("1.search(字符串/正则)");
+					var str1="Hello Kky";
+					var patt1=/kKy/i;//第一个正则表达式
+					var patt2=new RegExp("KKY","i");///第二种写法
+					
+					var n1=str1.search("kky");//search(字符串);
+					console.log("n1:",n1);
+					var n2=str1.search("KKY");//search(字符串);
+					console.log("n2:",n2);
+					
+					var n3=str1.search("Kky");//search(字符串);
+					console.log("n3:",n3);
+					
+					var n4=str1.search(patt1);//search(正则);
+					console.log("正则表达式n4:",n4);
+					var n5=str1.search(patt2);//search(正则);
+					console.log("正则表达式n5:",n5);
+					
+					var reg=document.getElementById("reg");
+					var regSearch=document.getElementById("regSearch");
+					
+					regSearch.onclick=function(){
+						var regValue=reg.value;
+						if(regValue){
+							var patt3=new RegExp(regValue,"i");
+							var n6=str1.search(patt3);
+							console.log("n6:",n6);
+						}else{
+							alert("请输入内容");
+						}
+						
+					}
+					
+				console.groupEnd();
+			}());
+			;(function(){
+				console.group("2.replace(字符串/正则)");
+					var str1="Hello Kky";
+					console.log("str1:",str1);
+					var strRep1=str1.replace("kky","ldw");
+					console.log("strRep1:",strRep1);
+					var strRep2=str1.replace("Kky","ldw");
+					console.log("strRep2:",strRep2);
+					fgx();
+					var patt1=/KKY/i;
+					var patt2=new RegExp("kky","i");
+					var strRep3=str1.replace(patt1,"ldw");
+					console.log("strRep3:",strRep3);
+					var strRep4=str1.replace(patt2,"ldw");
+					console.log("strRep4:",strRep4);
+					
+				console.groupEnd();
+			}());
+			
+			
+			
+			
+			function fgx(str){
+				if(str==undefined){
+					str="";
+				}
+				console.log(str+"-=-=-=-=-=-=-=-=-=-=-=-=");
+			}
+		</script>
+	</body>
+</html>

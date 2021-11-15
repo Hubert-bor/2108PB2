@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<div id="d1">
+				<button type="button" id="btn1">关掉t1(定时器)</button>
+				<button type="button" id="btn2">关掉t2(延时器)</button>
+			</div>
+		</div>
+		<script>
+		/* 
+	计时事件
+	setInterval()	按照指定的周期（以毫秒计）来调用函数或计算表达式。
+	clearInterval()	取消由 setInterval() 设置的 timeout。
+		
+	setTimeout()	在指定的毫秒数后调用函数或计算表达式。
+	clearTimeout()	取消由 setTimeout() 方法设置的 timeout。
+		 
+		 
+		 */
+			var t1=setInterval(function(){
+				var d=new Date();
+				console.log("d:",d);
+			},5000);
+			
+			var t2=setTimeout(function(){
+				console.log("我是炸弹TNT 我就执行一次");
+			},5000);
+			console.log("我t1,t2的下面")
+			
+			var btn1=document.getElementById("btn1");
+			var btn2=document.getElementById("btn2");
+			btn1.onclick=function(){
+				clearInterval(t1);
+				console.log("关闭闹铃,定时器t1成功")
+			}
+			btn2.onclick=function(){
+				clearTimeout(t2);
+				console.log("拆弹专家,拆除延时器t2成功")
+			}
+		</script>
+	</body>
+</html>

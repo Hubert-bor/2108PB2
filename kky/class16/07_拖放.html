@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#d1{
+				width: 400px;
+				height: 400px;
+				border: 1px solid red;
+			}
+			img.img{
+				width: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div id="d1" ondragover="allowDrop(event)" ondrop="drop(event)" >
+			</div>
+			<img src="img/3.jpg" draggable="true" ondragstart="drag(event)"  class="img" id="img"  />
+		</div>
+		<script>
+		/* 
+		 1.html结构
+			第一部分:拖放的对象(dom,本例是img#img)
+			第二部分:接收的对象(dom,本例是div#d1)
+		2.设置可拖放属性
+			draggable=ture;
+			
+		3.添加拖放开始 事件 ondragstart
+			并添加与之对应的函数drag,并传事件对象
+			将要拖放的dom转换为特定数据类型和值
+			
+		4.给接收的dom添加两个事件,并添加与之对应的函数
+			ondragover 拖放结束事件,函数allowDrop()
+			ondrop 进行放置(接收)事件,行数(drop)
+		
+		5.函数allowDrop(),阻止默认事件
+			
+		6.函数drop()作用
+			6.1.阻止默认事件
+			6.2.根据步骤3中转换的数据,得到拖放的数据(dom)
+			6.3 将6.2得到的数据(dom),添加到接收的dom中,本例div#d1
+		 */
+		
+		function drag(ev){
+			// console.log("ev.target.id:",ev.target,ev.target.id);
+			ev.dataTransfer.setData("Text",ev.target.id);
+		}
+		
+		function allowDrop(ev){
+			ev.preventDefault();
+		}
+		
+		function drop(ev){
+			ev.preventDefault();
+			var data=ev.dataTransfer.getData("Text");
+			// console.log("data:",data);
+			// console.log("ev.target:",ev.target);
+			ev.target.appendChild(document.getElementById(data));
+		}
+		
+		
+		</script>
+	</body>
+</html>

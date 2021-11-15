@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/* 
+		 JSON.stringify();
+			将对象/数组转化为字符串
+		 
+		 JSON.parse();
+			将(特殊)字符串转化为对象/数组
+		 */
+		var arr1=["a","b","c","d"];
+		console.log("arr1:",arr1);
+		var str1=arr1.join(",");
+		console.log("str1:",str1,typeof str1);
+		fgx();
+		var str2=JSON.stringify(arr1);
+		console.log("str2:",str2,typeof str2);
+		fgx();
+		var arr2=JSON.parse(str2);
+		console.log("arr2:",arr2,typeof arr2);
+		fgx();
+		fgx();
+		var str3='["a","b","c","d"]';
+		console.log("str3",str3,typeof str3);
+		var arr3=JSON.parse(str3);
+		console.log('arr3:',arr3,typeof arr3);
+		
+		
+		// JSON.parse(str4);
+		
+		
+		function fgx(str){
+			str||(str="");
+			console.log(str+"-=-=-=-=-=-=-=-=-=-=-=");
+		}
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

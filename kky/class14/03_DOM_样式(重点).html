@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#app{
+				background-color: green;
+				font-size: 20px;
+				border: 1px solid red;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/css03.css"/>
+	</head>
+	<body>
+		<div id="app" style="width: 300px;height: 300px;">
+			小毛赶紧回来吧
+		</div>
+		<script>
+/* 
+	获取行内与非行间样式
+		currentStyle
+		 ie所支持的获取非行间样式的方法
+		   用法：对象.currentStyle.样式名
+		   例：oDiv.currentStyle.width
+
+		getComputedStyle
+		   非ie所支持的获取非行间样式的方法
+		   用法：getComputedStyle(对象，伪类).样式名
+		   例：getComputedStyle(oDiv,null).color 
+ //兼容写法
+ function getStyle(obj,name){
+ 	if(obj.currentStyle){
+ 		return obj.currentStyle[name];
+ 	}else{
+ 		return getComputedStyle(obj,false)[name];//
+ 		//return getComputedStyle(obj,null)[name];放null参数的那个地方放false也可以
+ 	}
+ }
+ */		
+			var app=document.getElementById("app");
+			console.log("app:",app);
+			console.dir(app);
+			console.log("window:",window);
+			
+			//获取行内和非行内样式
+			//获取样式
+			//获取 谁的 哪个 样式
+			function getStyle(obj,name){
+				if(obj.currentStyle){
+					return obj.currentStyle[name];
+				}else{
+					return getComputedStyle(obj,false)[name];
+					// return getComputedStyle(obj,null)[name];
+				}
+			}
+			
+			var w=getStyle(app,"width");
+			console.log("w:",w);
+			var fs=getStyle(app,"font-size");
+			console.log("fs:",fs);
+			var color=getStyle(app,"color");
+			console.log("color:",color);
+			var border=getStyle(app,"border");
+			console.log("border:",border);
+			var borderWidth=getStyle(app,"border-width");
+			console.log("borderWidth:",borderWidth);
+			
+		</script>
+	</body>
+</html>

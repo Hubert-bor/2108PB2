@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/* 
+			7.返回值  	
+			return 后面的代码不再执行,即结束函数
+			return语句使用控制流立刻从函数中退出，这会忽略它后面的代码不执行。
+			
+			有时，我们会希望函数将值返回调用它的地方。
+			通过使用 return 语句就可以实现。
+			在使用 return 语句时，函数会停止执行，并返回指定的值。 
+			 
+			 */
+			
+			add1(1,2);
+			add1(2,2);
+			add1(5,8);
+			//add1作用:只能 将两个数相加的结果 打印到控制台上
+			function add1(a,b){
+				console.log("a+b=",(a+b));
+			}
+			
+			
+			var r1=add2(1,2);
+			document.write(r1);
+			document.write("<br>");
+			document.write(add2(2,2));
+			
+			//add2作用:只能计算两个数的和,并返回和
+			function add2(a,b){
+				return a+b;
+				console.log("我在return后面,我不再会被执行");
+			}
+			
+			var d1=dog();
+			console.log("d1",d1);
+			function dog(){
+				return {
+					mingzi:"狗狗",
+					yanse:"红色"
+				}
+			}
+			
+		</script>
+	</body>
+</html>

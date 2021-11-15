@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+		
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 这是注释 -->
+			这不是注释
+			<div id="d1">
+				<div id="d1_1"></div>
+				<p id="p1_2"></p>
+				<div id="d1_3"></div>
+			</div>
+			<div id="d2"></div>
+			<div id="d3"></div>
+		</div>
+		<script>
+/* 
+14.DOM文档对象模型(DOM)
+	Document Object Model。文档对象模型
+	       节点类型:文档中的内容，包括标签、文本、注释、标签属性等
+	        节点关系:
+	    节点树中的节点彼此拥有层级关系。
+		父（parent）、子（child）和同胞（sibling）等术语用于描述这些关系。
+		父节点拥有子节点。同级的子节点被称为同胞（兄弟或姐妹）。
+		在节点树中，顶端节点被称为根（root）
+		每个节点都有父节点、除了根（它没有父节点）
+		一个节点可拥有任意数量的子
+		同胞是拥有相同父节点的节点
+	6.节点遍历
+		1.childNodes  返回包含被选节点的子节点的 NodeList
+				如果选定的节点没有子节点，则该属性返回不包含节点的 NodeList。
+				如需循环子节点列表，使用 nextSibling 属性，要比使用父对象的 childNodes 列表效率更高。
+		2.firstChild 	返回被选节点的第一个子节点,如果选定的节点没有子节点，则该属性返回 NULL。
+		3.lastChild 	可返回文档的最后一个子节点。
+		4.previousSibling 可返回某节点之前紧跟的节点（处于同一树层级）
+					返回节点以节点对象返回。注意：如果没有此节点，那么该属性返回 null。
+		5.nextSibling 	 可返回某个元素之后紧跟的节点（处于同一树层级中）。
+					返回节点以节点对象返回。注意： 如果元素紧跟后面没有节点则返回 null.	
+		6.parentNode 	可返回某节点的父节点。如果指定的节点没有父节点则返回 null 。
+		
+		7.ownerDocument 可返回某元素的根元素。
+					
+		//与之对应的查找元素节点(重点)(重点)(重点)
+		1.children  		属性返回元素的子元素的集合，是一个 HTMLCollection 对象。只返回元素节点
+		2.firstElementChild 	返回被选节点的第一个子元素节点,如果选定的节点没有子元素节点，则该属性返回 NULL。
+		3.lastElementChild  	返回被选节点的最后一个子元素节点,如果选定的节点没有子元素节点，则该属性返回 NULL。
+		4.previousElementSibling 可返回某节点之后紧跟的元素节点（处于同一树层级）注意：如果没有此元素节点，那么该属性返回 null。
+		5.nextElementSibling  	可返回某节点之前紧跟的元素节点（处于同一树层级）注意：如果没有此元素节点，那么该属性返回 null。
+		6.parentNode 		可返回某节点的父节点。如果指定的节点没有父节点则返回 null 。
+		parentNode和parentElement 结果一样 
+ */		
+			;(function(){
+				fgx("1.childNodes和children");
+				var app=document.getElementById("app");
+				var d2=document.getElementById("d2");
+				console.log("app:",app);
+				var appChildNodes=app.childNodes;
+				var appChildren=app.children;
+				console.log("appChildNodes:",appChildNodes);
+				console.log("appChildren:",appChildren);
+				fgx();
+				var d2ChildNodes=d2.childNodes;
+				var d2Children=d2.children;
+				console.log("d2ChildNodes:",d2ChildNodes);
+				console.log("d2Children:",d2Children);
+				fgx("2.firstChild和firstElmentChild");
+				var appFirstChild=app.firstChild;
+				var appFirstElementChild=app.firstElementChild;
+				console.log("appFirstChild:",appFirstChild);
+				console.log("appFirstElementChild:",appFirstElementChild);
+				fgx("3.lastChild和lastElementChild");
+				var appLastChild=app.lastChild;
+				var appLastElementChild=app.lastElementChild;
+				console.log("appLastChild:",appLastChild);
+				console.log("appLastElementChild:",appLastElementChild);
+				fgx("4.previousSibling和previousElementSibling");
+				var d2PreviousSibling=d2.previousSibling;
+				var d2PreviousElementSibling=d2.previousElementSibling;
+				console.log("d2PreviousSibling:",d2PreviousSibling);
+				console.log("d2PreviousElementSibling:",d2PreviousElementSibling);
+				fgx("5.nextSibling和nextElementSibling");
+				var d2NextSibling=d2.nextSibling;
+				var d2NextElementSibling=d2.nextElementSibling;
+				console.log("d2NextSibling:",d2NextSibling);
+				console.log("d2NextElementSibling:",d2NextElementSibling);
+				fgx("6.parentNode和parentElement");
+				var d2ParentNode=d2.parentNode;
+				var d2ParentElement=d2.parentElement;
+				console.log("d2ParentNode:",d2ParentNode);
+				console.log("d2ParentElement:",d2ParentElement);
+				fgx("ownerDocument");
+				var appOwnerDocument=app.ownerDocument;
+				var d2OwnerDocument=d2.ownerDocument;
+				console.log("appOwnerDocument:",appOwnerDocument);
+				console.log("d2OwnerDocument:",d2OwnerDocument);
+			}());
+			
+			
+			function fgx(str=""){
+				console.log(str+"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+			}
+		</script>
+	</body>
+</html>

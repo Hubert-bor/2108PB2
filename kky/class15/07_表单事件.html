@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<div id="d1">
+				<label>
+					姓名1:<input type="text" id="user" onfocus="fn1()" onblur="fn3()" />
+				</label>
+				<label>
+					姓名2:<input type="text" id="user2"  oninput="fn4()" />
+				</label>
+				<label>
+					搜索商品:<input type="text" id="goods"  onchange="fn5()" onselect="fn6()" />
+				</label>
+				<br>
+				<select onchange="fn5()" >
+					<option value="1000ml">aa</option>
+					<option value="800ml">bb</option>
+					<option value="500ml">cc</option>
+					<option value="300ml">dd</option>
+				</select>
+				<br>
+				<textarea onchange="fn5()"  onselect="fn6()"></textarea>
+			</div>
+			<div id="d2">
+				div是否可以被选取
+			</div>
+			<div id="d3">
+				<form onreset="fn7()" onsubmit="fn8()">
+					<label>
+						姓名10:<input type="text" id="user10" />
+					</label>
+					<button >默认提交</button>
+					<button type="button">普通按钮</button>
+					<button type="reset">重置按钮</button>
+					<button type="submit">提交按钮</button>
+				</form>
+			</div>
+			<div id="d4"></div>
+			<div id="d5"></div>
+		</div>
+		<script>
+		/* 
+	1.表单事件
+	
+	属性				描述	
+	onfocus			元素获取焦点时触发	
+	oninput			元素获取用户输入时触发	
+	onblur			元素失去焦点时触发
+	
+	onchange		该事件在表单元素的内容改变时触发( input, select, 和 textarea)	
+	
+	
+	
+	
+	onselect		用户选取文本时触发 ( input 和 textarea)	
+	
+	onreset			表单重置时触发
+	onsubmit		表单提交时触发	 
+		 
+		 */
+			function fn1(){
+				console.log("1我获取了焦点");
+			}
+			
+			var user2=document.getElementById("user2");
+			user2.onfocus=function(){
+				console.log("2我获取了焦点");
+			}
+			
+			function fn3(){
+				console.log("3我失去焦点");
+			}
+			
+			function fn4(){
+				console.log("用户在输入时")
+			}
+			
+			function fn5(){
+				console.log("输入的内容改变了");
+			}
+			
+			function fn6(){
+				console.log("选取文本时触发");
+			}
+			
+			function fn7(){
+				// console.log("表单要重置了");
+				alert("表单要重置了");
+			}
+			
+			function fn8(){
+				// console.log("表单要提交了");
+				alert("表单要提交了")
+			}
+			
+		</script>
+	</body>
+</html>

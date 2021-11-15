@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+	</head>
+	<body>
+		<div id="app">
+			<div id="tilte">
+				<h1>Kky信息管理系统</h1>
+			</div>
+			<div id="entry">
+				<div>
+					<!-- 
+					 autocomplete 属性规定输入字段是否应该启用自动完成功能。
+					 自动完成允许浏览器预测对字段的输入。
+					 当用户在字段开始键入时，浏览器基于之前键入过的值，
+					 应该显示出在字段中填写的选项。
+					 -->
+					<label>
+						姓名:<input type="text" id="user" />
+					</label>
+					<label>
+						年龄:<input type="number" min=1 max=200 step=1 autocomplete="off" id="age" />
+					</label>
+				</div>
+				<div id="sex">
+					<span>性别:</span>
+					<label>
+						小哥哥<input type="radio" name="sex" value="0" />
+					</label>
+					<label>
+						小姐姐<input type="radio" name="sex" value="1" />
+					</label>
+				</div>
+				<div id="hobby">
+					<div class="hobby">
+						<span>爱好:</span>
+						<label>
+							学习<input type="checkbox" value="h1" />
+						</label>
+						<label>
+							健身<input type="checkbox" value="h2" />
+						</label>
+						<label>
+							挣钱<input type="checkbox" value="h3" />
+						</label>
+						<label>
+							美食<input type="checkbox" value="h4" />
+						</label>
+						<label>
+							游泳<input type="checkbox" value="h5" />
+						</label>
+						<label>
+							自驾游<input type="checkbox" value="h6" />
+						</label>
+					</div>
+					<div>
+						<label>
+							全选/全不选<input type="checkbox" id="checkAll" />
+						</label>
+						<button type="button" id="inverse">反选</button>
+					</div>
+				</div>
+				<div>
+					<span>学历:</span>
+					<select id="edu">
+						<option value="">---请选择---</option>
+						<option value="e1">博士</option>
+						<option value="e2">本科</option>
+						<option value="e3">专科</option>
+						<option value="e4">高中</option>
+						<option value="e5">初中</option>
+						<option value="e6">小学</option>
+					</select>
+				</div>
+			</div>
+			<div id="operate">
+				<button type="button" id="add" >添加</button>
+				<button type="button" id="queRenXiuGai" class="hide">确认修改</button>
+				<br>
+				<button type="button" id="GeHang">开启隔行变色</button>
+				<button type="button" id="yiRu">开启移入变色</button>
+				<br>
+				<button type="button" id="paiXu">按年龄升序↑</button>
+				<br>
+				<br>
+				<div>
+					<label>
+						请输入要查询的姓名或年龄(条件为空表示查询所有数据):
+						<input type="text" id="search" />
+					</label>
+					<button type="button" id="chaXun">查询</button>
+				</div>
+				<br>
+				<button type="button" id="quanBuShanChu">全部删除</button>
+			</div>
+			<div id="show">
+				<!-- <table id="tab" class="geHangBianSe yiRuBianSe"> -->
+				<table id="tab" class="hide">
+					<thead>
+						<tr>
+							<th>姓名</th>
+							<th>年龄</th>
+							<th>性别</th>
+							<th>爱好</th>
+							<th>学历</th>
+							<th>添加/修改时间</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- <tr>
+							<td>小程</td>
+							<td>21</td>
+							<td>小哥哥</td>
+							<td>学习 健身 挣钱 美食 游泳 自驾游</td>
+							<td>100</td>
+							<td>2021-11-12 14:38:01</td>
+							<td>
+								<button type="button" disabled >上移</button>
+								<button type="button">删除</button>
+								<button type="button">修改</button>
+								<button type="button">下移</button>
+							</td>
+						</tr>
+						<tr>
+							<td>小程</td>
+							<td>21</td>
+							<td>小哥哥</td>
+							<td>学习 健身 挣钱 美食 游泳 自驾游</td>
+							<td>100</td>
+							<td>2021-11-12 14:38:01</td>
+							<td>
+								<button type="button">上移</button>
+								<button type="button">删除</button>
+								<button type="button">修改</button>
+								<button type="button">下移</button>
+							</td>
+						</tr>
+						<tr>
+							<td>小程</td>
+							<td>21</td>
+							<td>小哥哥</td>
+							<td>学习 健身 挣钱 美食 游泳 自驾游</td>
+							<td>100</td>
+							<td>2021-11-12 14:38:01</td>
+							<td>
+								<button type="button">上移</button>
+								<button type="button">删除</button>
+								<button type="button">修改</button>
+								<button type="button">下移</button>
+							</td>
+						</tr>
+						<tr>
+							<td>小程</td>
+							<td>21</td>
+							<td>小哥哥</td>
+							<td>学习 健身 挣钱 美食 游泳 自驾游</td>
+							<td>100</td>
+							<td>2021-11-12 14:38:01</td>
+							<td>
+								<button type="button">上移</button>
+								<button type="button">删除</button>
+								<button type="button">修改</button>
+								<button type="button" disabled>下移</button>
+							</td>
+						</tr> -->
+					</tbody>
+				</table>
+			</div>
+			<!-- <div id="info" class="show"> -->
+			<div id="info" class="">
+				提示信息
+			</div>
+		</div>
+		<script src="js/index.js"></script>
+	</body>
+</html>

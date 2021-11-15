@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<div id="d1">
+				<button type="button" id="btn1" onclick="fn1()">第一种添加方式1</button>
+				<button type="button" id="btn2">第二种添加方式2</button>		
+				<button type="button" id="btn3">第三种添加方式3</button>
+			</div>
+			<div id="d2">
+				<button type="button" id="btn4">第一种移除方式1</button>
+				<button type="button" id="btn5">第二种移除方式2</button>		
+				<button type="button" id="btn6">第三种移除方式3</button>
+			</div>
+		</div>
+		<script>
+			function fn1(){
+				console.log("方式1");
+			}
+			
+			var btn2=document.getElementById("btn2");
+			btn2.onclick=function(){
+				console.log("方式2");
+			}
+			
+			var btn3=document.getElementById("btn3");
+			function fn3_1(){
+				console.log("方式3 第一个click");
+			}
+			
+			function fn3_2(){
+				console.log("方式3 第二个click");
+			}
+			/* 
+			btn3.addEventListener("click",function(){
+				
+			}) */
+			
+			btn3.addEventListener("click",fn3_1);
+			btn3.addEventListener("click",fn3_2);
+			
+			//移除
+			var btn1=document.getElementById("btn1");
+			var btn4=document.getElementById("btn4");
+			var btn5=document.getElementById("btn5");
+			var btn6=document.getElementById("btn6");
+			
+			btn4.onclick=function(){
+				btn1.removeAttribute("onclick");
+				console.log("btn1 onclick 移除成功");
+			}
+			
+			btn5.onclick=function(){
+				btn2.onclick=null;
+				console.log("btn2 onclick 移除成功");
+			}
+			
+			btn6.onclick=function(){
+				btn3.removeEventListener("click",fn3_1);
+				console.log("btn3 onclick fn3_1 移除成功");
+			}
+			
+		</script>
+	</body>
+</html>

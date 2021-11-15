@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/* 
+			 
+			 */
+			/* 
+				1.我写这个函数的作用
+					例如:panDuanZhiShu 作用,判断一个数是不是质数,不知道具体是哪个数?
+				2.
+			 
+				形参
+					创建函数时,函数名后面括号中的字母,叫形参,不知道他具体的值
+					形式主义
+				实参
+					调用函数时,函数名后面括号中内容;一般知道他具体的值
+			 */
+			panDuanZhiShu(7);
+			panDuanZhiShu(8);
+			panDuanZhiShu(9);
+			
+			// var x=prompt("请输入2-20之间的数字");
+			// panDuanZhiShu(x/1);
+			
+			function panDuanZhiShu(n){
+				var f=true;
+				for(var i=2;i<n;i++){
+					if(n%i==0){
+						f=false;
+						break;
+					}
+				}
+				if(f){
+					console.log(n,"是质数");
+				}else{
+					console.log(n,"不是质数");
+				}
+			}
+			
+/* 			
+			var n=7;
+			var f=true;
+			for(var i=2;i<n;i++){
+				if(n%i==0){
+					f=false;
+					break;
+				}
+			}
+			if(f){
+				console.log(n,"是质数");
+			}else{
+				console.log(n,"不是质数");
+			} */
+			
+		</script>
+	</body>
+</html>

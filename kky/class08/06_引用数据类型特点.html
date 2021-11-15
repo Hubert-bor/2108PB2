@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/* 
+				引用数据类型特点
+					引用地址
+					
+					缺点:避免用等号去赋值
+			 */
+			
+			var arr1=["a","b","c","d","e"];
+			// var arr2=["a","b","c","d","e"];
+			console.log("00000arr1:",arr1);
+			
+			var arr2=arr1;//避免用等号去赋值
+			
+			arr1[2]=1000;
+			
+			console.log("2arr1:",arr1);
+			console.log("arr2:",arr2);
+			
+			console.log("///////////////////");
+			var arr3=[];
+			for(var i=0;i<arr1.length;i++){
+				arr3.push(arr1[i]);
+			}
+			arr3[2]="c";
+			console.log("arr3:",arr3);
+			console.log("///////////////////");
+			
+			var obj1={
+				user:"a",
+				age:18,
+				sex:0
+			}
+			
+			var obj2=obj1;//避免用等号去赋值
+			console.log("1obj1:",obj1);
+			
+			obj2.job="IT";
+			
+			
+			
+			console.log("2obj1:",obj1);
+			console.log("obj2:",obj2);
+		</script>
+	</body>
+</html>

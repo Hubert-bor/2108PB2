@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#d1,
+			#d2,
+			#d3,
+			#d4
+			{
+				width:200px;
+				height: 50px;
+				border: 1px solid red;
+				margin: 10px;
+				padding: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div id="d1">
+				<button type="button" id="btn1">按钮1</button>
+			</div>
+			<div id="d2">
+				事件捕获(先父元素再自己)
+				<button type="button" id="btn2">按钮2</button>
+				<button type="button" id="btn2_2">按钮2_2</button>
+			</div>
+			<div id="d3">
+				<button type="button" id="btn3">按钮3</button>
+			</div>
+			<div id="d4">
+				<button type="button" id="btn4">按钮4</button>
+			</div>
+		</div>
+		<script>
+			/* 
+	对象.addEventListener(),第三个参数默认是false;
+	element.addEventListener(event, function, useCapture);
+		第一个参数是事件的类型 (如 "click" 或 "mousedown").
+		第二个参数是事件触发后调用的函数。
+		第三个参数是个布尔值用于描述事件是冒泡还是捕获。该参数是可选的。
+		注意:不要使用 "on" 前缀。 例如，使用 "click" ,而不是使用 "onclick"。
+			
+	事件冒泡
+		自身和 父级元素 都有相同的事件,
+		自身被执行时,
+		先执行自身对应的函数,在依次执行父级元素对应的函数
+	事件捕获
+		自身和父级元素 都有相同事件,
+		自身被执行时,
+		先执行父级元素对应的函数,再执行自身对应的函数
+	事件捕获必要条件
+		父级元素添加事件方式必须是DOM2且第三个参数一定是true
+		对象.addEventListener(事件类型,回调函数,true)
+			 
+			 
+			 */
+			var d1=document.getElementById("d1");
+			var d2=document.getElementById("d2");
+			var d3=document.getElementById("d3");
+			var d4=document.getElementById("d4");
+			var btn1=document.getElementById("btn1");
+			var btn2=document.getElementById("btn2");
+			var btn3=document.getElementById("btn3");
+			var btn4=document.getElementById("btn4");
+			
+			d1.addEventListener("click",function(){
+				console.log("我是d1")
+			})
+			btn1.addEventListener("click",function(){
+				console.log("我是btn1")
+			})
+			
+			//事件捕获
+			d2.addEventListener("click",function(){
+				console.log("我是d2")
+			},true);//因为我是true,我是捕获
+			var btn2_2=document.getElementById("btn2_2");
+			btn2_2.onclick=function(){
+				console.log("我是btn2_2")
+			}
+			btn2.addEventListener("click",function(){
+				console.log("我是btn2")
+			},false)
+			
+			
+			d3.addEventListener("click",function(){
+				console.log("我是d3")
+			});
+			btn3.addEventListener("click",function(){
+				console.log("我是btn3")
+			});
+			
+			d4.addEventListener("click",function(){
+				console.log("我是d4")
+			});
+			btn4.addEventListener("click",function(){
+				console.log("我是btn4")
+			});
+			
+			
+			
+		</script>
+	</body>
+</html>

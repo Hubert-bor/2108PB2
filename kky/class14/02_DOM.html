@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>这是标题</title>
+		<style>
+			img{
+				width: 100px;
+				height: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div id="d1">
+				
+			</div>
+			<div id="d2">
+				<form name="form1"></form>
+				<form name="form2"></form>
+				<form name="form3"></form>
+			</div>
+			<div>
+				<img src="img/2.jpg" />
+				<img src="img/3.jpg" />
+			</div>
+		</div>
+		<script>
+			console.log("1");
+		</script>
+		<script>
+			console.log("2");
+		</script>
+		<script>
+			fgx("获取");
+			var title=document.title;
+			console.log("title:",title);
+			var url=document.URL;
+			console.log("url:",url);
+			var baseUrl=document.baseURI;
+			console.log("baseUrl:",baseUrl);
+			var domain=document.domain;
+			console.log("domain:",domain);
+			fgx();
+			var body=document.body;
+			console.log("body:",body);
+			var documentElement=document.documentElement;
+			console.log("documentElement:",documentElement);
+			var forms=document.forms;
+			console.log("forms:",forms);
+			var imgs=document.images;
+			var scripts=document.scripts;
+			console.log("imgs:",imgs);
+			console.log("scripts:",scripts);
+			fgx("设置");
+			document.title="我可以设置网页标题"+Math.random();
+			
+			
+			
+			function fgx(str=""){
+				console.log(str+"-=-=-=-=-=-=-=-=-=-=-");
+			}
+		</script>
+	</body>
+</html>

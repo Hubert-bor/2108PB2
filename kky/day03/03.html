@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			pre{
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<pre>
+	5.什么是形参和实参
+	
+在调用函数时，您可以向其传递值，这些值被称为参数。
+这些参数可以在函数中使用。
+您可以发送任意多的参数，由逗号 (,) 分隔：
+变量和参数必须以一致的顺序出现。第一个变量就是第一个被传递的参数的给定的值，以此类推。	
+	
+	
+	
+函数声明的参数叫做形参
+function show(a){
+		alert(a)
+}
+获取形参个数可以通过：函数名.length
+如：show.length   //1
+
+函数调用中的参数叫做实参
+show("a")
+
+与变量类似，若声明的形参，在调用时又没有给实参，则相当变量只声明而未赋值，那么这个参数在函数中的值为undefiend
+	
+	6.参数与传参
+一般情况下，声明函数如果有参数，那么调用该函数时也需要传入参数
+但是JavaScript的语法比较自由，既不会检查参数的个数，也不会检查参数的数据类型，
+这种自由给使用带来了方便，同时也是JavaScript语言不是一个严谨的强类型语言特性之一。
+
+参数语法：function 函数名称(参数名称,参数名称,参数名称.....) 
+//多个参数使用逗号(,)格开 .....表示参数个数不限
+例:
+function test(a,b,c){
+	alert(a+b+c);
+}
+传参方式：函数名称(值,值,值)
+例:  test(1,2,3) // 弹出 6
+解: test函数中
+a=1;
+b=2;
+c=3;
+
+注意：
+1.传参过程中 值是任意的数据,也可以是变量
+例:   var  x=1; var y=2;
+        test(x,y,3);
+2.参数可以忽略
+例：test(1,2)
+解：    a=1
+b=2 
+c=undefined
+例:test(1,null,3)
+解：   a=1
+b=null;
+c=3;
+
+	7.返回值  	return 后面的代码不再执行,即结束函数
+return语句使用控制流立刻从函数中退出，这会忽略它后面的代码不执行。
+有时，我们会希望函数将值返回调用它的地方。
+通过使用 return 语句就可以实现。
+在使用 return 语句时，函数会停止执行，并返回指定的值。
+
+
+function add(x, y){
+	if(x===undefined){
+		return;
+	}	
+	alert(x+y);
+}
+在return后面跟上字面量、变量或表达式，作为函数的返回值。
+function add(x, y){
+	return x+y;
+}
+
+return是可选的
+退出函数时 ，也可使用 return 语句。返回值是可选的：
+function myFunction(a,b)
+{
+    if (a>b)
+    {
+        return;
+    }
+    x=a+b
+}
+如果 a 大于 b，则上面的代码将退出函数，并不会计算 a 和 b 的总和。
+
+
+
+8.	自动添加分号原则
+function foo1(){
+   return {
+      bar: "hello"
+   };
+}
+
+function foo2()
+{
+   return    // 退出函数，返回 undefined，不执行后面的代码
+   {
+      bar: "hello"
+   };
+}
+在JS中，如若语句各占独立一行，通常可以省略语句间的分号（;），
+JS 解析器会根据能否“正常编译”来决定是否自动填充分号。但是对于 return 、break、continue 等语句，
+如果后面紧跟换行，解析器一定会自动在后面直接填充分号(;)，所以上面的第二个函数就变成了这样：
+function foo2(){
+   return;
+   {
+      bar: "hello"
+   };
+}
+
+9.	不定参数 arguments对象
+function show(){
+	console.log(arguments);  // 输出参数列表的类数组形式
+}
+show(1,’x’,3,’y’)
+Arguments[0]=1
+Arguments[1]=’x’
+Arguments[2]=3
+Arguments[3]=’y’
+
+在函数内部，有一个特殊的对象，arguments是一个类数组对象，包含着传入函数中的所有参数。
+arguments 并非数组，只是访问单个参数的方式与访问数组元素的方式相同
+可以通过arguments [0]获取到第一个实参，arguments[1] 获取第二个实参，以此类推，
+arguments 有length属性，表示实参长度。
+
+在函数内部，有两个特殊的对象：arguments和this
+arguments是一个数组对象，包含传入函数中的所有参数，
+主要用途是保存函数参数，但这个对象还有一个名叫callee的属性，
+该属性是一个指针，指向拥有这个arguments对象的函数。
+
+1、定义一个不定参数的函数，返回所有参数之和
+
+2、定义一个不定参数的函数，返回所有参数中最大的那个数
+
+		</pre>
+		<script>
+			maxV(1,2,3);
+			maxV(1,3,2);
+			maxV(2,1,3);
+			maxV(2,3,1);
+			maxV(3,1,2);
+			maxV(3,2,1);
+			function maxV(a,b,c){
+				var max=0;
+				if(a>b&&a>c){
+					max=a;
+				}
+				if(b>a&&b>c){
+					max=b;
+				}
+				if(c>a&&c>b){
+					max=c;
+				}
+				console.log("最大值:",max);
+				return max;
+			}
+			
+			function getSum(){
+				var sum=0;
+				for(var i=0;i<arguments.length;i++){
+					sum+=arguments[i];
+				}
+				console.log("sum:",sum);
+				return sum;
+			}
+			getSum();
+			getSum(1);
+			getSum(1,2);
+			getSum(1,2,3);
+			
+			function getMax(){
+				var max=arguments[0];
+				for(var i=0;i<arguments.length;i++){
+					if(max<=arguments[i]){
+						max=arguments[i]
+					}
+				}
+				console.log("max:",max);
+				return max;
+			}
+			getMax();
+			getMax(1,2,3);
+			getMax(1,3,2);
+			getMax(2,1,3);
+			getMax(2,3,1);
+			getMax(3,1,2);
+			getMax(3,2,1);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+;(function(){
+	var arr=[
+	{
+		"shop_name":"新疆土老帽",
+		"shop_goods":[
+			{
+				"goods_name":"黑加仑葡萄干",
+				"goods_price":"23.50",
+				"goods_kouwei":"原味",
+				"goods_img":"img/1.jpg"
+			},
+			{
+				"goods_name":"楼兰若羌红枣",
+				"goods_price":"24.80",
+				"goods_kouwei":"原味",
+				"goods_img":"img/2.jpg"
+			}
+		]
+	},
+	{
+		"shop_name":"乌食坊",
+		"shop_goods":[
+			{
+				"goods_name":"东北特产蓝莓干",
+				"goods_price":"32.50",
+				"goods_kouwei":"",
+				"goods_img":"img/3.jpg"
+			}
+		]
+	},
+	{
+		"shop_name":"和风细雨进口食品",
+		"shop_goods":[
+			{
+				"goods_name":"日式樱花果冻布丁",
+				"goods_price":"56.00",
+				"goods_kouwei":"",
+				"goods_img":"img/4.jpg"
+			}
+		]
+	}
+]
+
+	var obj20191113={
+		total:0,
+		arr:arr
+	}
+	if(!localStorage.obj20191113){
+		localStorage.obj20191113=JSON.stringify(obj20191113);
+	}
+}());

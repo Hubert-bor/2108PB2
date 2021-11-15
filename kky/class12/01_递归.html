@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/* 
+			 1+2+3+4+5+....+n;
+			 n+(n-1)+(n-2)+...+2+1
+			 */
+			
+			/**
+			 * 
+			 * **/
+			
+			function qiuHe(n){
+				var sum=0;
+				for(var i=1;i<=n;i++){
+					sum+=i;
+				}
+				return sum;
+			}
+			
+			var r1=qiuHe(4);
+			console.log("r1:",r1);
+			
+			//
+			function qiuHeDiGui(n){
+				if(n==1){
+					return 1;
+				}else{
+					return n+arguments.callee(n-1);
+				}
+			}
+			var r5=qiuHeDiGui(4);
+			console.log("r5:",r5);
+			
+			
+			/* 
+			 n!
+			 4!=4*3*2*1;
+			 */
+			
+			function jieCheng(n){
+				var s=1;
+				for(var i=1;i<=n;i++){
+					s*=i;
+				}
+				return s;
+			}
+			var r2=jieCheng(4);
+			console.log("r2:",r2);
+			//边界条件 n==1
+			function jieChengDiGui1(n){
+				if(n==1){
+					return 1;
+				}else{
+					return  n*jieChengDiGui1(n-1);
+				}
+			}
+			var r3=jieChengDiGui1(4);
+			console.log("r3:",r3);
+			//边界条件 n==1
+			/* 
+			f(x)=f(4)
+			 	=4*f(4-1)
+			 	=4*f(3)
+			 	=4*3*f(3-1)
+			 	=4*3*f(2);
+			 	=4*3*2*f(2-1)
+			 	=4*3*2*f(1)
+			 	=4*3*2*1
+				
+				4!=4*3*2*1= 
+			 
+			 */
+			
+			function jieChengDiGui2(n){
+				if(n==1){
+					return 1;
+				}else{
+					return  n*arguments.callee(n-1);
+				}
+			}
+			var r4=jieChengDiGui2(4);
+			console.log("r4:",r4);
+			
+			
+			//递归经典案例 斐波那契数列
+			//1,1,2,3,5,8,13,21,34
+			//1,2,3,4,5,6,7,8,9,10
+			 //求第n个斐波那契数列
+			 function feiBoNaQieShu(n){
+				 if( n==0 || n==1){
+					 return n;
+				 }else{
+					 return arguments.callee(n-2)+arguments.callee(n-1);
+				 }
+			 };
+			 var r6=feiBoNaQieShu(9);
+			//0,1,1,2,3,5,8,13,21,34
+			 console.log("r6:",r6);
+		/* 	 
+			 
+			 当n=0时n==0 true,返回0
+			 当n=1时,n==0 false;n==1 true,返回1;
+			 当n=2时,n==0false,n==1false, feiBoNaQieShu(n-2)+feiBoNaQieShu(n-1)
+			 feiBoNaQieShu(2-2)+feiBoNaQieShu(2-1)
+			 feiBoNaQieShu(0)+feiBoNaQieShu(1);
+			 0+1;
+			 当n=3时,n==0,false,n==1,false
+			 feiBoNaQieShu(n-2)+feiBoNaQieShu(n-1)
+			 feiBoNaQieShu(3-2)+feiBoNaQieShu(3-1)
+			 feiBoNaQieShu(1)+feiBoNaQieShu(2)
+			 1+feiBoNaQieShu(2)
+			 1+feiBoNaQieShu(2-2)+feiBoNaQieShu(2-1)
+			 1+feiBoNaQieShu(0)+feiBoNaQieShu(1);
+			  1+0+1
+			  
+			  */
+			 
+			 
+			 
+			 
+			
+		</script>
+	</body>
+</html>

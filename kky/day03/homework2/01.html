@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			pre{
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<pre>
+
+1、编写计算加减乘除的4个函数，用return语句返回计算结果。
+	add     加
+	subtract   减
+	multiply   乘
+	division   除
+2、定义一个可以接受三个number参数的函数，返回这三个数中最大的那个值，调用此方法。			
+			
+3、编写一个收银台收银程序，根据商品单价、购买数量以及收款金额计算并输出应收金额和找零；当总价大于或等于500时，享受8折优惠
+	考虑程序异常情况，如：
+	若收款金额大于应收金额，则计算找零后输出
+	若收款金额小于应收金额，输出错误提示信息
+4、用递归函数实现1-100之内所有数之和
+
+5、 写出1-2+3-4+5-6+7......+n的几种实现函数
+
+6.	求1-100以内的质数
+
+7.求n!的值
+
+8.求 1!+2!+3!+...+n!;
+		</pre>
+		<script>
+			;(function(){
+				//8
+				function fnSum(n){
+					var sum=0;
+					for(var i=1;i<=n;i++){
+						sum+=fn2(i);
+					}
+					return sum;
+					
+				}
+				console.log("fnSum(4):",fnSum(3));
+				function fn2(n){
+					if(n==1){
+						return 1;
+					}else{
+						return n*arguments.callee(n-1);
+					}
+				}
+			}());
+			fgx();
+			;(function(){
+				//7
+				function fn2(n){
+					if(n==1){
+						return 1;
+					}else{
+						return n*arguments.callee(n-1);
+					}
+				}
+				console.log("fn2(5):",fn2(5));
+				function fn1(n){
+					var s=1;
+					for(var i=1;i<=n;i++){
+						s*=i;
+					}
+					return s;
+				}
+				console.log("fn1(5):",fn1(5));
+			}());
+			fgx();
+			;(function(){
+				//6
+				function Prime1ToN(n){
+					var arr=[];
+					for(var i=2;i<=n;i++){
+						if(isPrime(i)){
+							arr.push(i);
+						};
+					}
+					return arr;
+				}
+				console.log("1-100之间的质数:",Prime1ToN(100));
+				function isPrime(n){
+					var f=true;
+					for(var i=2;i<n;i++){
+						if(n%i==0){
+							f=false;
+							break;
+						}
+					}
+					return f;
+				}
+			}());
+			fgx();
+			;(function(){
+				//5
+				function fn1(x){
+					var sum=0;
+					for(var i=1;i<=x;i++){
+						if(i%2==0){
+							x=-i;
+						}else{
+							x=i;
+						}
+						sum+=i;
+					}
+					return sum;
+				}
+				console.log("fn1(5):",fn1(5));
+			}());
+			fgx();
+			;(function(){
+				//4
+				function fn1(x){
+					if(x==1){
+						return 1;
+					}else{
+						return x+fn1(x-1);
+					}
+				}
+				console.log(fn1(100));
+			}());
+			fgx();
+			;(function(){
+				//3
+				console.log(fn(9.99,1000,10000));
+				fgx();
+				console.log(fn(9.99,1,10));
+				function fn(price,num,price0){
+					var total=price*num;
+					if(total>=500){
+						total=(total*0.8).toFixed(2);
+					}
+					if(price0<total){
+						return "不够支付";
+					}else{
+						//console.log("total:",total,(price0-total).toFixed(2));
+						return "找零:"+((price0-total).toFixed(2))+"元";
+					}
+				}
+			}());
+			fgx();
+			;(function(){
+				//2
+				function maxV(a,b,c){
+					return Math.max(a,b,c);
+				}
+				console.log(maxV(1,2,3));
+				console.log(maxV(1,3,2));
+				console.log(maxV(2,1,3));
+				console.log(maxV(2,3,1));
+				console.log(maxV(3,2,1));
+			}());
+			fgx();
+			;(function(){
+				//1
+				console.log(calc(1,"+",2));
+				console.log(calc(1,"-",2));
+				console.log(calc(1,"*",2));
+				console.log(calc(1,"/",2));
+				function calc(a,type,b){
+					if(type=="+"){
+						return a+b;
+					}else if(type=="-"){
+						return a-b;
+					}else if(type=="*"){
+						return a*b;
+					}else if(type=="/"){
+						if(b==0){
+							return "除数不能为0";
+						}
+						return a/b;
+					}
+				}
+			}());
+			fgx();
+			function fgx(str){
+				str=str||(str="");
+				console.log(str+"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+			}
+		</script>
+	</body>
+</html>

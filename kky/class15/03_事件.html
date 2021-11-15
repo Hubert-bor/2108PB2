@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.myScroll{
+				width: 300px;
+				height: 200px;
+				border: 1px solid red;
+				overflow: scroll;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<img onload="fn1()" onerror="fn2()" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic.47473.com%2Fupload%2Farticle%2F2015%2F12%2F1124519210.jpg&refer=http%3A%2F%2Fpic.47473.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639116119&t=c807a1853212a34caf11912404187e16"  />
+			<div class="myScroll" onscroll="mysfun()">
+				onscroll 	事件在元素滚动条在滚动时触发<br />
+				onscroll 	事件在元素滚动条在滚动时触发<br />
+				onscroll 	事件在元素滚动条在滚动时触发<br />
+				onscroll 	事件在元素滚动条在滚动时触发<br />
+				onscroll 	事件在元素滚动条在滚动时触发<br />
+			</div>
+		</div>
+		<script>
+		/* 
+1.事件
+HTML 事件可以是浏览器行为，也可以是用户行为。
+常见的HTML事件
+-------------事件-------------
+onload  	事件会在页面或图像加载完成后立即执行,
+		通常用于 body 元素，在页面完全载入后(包括图片、css文件等等。)执行脚本代码
+onerror 事件在加载外部文件（文档或图像）发生错误时触发。		
+		
+		onload 		加载完成 一般用在window 图片
+		onerror 	一般用在图片加载失败时
+		onscroll 	事件在元素滚动条在滚动时触发
+		onresize 	当窗口或框架的大小变化时在window 或框架上触发,一般用在window
+		
+		 */
+		
+			window.onload=function(){
+				
+			}
+			window.onresize=function(){
+				console.log("浏览器窗口大小改变了");
+				var oh=window.outerHeight;
+				var ih=window.innerHeight;
+				var ow=window.outerWidth;
+				var iw=window.innerWidth;
+				console.log("oh:",oh,"ih:",ih,"ow:",ow,"iw:",iw);
+			}
+			
+			function fn1(){
+				console.log("图片加载成功");
+			}
+			function fn2(){
+				console.log("图片加载错误");
+			}
+			
+			var n=0;
+			function mysfun(){
+				console.log("滚动次数"+n++);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<button type="button" id="btn1">assign()</button>
+			<button type="button" id="btn2">reload()</button>
+			<button type="button" id="btn3">replace()</button>
+		</div>
+		<script>
+			console.log(location);
+			/* 
+			 http://127.0.0.1:8848/HBuilderProject/2108BP2/class12/03_location.html?user=kky&age=18&sex=0#job=it&money=99999999999
+			 http 协议
+			 127.0.0.1 /localhost /www.baidu.com 域名
+			 HBuilderProject/2108BP2/class12/03_location.html 文件路径
+			 
+			 
+			同源策略
+			协议 http https
+			网址(IP地址)
+			端口号
+			 
+			 跨域问题
+	8.location对象	用于获得当前页面的地址 (URL)，并把浏览器重定向到新的页面。
+		常用属性
+	location.hostname 返回 web  主机的域名hostname：设置或返回主机名。
+	location.pathname 返回当前页面的路径和文件名     pathname：设置或返回URL的路径部分。
+	location.port 返回 web 主机的端口 （80 或 443）   port：设置或返回端口号。
+	location.protocol 返回所使用的 web 协议（http:// 或 https://）
+			protocol：设置或返回URL的协议。
+			计算机通信网络中两台计算机之间进行通信所必须共同遵守的规定或规则，
+			超文本传输协议(HTTP)是一种通信协议，
+			它允许将超文本标记语言(HTML)文档从Web服务器传送到客户端的浏览器。		
+	location.href 属性返回当前页面的 URL  href：设置或返回当前URL。
+	hash：设置或返回URL中的锚名。 
+	host：设置或返回主机名和端口号。 80或443
+	search：设置或返回URL的参数部分。 			 
+		
+		
+		location.href 属性返回当前页面的 URL  href：设置或返回当前URL。
+		hash：设置或返回URL中的锚名。 
+		host：设置或返回主机名和端口号。 80或443
+		search：设置或返回URL的参数部分。 
+			 
+			 */
+			
+			fgx("1");
+			var hash=location.hash;
+			console.log("hash:",hash);
+			fgx("2");
+			var host=location.host;
+			console.log("host:",host);
+			fgx("3");
+			var hostname=location.hostname;
+			console.log("hostname:",hostname);
+			fgx("4");
+			var href=location.href;
+			console.log("href:",href);
+			fgx("5");
+			var origin=location.origin;
+			console.log("origin:",origin);
+			fgx("6");
+			var pathname=location.pathname;
+			console.log("pathname:",pathname);
+			fgx("7");
+			var port=location.port;
+			console.log("port:",port);
+			fgx("8");
+			var protocol=location.protocol;
+			console.log("search:",protocol);
+			fgx("9");
+			var search=location.search;
+			console.log("search:",search);
+			fgx("方法");
+			var btn1=document.getElementById("btn1");
+			var btn2=document.getElementById("btn2");
+			var btn3=document.getElementById("btn3");
+			
+			btn1.onclick=function(){
+				location.assign("https://www.baidu.com");
+			}
+			btn2.onclick=function(){
+				location.reload();//刷新
+			}
+			btn3.onclick=function(){
+				location.replace("https://www.jd.com");
+			}
+			
+			
+			function fgx(str){
+				str||(str="");
+				console.log(str+"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+			}
+		</script>
+	</body>
+</html>

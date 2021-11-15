@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			pre{
+				font-size: 16px;
+			}
+		</style>
+	</head>
+	<body>
+<pre>
+	1.数组常用的方法
+	方法			描述
+	concat()		连接两个或更多的数组，并返回结果。
+	
+	forEach()		数组每个元素都执行一次回调函数。
+	
+	indexOf()		搜索数组中的元素，并返回它所在的位置。
+	lastIndexOf()		返回一个指定的字符串值最后出现的位置，在一个字符串中的指定位置从后向前搜索。
+	
+	join()			把数组的所有元素放入一个字符串。
+	
+	pop()			删除数组的最后一个元素并返回删除的元素。
+	push()			向数组的末尾添加一个或更多元素，并返回新的长度。
+	shift()			删除并返回数组的第一个元素。
+	unshift()		向数组的开头添加一个或更多元素，并返回新的长度。
+	
+	reverse()		反转数组的元素顺序。(数组倒序)
+	sort()			对数组的元素进行排序。
+	
+	slice()			选取数组的的一部分，并返回一个新数组。
+	splice()		从数组中添加或删除元素。
+	
+	//////////////////////////////////
+	includes()		判断一个数组是否包含一个指定的值。
+	
+	//////////////////////////////////
+	find()			返回符合传入测试（函数）条件的数组元素。
+	findIndex()		返回符合传入测试（函数）条件的数组元素索引。
+	every()			检测数值元素的每个元素是否都符合条件。
+	some()			检测数组元素中是否有元素符合指定条件。
+	////////////////////////////////////////
+	filter()		检测数值元素，并返回符合条件所有元素的数组。
+	map()			通过指定函数处理数组的每个元素，并返回处理后的数组。
+	/////////////////////////////////////////////////////
+	isArray()		判断对象是否为数组。
+	toString()		把数组转换为字符串，并返回结果。
+	////////////////////////////////////////
+	fill()			使用一个固定值来填充数组。
+</pre>
+		<script>
+			/* 
+			 concat()		连接两个或更多的数组，并返回结果。
+			 该方法 不会 改变现有的数组，而仅仅会返回被连接数组的一个副本。
+			 */
+			console.groupCollapsed("1.concat() 数组合并");
+			;(function(){
+				var arr1=["a","b","c"];
+				var arr2=["d","e","f"];
+				var arr3=["g","h","i"];
+				var arr4=arr1.concat(arr2);
+				console.log("arr4:",arr4,"arr1:",arr1,"arr2:",arr2);
+				var arr5=arr1.concat(arr3,arr2);
+				console.log("arr5:",arr5,"arr1:",arr1,"arr2:",arr2,"arr3:",arr3);
+				var arr6=[].concat(arr1,arr2,arr3);
+				console.log("arr6:",arr6);
+			}());
+			console.groupEnd();
+			/* 
+			forEach() 方法用于调用数组的每个元素，并将元素传递给 回调函数 。
+			
+			注意: forEach() 对于空数组是不会执行回调函数的。
+
+				回调函数的三个参数
+				1.数组中的每一个值
+				2.数组的下标
+				3.数组本身
+			 */
+			console.groupCollapsed("2.forEach() 遍历数组");
+			;(function(){
+				var arr1=["a","b","c","d","e"];
+				var arr2=[];
+				
+				arr1.forEach(function(value,i,t){
+					console.log("value",value,"i:",i,"t:",t);
+				});
+				fgx("forEach常用写法");
+				arr1.forEach(function(value,i){
+					console.log("value",value,"i:",i);
+				});
+				fgx();
+				for(var i=0;i<arr1.length;i++){
+					console.log("value:",arr1[i],"key:",i,"t:",arr1);
+				};
+				arr2.forEach(function(value,key,t){
+					console.log("22222");
+				});
+				
+			}());
+			console.groupEnd();
+			
+			/* 
+				indexOf
+				indexOf() 方法可返回某个指定的值在数组中 首次 出现的位置。
+				如果找到值第一次出现的位置(下标)。 数组是从 0 开始的。
+				如果在数组中没找到字符串则返回 -1。
+			
+			 */
+			console.groupCollapsed("3.indexOf() 查找数据返回下标/-1");
+			;(function(){
+				var arr1=["a","b","a","d","e"];
+				var i1=arr1.indexOf("a");
+				console.log("i1:",i1);
+				var i2=arr1.indexOf("d");
+				console.log("i2:",i2);
+				var i3=arr1.indexOf("dxm");
+				console.log("i3:",i3);
+			}());
+			console.groupEnd();
+			/* 
+				lastIndexOf() 方法可返回某个指定的值在数组中 最后(倒序)出现 的位置。
+				如果找到值最后一次出现的位置(下标)。 数组是从 0 开始的。
+				如果在数组中没找到字符串则返回 -1。			
+			 */
+			console.groupCollapsed("4.lastIndexOf() 从后面查找数据,返回下标/-1");
+			;(function(){
+				var arr1=["a","b","c","a","a"];
+				var i1=arr1.lastIndexOf("a");
+				console.log("i1:",i1);
+				var i2=arr1.lastIndexOf("c");
+				console.log("i2:",i2);
+				var i3=arr1.lastIndexOf("xm");
+				console.log("i3:",i3);
+			}());
+			console.groupEnd();
+			/*
+				join() 方法用于把数组中的所有元素转换一个字符串。
+				元素是通过指定的分隔符进行分隔的。默认为逗号
+			 */
+			console.groupCollapsed("5.join()将数组转为字符串");
+			;(function(){
+				var arr1=["a","b","c","d","e"];
+				var str1=arr1.join();//默认为逗号
+				console.log("str1:",str1);
+				var str2=arr1.join("¥");//
+				console.log("str2:",str2);
+				var str3=arr1.join(" ");//
+				console.log("str3:",str3,str3.length);
+			}());
+			console.groupEnd();
+			/* 
+				pop() 方法用于删除数组的最后一个元素并返回删除的元素。
+				注意：此方法改变数组的长度！
+			 */
+			console.groupCollapsed("6.pop() 末位删除一个");
+			;(function(){
+				var arr1=["a","b","c","d","e"];
+				var str=arr1.pop();
+				console.log("arr1:",arr1,"str:",str);
+			}());
+			console.groupEnd();
+			
+			/* 
+				push() 方法可向数组的末尾添加一个或多个元素，并返回新的长度。
+				注意： 新元素将添加在数组的末尾。
+				注意： 此方法改变数组的长度。			
+			 */
+			console.groupCollapsed("7.push()在数组末尾添加多个数据");
+			;(function(){
+				var arr1=["a","b"];
+				var len1=arr1.push("x");
+				console.log("arr1:",arr1,"len1:",len1);
+				var len2=arr1.push("c","d","a","d");
+				console.log("arr1:",arr1,"len2:",len2);
+			}());
+			console.groupEnd();
+			/*
+			shift() 方法用于把数组的第一个元素从其中删除，并返回第一个元素的值。
+			注意： 此方法改变数组的长度！
+			 */
+			console.groupCollapsed("8.shift() 首位删除");
+			;(function(){
+				var arr1=["a","b","c","d","e"];
+				var str1=arr1.shift();
+				console.log("arr1:",arr1,"str1:",str1);
+			}());
+			console.groupEnd();
+			/*
+			unshift() 方法可向数组的 开头 添加一个或更多元素，并返回新的长度。
+			注意： 该方法将改变数组的数目。
+			 */
+			console.groupCollapsed("9.unshift() 首位添加1个或多个");
+			;(function(){
+				var arr1=["a","b"];
+				var arr2=["a","b"];
+				var len1=arr1.unshift("x");
+				console.log("arr1:",arr1,"len1:",len1);
+				
+				var len2=arr2.unshift("y","z","0");
+				console.log("arr2:",arr2,"len2:",len2);
+			}());
+			console.groupEnd();
+			
+			/* 
+			reverse() 方法用于颠倒数组中元素的顺序
+			 */
+			console.groupCollapsed("10.reverse() 数组倒序");
+			;(function(){
+				var arr1=["a","b","c","d","e"];
+				var arr2=arr1.reverse();
+				console.log("arr1:",arr1,"arr2:",arr2);
+			}());
+			console.groupEnd();
+			
+			/*
+			sort() 方法用于对数组的元素进行排序。
+			排序顺序可以是字母或数字，并按升序或降序。
+			默认排序顺序为按字母升序。
+			注意：当数字是按字母顺序排列时"40"将排在"5"前面。
+			使用数字排序，你必须通过一个函数作为参数来调用。
+			函数指定数字是按照升序还是降序排列。
+			注意： 这种方法会改变原始数组！
+			
+			回调函数
+			 */
+			console.groupCollapsed("11.sort() 升序/降序");
+			;(function(){
+				var arr1=[0,8,2,5,4,6];
+				var arr2=[0,8,2,5,4,6];
+				arr1.sort(function(a,b){
+					// console.log("a:",a,"b:",b);
+					return a-b;
+				});
+				console.log("arr1:",arr1);
+				arr2.sort(function(a,b){
+					// console.log("a:",a,"b:",b);
+					return b-a;
+				});
+				console.log("arr2:",arr2);
+			}());
+			console.groupEnd();
+			
+			/* 
+			slice() 方法可从已有的数组中返回选定的元素。
+			slice()方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。
+			注意： slice() 方法不会改变原始数组。
+			array.slice(start, end)
+				start	可选。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。
+						也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。
+				end		可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。
+						如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。
+						如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。			
+			 */
+			console.groupCollapsed("12.slice() 截取数组返回新数组");
+			;(function(){
+				var arr1=["a","b","c","d","e","f"];
+				var arr2=arr1.slice();
+				console.log("arr2:",arr2,"arr1:",arr1);
+				var arr3=arr1.slice(1,4);//从下标1开始到下标4(不包含4)结束
+				console.log("arr3:",arr3);
+				var arr4=arr1.slice(2);//从下标2开始到末尾结束
+				console.log("arr4:",arr4);
+			}());
+			console.groupEnd();
+			
+
+			/* 
+			splice() 方法用于插入、删除或替换数组的元素。
+			注意：这种方法会改变原始数组！。
+			
+			
+			
+			array.splice(index,howmany,item1,.....,itemX)
+			参数 Values
+			参数	描述
+			index	必需。规定从何处添加/删除元素。
+			该参数是开始插入和（或）删除的数组元素的下标，必须是数字。
+			howmany	必需。规定应该删除多少元素。必须是数字，但可以是 "0"。
+			如果未规定此参数，则删除从 index 开始到原数组结尾的所有元素。
+			item1, ..., itemX	可选。要添加到数组的新元素
+			
+			splice(参数1(必需),参数2(必需),参数3(可选),参数4(可选));
+			
+			参数1 从哪里开始(下标)
+			参数2 删除个数(0,1,2)
+			 */
+			console.groupCollapsed("13.splice() 删除,添加,修改");
+			;(function(){
+				var arr1=["a","b","c","d","e","f"];
+				var arr2=["a","b","c","d","e","f"];
+				var arr3=["a","b","c","d","e","f"];
+				var arr4=["a","b","c","d","e","f"];
+				
+				arr1.splice(2,1);//删除功能 
+				console.log("arr1",arr1);
+				
+				arr2.splice(2,1,"x");//修改/替换
+				console.log("arr2",arr2);
+					
+				arr3.splice(5,0,"x");//添加
+				console.log("arr3",arr3);
+				
+				arr4.splice(2,3,"x","m");//添加
+				console.log("arr4",arr4);
+			}());
+			console.groupEnd();
+			
+
+			/* 
+			includes() 
+			方法用来判断一个数组是否包含一个指定的值，如果是返回 true，否则false
+			 */
+			console.groupCollapsed("14.includes()  查找数据,是否存在");
+			;(function(){
+				var arr=["a","b","c","d","e"];
+				var f1=arr.includes("c");
+				console.log("f1:",f1);
+				var f2=arr.includes("zwc");
+				console.log("f2:",f2);
+				
+			}());
+			console.groupEnd();
+
+			/*
+			find() 方法返回通过测试（函数内判断）的数组的第一个元素的值。
+			find() 方法为数组中的每个元素都调用一次函数执行：
+			
+			当数组中的元素在测试条件时返回 true 时, 
+			find() 返回符合条件的元素，之后的值不会再调用执行函数。
+			
+			如果没有符合条件的元素返回 undefined
+			注意: find() 对于空数组，函数是不会执行的。
+			注意: find() 并没有改变数组的原始值。
+			 */
+			console.groupCollapsed("15.find() 查找数据,找到返回数据,后面不执行,找不到返回undefined");
+			;(function(){
+				var arr=["x","a","b","a","d","e"];
+				var str1=arr.find(function(value,key){
+					console.log("value:",value,"key:",key);
+					return value=="a";
+				});
+				console.log("str1:",str1);
+				var str2=arr.find(function(value,key){
+					console.log("value:",value,"key:",key);
+					return value=="d";
+				});
+				console.log("str2:",str2);
+				var str3=arr.find(function(value,key){
+					console.log("value:",value,"key:",key);
+					return value=="zwc";
+				});
+				console.log("str3:",str3);
+				var arr2=[1,3,5,7,9];
+				var str4=arr2.find(function(value,key){
+					console.log("value:",value,"key:",key);
+					return value>6;
+				})
+				console.log("str4:",str4);
+			}());
+			console.groupEnd();
+			
+			/* 
+			findIndex() 方法返回传入一个测试条件（函数）符合条件的数组第一个元素位置。
+			findIndex() 方法为数组中的每个元素都调用一次函数执行：
+			当数组中的元素在测试条件时返回 true 时, findIndex() 返回符合条件的元素的索引位置，之后的值不会再调用执行函数。
+			如果没有符合条件的元素返回 -1
+			注意: findIndex() 对于空数组，函数是不会执行的。
+			注意: findIndex() 并没有改变数组的原始值。
+			 */
+			console.groupCollapsed("16.findIndex()查找数据,找到返回数据的下标,后面不执行,找不到返回-1");
+			;(function(){
+				var arr=["x","a","b","a","d","e"];
+				var str1=arr.findIndex(function(value,key){
+					console.log("value:",value,"key:",key);
+					return value=="a";
+				});
+				console.log("str1:",str1);
+				var str2=arr.findIndex(function(value,key){
+					console.log("value:",value,"key:",key);
+					return value=="d";
+				});
+				console.log("str2:",str2);
+				var str3=arr.findIndex(function(value,key){
+					console.log("value:",value,"key:",key);
+					return value=="zwc";
+				});
+				console.log("str3:",str3);
+				var arr2=[1,3,5,7,9];
+				var str4=arr2.findIndex(function(value,key){
+					console.log("value:",value,"key:",key);
+					return value>6;
+				})
+				console.log("str4:",str4);
+			}());
+			console.groupEnd();
+			/* 
+			every() 方法用于检测数组 所有 元素是否都符合指定条件（通过函数提供）。
+			every() 方法使用指定函数检测数组中的所有元素：
+			
+			如果数组中检测到有一个元素不满足，
+			则整个表达式返回 false ，且剩余的元素不会再进行检测。
+			
+			如果所有元素都满足条件，则返回 true。
+			注意： every() 不会对空数组进行检测。
+			注意： every() 不会改变原始数组。
+			 */
+			console.groupCollapsed("17.every() 数组中每一个都要满足返回true,否则返回false");
+			;(function(){
+				var arr1=[5,6,7,8,3,9];
+				var f1=arr1.every(function(value,key){
+					console.log("value:",value,"key:",key);
+					return value>2;
+				});
+				console.log("f1:",f1);
+				var f2=arr1.every(function(value,key){
+					console.log("value:",value,"key:",key);
+					return value>4;
+				});
+				console.log("f2:",f2);
+			}());
+			console.groupEnd();
+			
+			/* 
+			some() 方法用于检测数组中的元素 是否 满足指定条件（函数提供）。
+			some() 方法会依次执行数组的每个元素：
+			
+			如果有一个元素满足条件，则表达式返回true , 剩余的元素不会再执行检测。
+			如果没有满足条件的元素，则返回false。
+			
+			注意： some() 不会对空数组进行检测。
+			注意： some() 不会改变原始数组。
+			 */
+			console.groupCollapsed("18.some() 数组中只要有一个满足就返回true,否则返回false");
+			;(function(){
+				var arr=[1,3,5,8,7,10,9];
+				var f1=arr.some(function(value,key){
+					console.log("value:",value,"key:",key);
+					return value%2==0;
+				});
+				console.log("f1:",f1);
+				
+			}());
+			console.groupEnd();
+			
+			/* 
+			filter() 
+			方法创建一个新的数组，
+			新数组中的元素是通过检查指定数组中 符合条件的 所有元素。
+			注意： filter() 不会对空数组进行检测。
+			注意： filter() 不会改变原始数组。
+			 */
+			console.groupCollapsed("19.filter() 过滤所有符合条件的数据,返回新数组");
+			;(function(){
+				var arr=[2,1,4,3,6,5,8,7];
+				var arr1=arr.filter(function(value,key){
+					console.log("value:",value,"key:",key);
+					return value%2==0;
+				});
+				console.log("arr1:",arr1,"arr:",arr);
+			}());
+			console.groupEnd();
+			/* 
+			map() 方法返回一个新数组，
+			
+			数组中的元素为原始数组元素调用函数处理后的值。
+			
+			map() 方法按照原始数组元素顺序依次处理元素。
+			注意： map() 不会对空数组进行检测。
+			注意： map() 不会改变原始数组。
+			 */
+			console.groupCollapsed("20.map() 数组中的每个数据都被回调函数处理后,放入新数组");
+			;(function(){
+				var arr=[2,4,6,8];
+				var arr1=arr.map(function(value,key){
+					console.log("value:",value,"key:",key);
+					return value*value;
+				});
+				console.log("arr1:",arr1);
+			}());
+			console.groupEnd();
+			/* 
+			isArray() 方法用于判断一个对象是否为数组。
+			如果对象是数组返回 true，否则返回 false。
+			 */
+			console.groupCollapsed("21.isArray() 判断哪是否是数组,关键是Array.isArray(参数)");
+			;(function(){
+				var arr1=[];
+				var arr2=["1"];
+				var obj={};
+				var str="";
+				var f1=Array.isArray(arr1);
+				console.log("f1:",f1);
+				var f2=Array.isArray(arr2);
+				console.log("f2:",f2);
+				var f3=Array.isArray(obj);
+				console.log("f3:",f3);
+				var f4=Array.isArray(str);
+				console.log("f4:",f4);
+			}());
+			console.groupEnd();
+			
+			/* 
+			toString() 方法可把数组转换为字符串，并返回结果。
+			注意： 数组中的元素之间用逗号分隔。
+			 */
+			console.groupCollapsed("22.toString() 数组转字符串");
+			;(function(){
+				var arr=["a","b","c","d","e"];
+				var str1=arr.toString();
+				console.log("str1:",str1,"arr:",arr);
+				var str2=arr.join();
+				console.log("str2:",str2,"arr:",arr);
+				var str3=arr+[];
+				console.log("str3:",str3)
+			}());
+			console.groupEnd();
+			
+			
+			
+			
+			function fgx(str){
+				/* if(str==undefined){
+					str=""
+				} */
+				
+				/* if(!str){
+					str="";
+				} */
+				
+				str?str:str="";
+				
+				console.log(str+"//////////////////////////////");
+			}
+		</script>
+	</body>
+</html>

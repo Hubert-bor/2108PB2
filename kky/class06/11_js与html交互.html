@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>JS与HTML交互</title>
+		<style>
+			#show>div{
+				display: flex;
+				width: 100px;
+				height: 100px;
+				border: 1px solid red;
+				/* text-align: center; */
+				justify-content: center;
+				align-items: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div>
+				<h1>JS与HTML页面交互</h1>
+			</div>
+			<div id="d1">
+				<label>
+					姓名:<input type="text" id="user" />
+				</label>
+			</div>
+			<div id="d2">
+				<button type="button" id="add">添加</button>
+			</div>
+			<div id="show">
+				<!-- <div class="box">
+					kky
+				</div> -->
+			</div>
+		</div>
+		<script>
+			;(function(){
+				var user=document.getElementById("user");
+				var add=document.getElementById("add");
+				
+				
+				var arr=[];
+				
+				add.onclick=function(){
+					var user2=user.value;//js获取input#user 的值
+					console.log("user2:",user2);
+					arr.push(user2);//将数据添加到数组arr
+					console.log("1arr:",arr);
+					
+					showPage(arr);//调用函数showPage  渲染页面
+				}
+				
+			}());
+			
+			
+			//渲染页面
+			function showPage(arr){
+				var show=document.getElementById("show");
+				console.log("2arr:",arr);
+				var str="";
+				for(var i=0;i<arr.length;i++){
+					console.log("arr[i]",arr[i]);
+					str+=`<div class="box">
+								${arr[i]}
+						</div>`;
+				}
+				show.innerHTML=str;
+			}
+		</script>
+	</body>
+</html>

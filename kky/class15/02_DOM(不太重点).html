@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			pre{
+				font-size: 20px;
+			}
+			body{
+				position: relative;
+			}
+			#box{
+				position: absolute;
+				top: 10px;
+				left: 20px;
+				width: 200px;
+				height: 200px;
+				padding: 5px;
+				border: 1px solid red;
+				margin: 10px;
+				overflow: scroll;
+				white-space: nowrap;//
+			}
+			#getBodyScrollTop{
+				position: fixed;
+				top: 300px;
+				left: 100px;
+			}
+			
+			/**
+			 * 
+			 * 一个position:absolute根据父级元素中有position且值不能是static的父级元素定位,若都存在根据body定位
+			 * 就会变为行内块元素
+			 * 不占用原来的位置(脱离文档流)
+			 * */
+		</style>
+	</head>
+	<body>
+<div id="box">
+			<button type="button" onclick="fn()">点我获取</button>
+			1<br />
+			2<br />
+			3<br />
+			4<br />
+			5<br />
+			6<br />
+			7<br />
+			8<br />
+			9<br />
+			0<br />
+			11<br />
+			12<br />
+			13<br />
+			14<br />
+			15<br />
+			16<br />
+			17<br />
+			18<br />
+			19<br />
+			20<br />
+			1111111111111111111111111111111111111111111111
+			<button type="button" onclick="fn()">点我获取</button>
+		</div>
+		<div>
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+		</div>
+		<pre>
+element.offsetHeight	返回，任何一个元素的高度包括边框和填充，但不是边距
+				返回元素的高度（包括元素高度、内边距和边框，不包括外边距）
+element.offsetWidth	返回元素的宽度，包括边框和填充，但不是边距
+				返回元素的宽度（包括元素宽度、内边距和边框，不包括外边距）
+			
+element.offsetLeft	返回当前元素的相对水平偏移位置的偏移容器
+element.offsetParent	返回元素的偏移容器
+element.offsetTop	返回当前元素的相对垂直偏移位置的偏移容器	
+
+element.clientHeight	在页面上返回内容的可视高度（不包括边框，边距或滚动条）
+			返回元素的高度（包括元素高度、内边距，不包括边框和外边距）
+element.clientWidth	在页面上返回内容的可视宽度（不包括边框，边距或滚动条）
+			返回元素的宽度（包括元素宽度、内边距，不包括边框和外边距）
+		
+element.scrollHeight	返回整个元素的高度（包括带滚动条的隐蔽的地方）
+			返回元素的高度（包括元素高度、内边距和溢出尺寸，不包括边框和外边距），无溢出的情况，与clientHeight相同
+element.scrollLeft	返回当前视图中的实际元素的左边缘和左边缘之间的距离
+element.scrollTop	返回当前视图中的实际元素的顶部边缘和顶部边缘之间的距离
+element.scrollWidth	返回元素的整个宽度（包括带滚动条的隐蔽的地方）
+			返回元素的宽度（包括元素宽度、内边距和溢出尺寸，不包括边框和外边距），无溢出的情况，与clientWidth相同
+			var box=document.querySelector("#box");
+				function fn(){
+					var offsetHeight=box.offsetHeight;
+					console.log("offsetHeight=200+5+5+1+1:",offsetHeight);
+					var offsetWidth=box.offsetWidth;
+					console.log("offsetWidth=200+5+5+1+1:",offsetWidth);
+					var offsetLeft=box.offsetLeft;
+					console.log("offsetLeft=20+10:",offsetLeft);
+					var offsetTop=box.offsetTop;
+					console.log("offsetTop=10+10:",offsetTop);
+					var parent=box.offsetParent;
+					console.log("parent:",parent);
+					var clientWidth=box.clientWidth;
+					console.log("clientWidth:",clientWidth);
+					var clientHeight=box.clientHeight;
+					console.log("clientHeight:",clientHeight);
+					var scrollWidth=box.scrollWidth;
+					console.log("scrollWidth:",scrollWidth);
+					var scrollHeight=box.scrollHeight;
+					console.log("scrollHeight:",scrollHeight);
+					var scrollLeft=box.scrollLeft;
+					console.log("scrollLeft:",scrollLeft);
+					var scrollTop=box.scrollTop;
+					console.log("scrollTop:",scrollTop);
+				}
+		
+		</pre>
+		<button type="button" id="getBodyScrollTop">获取body滚动竖直距离</button>
+		<script>
+			var box=document.getElementById("box");
+			function fn(){
+				fgx("开始打印");
+				/* 
+				element.offsetHeight	返回，任何一个元素的高度包括边框和填充，但不是边距
+								返回元素的高度（包括元素高度、内边距和边框，不包括外边距）
+				element.offsetWidth	返回元素的宽度，包括边框和填充，但不是边距
+								返回元素的宽度（包括元素宽度、内边距和边框，不包括外边距）
+				 */
+				var boxOffsetHeight=box.offsetHeight;
+				var boxOffsetWidth=box.offsetWidth;
+				console.log("boxOffsetHeight:",boxOffsetHeight);
+				console.log("boxOffsetWidth:",boxOffsetWidth);
+				fgx();
+				
+				/* 
+				element.offsetLeft	返回当前元素的相对水平偏移位置的偏移容器
+				element.offsetParent	返回元素的偏移容器
+				element.offsetTop	返回当前元素的相对垂直偏移位置的偏移容器 
+				 */
+				var boxOffsetLeft=box.offsetLeft;
+				var boxOffsetTop=box.offsetTop;
+				var boxOffsetParent=box.offsetParent;
+				console.log("boxOffsetLeft:",boxOffsetLeft);
+				console.log("boxOffsetTop:",boxOffsetTop);
+				console.log("boxOffsetParent:",boxOffsetParent);
+				
+				
+				fgx();
+				/* 
+				element.clientHeight	在页面上返回内容的可视高度（不包括边框，边距或滚动条）
+							返回元素的高度（包括元素高度、内边距，不包括边框和外边距）
+				element.clientWidth	在页面上返回内容的可视宽度（不包括边框，边距或滚动条）
+							返回元素的宽度（包括元素宽度、内边距，不包括边框和外边距） 
+				 
+				 */
+				var boxClientHeight=box.clientHeight;
+				var boxClientWidth=box.clientWidth;
+				console.log("boxClientHeight:",boxClientHeight);
+				console.log("boxClientWidth:",boxClientWidth);
+				fgx();
+				/* 
+				element.scrollHeight	返回整个元素的高度（包括带滚动条的隐蔽的地方）
+							返回元素的高度（包括元素高度、内边距和溢出尺寸，不包括边框和外边距），无溢出的情况，与clientHeight相同
+				element.scrollWidth	返回元素的整个宽度（包括带滚动条的隐蔽的地方）
+							返回元素的宽度（包括元素宽度、内边距和溢出尺寸，不包括边框和外边距），无溢出的情况，与clientWidth相同 
+				 */
+				var boxScrollHeight=box.scrollHeight;
+				var boxScrollWidth=box.scrollWidth;
+				console.log("boxScrollHeight:",boxScrollHeight);
+				console.log("boxScrollWidth:",boxScrollWidth);
+				
+				fgx();
+				/* 
+				 element.scrollLeft	返回当前视图中的实际元素的左边缘和左边缘之间的距离
+				 element.scrollTop	返回当前视图中的实际元素的顶部边缘和顶部边缘之间的距离
+				 */
+				var boxScrollLeft=box.scrollLeft;
+				var boxScrollTop=box.scrollTop;
+				console.log("boxScrollLeft:",boxScrollLeft);
+				console.log("boxScrollTop:",boxScrollTop);
+				
+			}
+			
+			var getBodyScrollTop=document.getElementById("getBodyScrollTop");
+			var body=document.querySelector("body");
+			getBodyScrollTop.onclick=function(){
+				// var bodyScrollTop=body.scrollTop;
+				console.dir(window);
+				console.dir(body);
+				// console.log("window:",window.scrollTop);
+				// console.log("window:",body.scrollTop);
+				// console.log("bodyScrollTop:",bodyScrollTop);
+				var scrollY=window.scrollY;
+				var scrollX=window.scrollX;
+				console.log("scrollY:",scrollY);
+				console.log("scrollX:",scrollX);
+				
+			}
+			
+			
+			function fgx(str){
+				str||(str="");
+				console.log(str+"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+			}
+		</script>
+	</body>
+</html>

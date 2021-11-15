@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<button type="button" onclick="hanShu2()" >点击我执行函数2</button>
+			<button type="button" id="btn2" >点击我执行函数3</button>
+		</div>
+		<script>
+			/*
+			 1.函数
+			 2.系统函数 js自带的函数,全局函数
+			 alert(),confirm(),prompt(),console.log()....
+			 
+			 parseInt()
+			 parseFloat();
+			 
+			 
+			 */
+			var a="1.23px";
+			var b=parseInt(a);
+			var c=parseFloat(a);
+			console.log("b:",b);
+			console.log("c:",c);
+			
+			console.log("///////////////");
+			//自定义函数
+			//1.创建函数(重点)
+			//2.函数调用
+				//2.1 在js中调用 函数名()
+				//2.2 在html中调用 onclick="函数名()"
+				//2.3 在js中通过点击html中按钮执行,先通过js找到按钮,添加onclick=function(){}
+				//2.4
+			//3.函数名区分大小写
+			//4.一个页面函数名不能重复
+			hanShu1();//函数的调用
+			
+			function hanShu1(){
+				//函数体
+				console.log("我是函数1");
+			}
+			
+			function hanShu2(){
+				//函数体
+				console.log("我是函数2");
+			}
+			
+			
+			var btn2=document.getElementById("btn2");//找到按钮
+			// console.log(btn2);
+			console.log("btn2:",btn2);
+			
+			//匿名函数
+			btn2.onclick=function(){
+				console.log("我是函数3");
+			};
+			//匿名函数
+			var kky=function(){
+				console.log("函数5");
+			}
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.info{
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div id="d1">
+				<label>
+					请输入内容<input type="text" id="ipt" />
+				</label>
+				<button type="button" id="btn1">用户是否输入的全部都是数字</button>
+				<button type="button" id="btn2">用户是否输入的全部都是字母</button>
+				<div class="info">
+					<span>判断结果:</span>
+					<span id="info"></span>
+				</div>
+			</div>
+		</div>
+		<script>
+		// alert("1111");
+		/* 
+		 第一个正则表达式的方法
+		 test
+		 
+		 
+		 */
+			;(function(){
+					console.group("1.test() true/false");
+					var str="abcdefg";
+					//重点部分
+					var patt1=/e/;
+					var reg1=new RegExp("e");
+					var patt1=/E/i;
+					var reg1=new RegExp("E","i");
+					
+					// console.log("patt:",patt);
+					console.dir(patt1);
+					console.dir(reg1);
+					fgx();
+					//重点部分
+					var f1=patt1.test(str);
+					console.log("f1:",f1);
+					var f2=reg1.test(str);
+					console.log("f2:",f2);
+					fgx();
+					var f3=patt1.test(str);
+					console.log("f3:",f3);
+					var f4=reg1.test(str);
+					console.log("f4:",f4);
+					
+					
+					console.groupEnd();
+			}());
+			
+			/*
+				^ 上箭头 在正则中表示以什么开头
+				$ 美元符号在正则中表示以什么结尾
+				
+				在new RegExp()括号中\d,要表示为\\d
+				
+			 */
+			;(function(){
+					var btn1=document.getElementById("btn1");
+					var btn2=document.getElementById("btn2");
+					var ipt=document.getElementById("ipt");
+					var info=document.getElementById("info");
+					
+					btn1.onclick=function(){
+						var iptValue=ipt.value;
+						if(iptValue){
+							var patt1=/^\d+$/;//
+							var patt2=new RegExp("^\\d+$");
+							var patt3=/^[0-9]+$/;
+							var patt4=new RegExp("^[0-9]+$");
+							
+							var str="^[0-9]+$";
+							var patt5=new RegExp(str);
+							
+							var n=5;//这里有5种方法可以判断
+							if(n==1){
+								var f1=patt1.test(iptValue);
+								console.log("f1:",f1);
+								info.innerHTML=(f1?"":"不")+"是数字";
+							}else if(n==2){
+								var f2=patt2.test(iptValue);
+								console.log("f2:",f2);
+								info.innerHTML=(f2?"":"不")+"是数字";
+							}else if(n==3){
+								var f3=patt3.test(iptValue);
+								console.log("f3:",f3);
+								info.innerHTML=(f3?"":"不")+"是数字";
+							}else if(n==4){
+								var f4=patt4.test(iptValue);
+								console.log("f4:",f4);
+								info.innerHTML=(f4?"":"不")+"是数字";
+							}else if(n==5){
+								var f5=patt5.test(iptValue);
+								console.log("f5:",f5);
+								info.innerHTML=(f5?"":"不")+"是数字";
+							}
+						}else{
+							// alert("请输入数字");
+							info.innerHTML="请输入数字"
+						}
+					}
+					
+					btn2.onclick=function(){
+						var iptValue=ipt.value;
+						if(iptValue){
+							var patt1=/^[A-z]+$/;
+							var patt2=new RegExp("^[A-z]+$");
+							var patt3=new RegExp("^[a-z]+$","i");
+							
+							
+							var n=3;
+							if(n==1){
+								var f1=patt1.test(iptValue);
+							}else if(n==2){
+								var f1=patt2.test(iptValue);
+							}else if(n==3){
+								var f1=patt3.test(iptValue);
+							}
+							
+							console.log("f1:",f1);
+							info.innerHTML=(f1?"":"不")+"是字母";
+							
+							
+						}else{
+							info.innerHTML="请输入字母";
+						}
+					}
+			}());
+			
+			function fgx(str){
+				if(!str){
+					str="";
+				}
+				console.log(str+"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+			}
+		</script>
+	</body>
+</html>

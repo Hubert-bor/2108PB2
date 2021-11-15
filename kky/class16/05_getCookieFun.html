@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/* 
+		getCookie();
+		获取cookie
+			通过某个属性名获取对应的属性值
+			存在返回对应的属性值
+			不存在或失效(超过有效期了),返回空字符串""
+		参数:有1个,
+		有返回值
+		 */
+		var cName="userName";
+		var r1=getCookie(cName);
+		console.log("r1:",r1);
+		var r2=getCookie("age");
+		console.log("r2:",r2);
+		var r3=getCookie("xingbie");
+		console.log("r3:",r3);
+		
+		
+		function getCookie(cName){
+			var cookies=document.cookie;
+			// console.log("cookies:",cookies);
+			var arr=cookies.split(";");
+			// console.log("arr:",arr);
+			var cValue="";//要返回的属性值
+			for(var i=0;i<arr.length;i++){
+				// console.log("arr["+i+"]:",arr[i],arr[i].trim());
+				var str=arr[i].trim();
+				// console.log("str:",str,str.indexOf(cName));
+				if(str.indexOf(cName)==0){
+					var arr2=str.split("=");
+					// console.log("arr2:",arr2);
+					cValue=arr2[1];
+					break;
+				}
+				
+			}
+			return cValue;
+		}
+		</script>
+	</body>
+</html>

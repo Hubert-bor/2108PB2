@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			pre{
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+<pre>
+	Math.PI
+	
+Math.random()			返回 0 到 1 之间的随机数。
+Math.round()			将小数四舍五入成整数
+Math.ceil()			对数进行向上取整
+Math.floor()			对数进行向下取整
+Math.abs(x) 			返回绝对值
+Math.max(a,b,c,d...,n)		返回给定的数中的较大的数。
+Math.min(a,b,c,d...,n)		返回给定的数中的较小的数。
+Math.pow(x,y)			返回 x 的 y 次幂   
+-----------------------------------------
+Math.sqrt(x)			平方根
+</pre>
+		<script>
+			/* 
+			 
+			 Math
+			 属性
+			 Math.PI
+			 
+			 
+			 */
+		console.groupCollapsed("1.Math.PI");
+		;(function(){
+			var PI=Math.PI;
+			console.log("PI:",PI);
+		}());
+		console.groupEnd();	
+			
+		console.groupCollapsed("2.Math.random() 0和1之间的随机数小数(0,不包含1)");
+		;(function(){
+			for(var i=0;i<=1000;i++){
+				// var a=Math.random();
+				// console.log("a:",a);
+			}
+			var a=Math.random();
+			console.log("a:",a);
+		}());
+		console.groupEnd();	
+		
+		console.groupCollapsed("3.Math.round() 将小数四舍五入");
+		;(function(){
+			
+			var a1=1.49999;
+			var a2=1.55555;
+			var b1=Math.round(a1);
+			console.log("b1:",b1);
+			var b2=Math.round(a2);
+			console.log("b2:",b2);
+		}());
+		console.groupEnd();
+		
+		console.groupCollapsed("4.Math.ceil() 向上取值");
+		;(function(){
+			var a1=1.00001;
+			var a2=9.99999;
+			var a3=Math.ceil(a1);
+			console.log("a3:",a3);
+			var a4=Math.ceil(a2);
+			console.log("a4:",a4);
+		}());
+		console.groupEnd();
+		
+		console.groupCollapsed("5.Math.floor() 向下取值");
+		;(function(){
+			var a1=1.00001;
+			var a2=9.99999;
+			var a3=Math.floor(a1);
+			console.log("a3:",a3);
+			var a4=Math.floor(a2);
+			console.log("a4:",a4);
+			
+		}());
+		console.groupEnd();
+		
+		console.groupCollapsed("6.Math.abs() 绝对值");
+		;(function(){
+			var a=-100;
+			var b=99;
+			var a1=Math.abs(a);
+			console.log("a1:",a1);
+			var b1=Math.abs(b);
+			console.log("b1:",b1);
+		}());
+		console.groupEnd();
+			
+			
+
+			
+
+			
+			console.groupCollapsed("7.Math.max() 求最大值");
+			;(function(){
+				var a1=1;
+				var a2=3;
+				var a3=2;
+				// var arr=[4,6,5];
+				var max=Math.max(a1,a2,a3);
+				console.log("max:",max);
+			}());
+			console.groupEnd();
+			
+			console.groupCollapsed("8.Math.min() 求最小值");
+			;(function(){
+				var a1=1;
+				var a2=3;
+				var a3=2;
+				var min=Math.min(a1,a2,a3);
+				// var arr=[4,6,5];
+				console.log("min:",min);
+				
+				
+			}());
+			console.groupEnd();
+			
+			console.groupCollapsed("9.Math.pow(x,y) x的y次幂");
+			;(function(){
+				var x=2;
+				var y=4;
+				var a=Math.pow(x,y);
+				console.log("a:",a);
+			}());
+			console.groupEnd();
+			
+
+			fgx("求0-10之间的随机整数");
+			console.groupCollapsed("10.求0-10之间的随机整数");
+			;(function(){
+				for(var i=0;i<=100;i++){
+					var a=Math.random();
+					var b=a*10;
+					// console.log("b:",b);
+					var c1=parseInt(b);//0-10(包含0不含10)
+					var c3=Math.floor(b);//0-10(包含0不含10);
+					var c2=Math.ceil(b);//1-10(包含1,包含10);
+					
+					// console.log("i",i,"c1:",c1,"c2:",c2,"c3:",c3);
+				}
+				fgx("重点");
+				var n1=parseInt(Math.random()*10);
+				var n2=Math.floor(Math.random()*10);
+				var n3=Math.ceil(Math.random()*10);
+				console.log("n1:",n1);
+				console.log("n2:",n2);
+				console.log("n3:",n3);
+				fgx("重点");
+				
+			}());
+			console.groupEnd();
+			
+			//产生指定区间随机数的算法
+			///(上限-下限)*Math.random())+下限，最后对结果取整。
+			///(大数-小数)*Math.random())+小数，最后对结果取整。
+			
+			fgx("产生指定区间随机数");
+			console.groupCollapsed("11.求10-20之间的随机整数");
+			;(function(){
+				var a=10,b=20;
+				for(var i=0;i<=100;i++){
+					var n1=((b-a)*Math.random())+a;
+					var n2=parseInt(n1);//10-20(包含10不含20)	
+					// console.log("n2:",n2);//10-20(包含10不含20)	
+					var n3=Math.floor(n1);//10-20(包含10不含20)	
+					// console.log("n3:",n3);//10-20(包含10不含20)	
+					var n4=Math.ceil(n1);
+					// console.log("n4:",n4);//10-20(不包含10包含20);
+					// console.log("i:",i,"n2:",n2,"n3:",n3,"n4:",n4);
+				};
+				
+				var num1=parseInt((b-a)*Math.random()+a);
+				console.log("num1:",num1);
+				
+				var num2=Math.floor((b-a)*Math.random()+a);
+				console.log("num2:",num2);
+				
+				
+				var num3=Math.ceil((b-a)*Math.random()+a);
+				console.log("num3:",num3);
+				
+				
+				
+				
+				
+				
+			}());
+			console.groupEnd();
+			
+			
+			
+			function fgx(str){
+				// if(!str){
+				// 	str="";
+				// }
+				
+				// str?str:(str="");
+				
+				str||(str="");
+				
+				console.log(str+"//////////////////////////////////");
+			}
+		</script>
+	</body>
+</html>

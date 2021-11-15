@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/* 
+			基本数据类型
+			 
+			引用数据类型
+			
+			每一个对象中都有属性 prototype 原型对象
+			
+			共享 属性 和 方法 的
+			
+			 
+			 */
+			
+			function fn1(){
+				
+			}
+			
+			// console.log(fn1);
+			console.dir(fn1);
+			
+			var arr1=[];
+			var obj1={};
+			console.dir(arr1);
+			console.dir(obj1);
+			console.log("////////////////////////");
+			var arr2=["a1","a2","b"];
+			var arr3=["b","c2"];
+			console.dir(arr2);
+			console.dir(arr3);
+			console.log("////////////////////////");
+			
+		
+			
+			//编写一个全局函数,对每个实参数组进行去重
+			function noRepeatArr(arr){
+				var arr2=[];
+				for(var i=0;i<arr.length;i++){
+					if(!arr2.includes(arr[i])){
+						arr2.push(arr[i])
+					}
+				}
+				return arr2;
+			}
+			
+		
+			
+			// console.log(Array.prototype);
+			//在Array.prototype 在数组原型上 添加 一个函数,对每个数组进行去重
+			Array.prototype.myName="我是数组";
+			Array.prototype.noRepeatArr2=function(){
+				console.log("我是通过数组原型添加的方法,每个数组都一定会有,this:",this);
+				var arr3=[];
+				for(var i=0;i<this.length;i++){
+					if(!arr3.includes(this[i])){
+						arr3.push(this[i]);
+					}
+				}
+				return arr3;
+			}
+			
+			Array.prototype.noRepeatArr3=noRepeatArr;
+			
+			var arr11=["a","b","a","c"];
+			var arr22=["a","b","a","c","wy"];
+			var arr33=["a","a","a"];
+			
+			//等号右侧的意思:通过/使用 全局(window) noRepeatArr,对arr11进行去重
+			var r1=noRepeatArr(arr11);/////////////////////////////////////////////////////////////
+			//
+			console.log("r1:",r1,"arr11:",arr11);
+			console.log("/////////////");
+			//等号右侧的意思:arr22 使用 (数组原型上的) 方法noRepeatArr2,进行去重
+			var r2=arr22.noRepeatArr2();///////////////////////////////////////////////////
+			console.log("r2:",r2,"arr22:",arr22);
+			
+			//等号右侧的意思:arr22 使用 (数组原型上的) 方法noRepeatArr3,对这个函数中的实参进行,进行去重
+			var r3=arr22.noRepeatArr3(arr33);///////////////////////////////////////////////////
+			console.log("r3:",r3,"arr33:",arr33);
+			
+		
+			
+			
+		</script>
+	</body>
+</html>

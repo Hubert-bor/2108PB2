@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#d3{
+				width: 100px;
+				height: 100px;
+				border: 1px solid red;
+				margin: 10px;
+				padding: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div id="d1">
+				<button type="button" id="btn1" onclick="fn1()">事件添加方式1</button>
+				<button type="button" id="btn2" >事件添加方式2</button>
+				<button type="button" id="btn3" >事件添加方式3(看看)</button>
+				<button type="button" id="btn4" >事件添加方式4(看看)</button>
+			</div>
+			<div id="d2">
+				<button type="button" id="btn5">DOM2 添加方式1</button>
+			</div>
+			<div id="d3" onclick="fn6()">
+				<button type="button" id="btn6">DOM2 添加方式1</button>
+			</div>
+		</div>
+		<script>
+			fn0();
+			
+			function fn0(){
+				console.log("函数调用方式0");
+			}
+			
+			function fn1(){
+				console.log("事件添加方式1");
+			}
+			
+			var btn2=document.getElementById("btn2");
+			btn2.onclick=function(){
+				console.log("事件添加方式2");
+			}
+			
+			
+			function fn3(){
+				console.log("函数调用方式3");
+			}
+			
+			var btn3=document.getElementById("btn3");
+			btn3.onclick=fn3;
+			
+			function fn4(){
+				console.log("函数调用方式4");
+			}
+			
+			var btn4=document.getElementById("btn4");
+			btn4.onclick=function(){
+				fn4();
+			}
+			console.log("////////////////////////////////////////////////");
+			
+			
+			//第三种添加方式
+			/* 
+			 
+			element.addEventListener(event, function, useCapture);
+				第一个参数是事件的类型 (如 "click" 或 "mousedown").
+				第二个参数是事件触发后调用的函数。 
+			 */
+			
+			var btn5=document.getElementById("btn5");
+			var btn6=document.getElementById("btn6");
+			btn5.addEventListener("click",function(e){
+				console.log("DOM2 添加事件方式");
+			});
+			btn6.addEventListener("click",function(e){
+				console.log("btn6 DOM2 添加事件方式");
+			});
+			
+			
+			function fn6(){
+				console.log("我是d3的 函数fn6");
+			}
+		</script>
+	</body>
+</html>

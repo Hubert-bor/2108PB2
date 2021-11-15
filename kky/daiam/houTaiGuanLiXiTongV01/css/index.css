@@ -1,0 +1,82 @@
+html,body{
+	margin: 0px;
+	padding: 0px;
+}
+
+#app{
+	width: 800px;
+	margin: auto;
+}
+div#entry,
+div#operate,
+div#show{
+	padding: 10px;
+}
+div#operate>button.hide{
+	display: none;
+}
+
+button.active{
+	background-color: #008000;
+	color: #ffffff;
+	border-color: #008000;
+}
+
+
+table#tab{
+	width: 800px;
+	border-collapse: collapse;
+	border: 1px solid red;
+}
+table#tab th,
+table#tab td{
+	border: 1px solid red;
+}
+table#tab td button{
+	cursor: pointer;
+}
+table#tab.hide{
+	display: none;
+}
+
+/* 精妙部分 */
+table#tab.geHangBianSe>tbody>tr:nth-child(odd){
+	background-color: #ddd;
+}
+table#tab.yiRuBianSe>tbody>tr:hover{
+	background-color: pink;
+}
+table#tab>tbody>tr:first-child>td>button:first-child{
+	cursor: not-allowed;
+}
+table#tab>tbody>tr:last-child>td>button:last-child{
+	cursor: not-allowed;
+}
+/* 精妙部分 */
+
+
+div#info{
+	width: 200px;
+	height: 200px;
+	background-color: rgba(0, 0, 255, 0.5);
+	color: #ffffff;
+	text-align: center;
+	line-height: 200px;
+	font-size: 20px;
+	
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	
+	display: none;
+	
+}
+
+div#info.show{
+	display: block;
+}
+
+

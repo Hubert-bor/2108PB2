@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/* 
+			1.js 运算符
+			 算术操作符	+、 –、 *、 /、 %（取模，求余）
+			 
+			 - ,*,/,%
+			 1. 可以转换为数字类型的,先转为数字类型,然后再按照数字计算
+			 2. 不可以转换为数字类型的,得到结果是NaN
+			 */
+			
+			console.group("1.js运算符");
+			var a=1;
+			var b=2,c=3,d=4;
+			var n1=a+b;
+			console.log("n1:",n1);
+			var n2=c-a;
+			console.log("n2:",n2);	
+			var n3=b*c;
+			console.log("n3:",n3);
+			var n4=d/b;
+			console.log("n4:",n4);
+			var n5=d%c;
+			console.log("n5:",n5);
+			console.log("/////////////////////////");
+			var ss1="3",ss2="2";
+			console.log("ss1-ss2:",ss1-ss2);
+			var px1="10px",px2="2px";
+			console.log("px1-px2:",px1%px2);
+			
+			
+			
+			console.groupEnd();
+			
+			/* 
+			2. 
+			 字符串操作符	+ 字符串连接/拼接   
+			 +=字符串连接复合
+			 
+			 任意类型+字符串类型=字符串类型
+			 */
+			
+			console.group("2.字符串操作符");
+			var mingZi1="我的名字";
+			var mingzi2="kky";
+			var shuzi=100;
+			var str=mingZi1+mingzi2+shuzi;
+			console.log("str:",str);
+			var s1="2108";
+			s1+="BP2";//s1=s1+"BP2"
+			console.log("s1:",s1);
+			
+			
+			console.groupEnd();
+			
+			/* 
+			3.
+			比较操作符	< 、 <= 、 >  、>=、   !=  、 == 、  === 、  !==  
+			 
+			得到的结果是 true / false
+			 
+			 */
+			console.group("3.比较操作符");
+			var num1=1;
+			var num2=2;
+			var num3="1px";
+			var num4="1px";
+			console.log("num1>num2:",num1>num2);
+			console.log("num1>=num2:",num1>=num2);
+			console.log("num1<num2:",num1<num2);
+			console.log("num1<=num2:",num1<=num2);
+			console.log("num1!=num2:",num1!=num2);
+			console.log("///");
+			console.log("num1==num3:",num1==num3);//松散比较,类型不一样,隐式转换类型,然后比较
+			console.log("num1===num3:",num1===num3);//严格比较,类型不一样,就返回false
+			console.log("///");
+			console.log("num3==num4:",num3==num4);//松散比较,类型不一样,隐式转换类型,然后比较
+			console.log("num3===num4:",num3===num4);//松散比较,类型不一样,隐式转换类型,然后比较
+			console.groupEnd();
+			/*
+			 4.
+			 赋值操作符	= 、   复合赋值（+=、-=、*=、%=） 
+			 */
+			console.group("4.赋值操作符");
+			var aa=1;
+			aa+=2;//aa=aa+2;
+			console.log("aa:",aa);
+			var bb=2;
+			bb-=1;//bb=bb-1;
+			console.log("bb:",bb);
+			var cc=3;
+			cc*=3;//bb=bb-1;
+			console.log("cc:",cc);
+			console.groupEnd();
+			
+		/* 
+			5.三元运算符
+			三目运算符
+			?:
+		 */
+			
+			var tizhong=prompt("请输入你的体重",100);
+			console.log("tizhong:",tizhong);
+			//tizhong>100 提示:超重
+			//tizhong<=100 提示:正常
+			var info= (tizhong>100) ? "超重" : "正常";
+			console.log("info:",info);
+			
+		
+		
+		
+		
+			
+		</script>
+	</body>
+</html>

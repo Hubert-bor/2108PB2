@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//函数自运行
+			//九九乘法表
+			;(function(){
+				console.groupCollapsed("1.");
+				for(var a=1;a<=9;a++){
+					// console.log("a:",a);
+					for(var b=1;b<=9;b++){
+						// console.log("b:",b);
+						console.log(a+"*"+b+"="+(a*b));
+					}
+					console.log("\n");
+				}
+				console.groupEnd();
+			}());
+			;(function(){
+				console.groupCollapsed("2.");
+				for(var a=1;a<=9;a++){
+					// console.log("a:",a);
+					for(var b=1;b<=a;b++){
+						// console.log("b:",b);
+						console.log(b+"*"+a+"="+(a*b));
+					}
+					console.log("\n");
+				}
+				console.groupEnd();
+			}());
+			;(function(){
+				console.groupCollapsed("3.");
+				for(var a=1;a<=9;a++){
+					// console.log("a:",a);
+					var str="";
+					for(var b=1;b<=a;b++){
+						// console.log("b:",b);
+						// console.log(b+"*"+a+"="+(a*b));
+						str+=b+"*"+a+"="+(a*b)+" ";
+					}
+					console.log(str+"\n");
+				}
+				console.groupEnd();
+			}());
+			;(function(){
+				console.groupCollapsed("4.");
+				for(var a=1;a<=9;a++){
+					// console.log("a:",a);
+					var str="";
+					for(var b=1;b<=a;b++){
+						// console.log("b:",b);
+						// console.log(b+"*"+a+"="+(a*b));
+						if(a*b>=10){
+							str+=b+"*"+a+"="+(a*b)+" ";
+						}else{
+							str+=b+"*"+a+"="+" "+(a*b)+" ";
+						}
+					}
+					console.log(str+"\n");
+				}
+				console.groupEnd();
+			}());
+			;(function(){
+				console.groupCollapsed("5.判断一个数是否是质数(素数)");
+				var n=prompt("请输入一个数字",2);
+				var f=true;//f=true假设n是质数,f=false不是质数
+				
+				for(var i=2;i<n;i++){
+					console.log("n:",n,"i:",i,"n%i=",n%i,n%i==0?'能被整除':'不能被整除');
+					if(n%i==0){
+						f=false;//n不是质数
+						break;//停止
+					}
+				}
+				
+				if(f){//if(f==true)
+					console.log(n,"是质数")
+				}else{
+					console.log(n,"不是质数")
+				}
+				
+				/* 
+				7%2=1
+				7/2==3....1
+				2%7=2
+				2/7=0...2
+				 */
+				
+				console.groupEnd();
+			}());
+			
+			
+			
+		</script>
+	</body>
+</html>

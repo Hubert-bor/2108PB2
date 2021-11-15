@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<div id="d1" class="d1">
+				<label>
+					姓名:<input type="text" name="user" />
+				</label>
+				<button type="button">按钮</button>
+			</div>
+		</div>
+		<script>
+		/* 
+1.获取DOM对象的 	六	种方式
+查找 HTML 元素
+	document.getElementById();返回对拥有指定 id 的第一个对象的引用。
+	document.querySelector();返回文档中匹配指定的CSS选择器的第一元素
+	document.querySelectorAll();HTML5中引入的新方法，返回文档中匹配的CSS选择器的所有元素节点列表
+		
+	document.getElementsByTagName();返回带有指定标签名的对象集合。
+	document.getElementsByClassName();返回文档中所有指定类名的元素集合，作为 NodeList 对象。
+		
+	document.getElementsByName();返回带有指定名称的对象集合。
+		
+		 */
+		fgx("1.document.getElementById()");//通过#app获取我们要操作的dom
+		var app=document.getElementById("app");//通过#app获取我们要操作的dom
+		console.log("app:",app);
+		var str="app";
+		fgx();
+		console.log("str:",str);
+		var app2=document.getElementById(str);
+		console.log("app2:",app2);
+		fgx();
+		// console.dir(app);//
+		fgx("2.document.getElementsByTagName()");
+		//通过标签名获取要操作的元素(Dom),并放入一个集合中
+		var buttons=document.getElementsByTagName("button");
+		console.log("buttons:",buttons);
+		var divs=document.getElementsByTagName("div");
+		console.log("111divs:",divs);
+		
+		fgx("3.document.getElementsByClassName()");
+		//通过class名获取要操作的元素(Dom),并放入一个集合中
+		var d1=document.getElementsByClassName("d1");
+		console.log("d1:",d1);
+		
+		fgx("4.document.getElementsByName()");
+		//通过name名获取要操作的元素(Dom),并放入一个集合中
+		var user=document.getElementsByName("user");
+		console.log("user:",user);
+		
+		fgx("5.document.querySelector()");
+		//通过CSSS 选择器 找到符合条件的第一个dom
+		//document.querySelector();
+		//返回文档中匹配指定的CSS选择器的第一元素
+		var divs2=document.querySelector("div");
+		console.log("divs2:",divs2);
+		var app3=document.querySelector("#app");
+		console.log("app3:",app3);
+		var app4=document.querySelector("#app>div#d1.d1");
+		console.log("app4:",app4);
+		var d1_1=document.querySelector(".d1");
+		console.log("d1_1:",d1_1);
+		
+		fgx("6.document.querySelectorAll()");
+		//通过CSSS 选择器 找到符合条件的所有的dom,并放入一个集合
+		
+		//document.querySelectorAll();HTML5中引入的新方法，
+		//返回文档中匹配的CSS选择器的所有元素节点列表
+		var app5=document.querySelectorAll("#app");
+		console.log("app5:",app5);
+		var divs3=document.querySelectorAll("div");
+		console.log("divs3:",divs3);
+		var d1_3=document.querySelectorAll(".d1");
+		console.log("d1_3:",d1_3);
+		var ipt=document.querySelectorAll("input[type='text']");
+		console.log("ipts:",ipt);
+		
+		
+		
+		function fgx(str){
+			str||(str="");
+			console.log(str+"///////////////////////////");
+		}
+		</script>
+	</body>
+</html>

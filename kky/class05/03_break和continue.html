@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/* 
+			终止循环（break）
+			在循环体中可以使用break 关键字来立即终止循环，并跳出循环体，代表循环结束。
+			break不仅可以使用在switch结构中，也可以用于任何一种循环。
+			当循环体执行break语句后，无条件立即退出循环。
+			break语句只能退出当前所在的循环。
+			break可能会改变预定义的循环次数。
+			
+			break 在switch分支中是 结束 后面的分支;  
+			
+			break 在循环中是 结束 整个循环
+			
+			 */
+			console.groupCollapsed("1.break 是否是质数的例子");
+				var n=2;
+				var f=true;
+				for(var i=2;i<n;i++){
+					if(n%i==0){
+						f=false;
+						break;//停止 / 跳出 循环
+					}
+				}
+				
+				if(f){
+					console.log(n,"是质数");
+				}else{
+					console.log(n,"不是质数");
+				}
+				
+			console.groupEnd();
+			
+			
+			/* 
+			 2.立即开始下一次循环（continue）
+			 在循环体中可以使用continue关键字来从调用处停止执行之后的代码，继续执行下一个循环。
+			 跳出循环中的某一次,继续下面的
+			 
+			 continue语句只能用于循环结构。
+			 continue改变程序的执行方向，用来跳过循环体中不想执行的语句。
+			 continue只能改变当前所在的循环体执行方向。
+			 continue不会改变预定义的循环次数。
+			 
+			 break 		在循环中是 结束 整个循环
+			 continue 	跳过 当前 循环 
+			 */
+			
+				//函数自调用/自运行
+			 ;(function(){
+				 // var n1=prompt("到几结束",10)/1;
+				 console.groupCollapsed("2.continue");
+				 var n1=100;
+				 var n2=7;
+				 //逢7过(个位是7或7的倍数都跳过)
+				 for(var i=1;i<=n1;i++){
+				 					 // console.log("i:",i);
+				 					 if(i%7==0||i%10==7){
+				 						 continue; // 跳过 当前 循环 
+				 					 }else{
+				 						 console.log("i:",i);
+				 					 }
+				 }
+				 console.groupEnd();
+			 }());
+			 
+			 ;(function(){
+				console.groupCollapsed("3.a 和b 互换");
+				var a=1;
+				var b=2;
+				var c;
+				c=a;//a=1;c=1;
+				a=b;//b=2;a=2;
+				b=c;//c=1;b=1;
+				
+				console.log("a:",a,"b:",b);
+				// a=2;b=1;
+				console.groupEnd();
+			 }());
+			 
+			 ;(function(){
+				console.groupCollapsed("4.a 和b 互换");
+				var a=1;
+				var b=2;
+				a=a+b;//a=1;b=2;a=1+2=3;此时a=3,b=2;
+				b=a-b;//a=3;b=2;b=3-2;此时b=1;a=3;
+				a=a-b;//a=3,b=1;a=3-1;此时a=2;b=1;
+				
+				console.log("a:",a,"b:",b);
+				// a=2;b=1;
+				console.groupEnd();
+			 }());
+			
+		</script>
+	</body>
+</html>

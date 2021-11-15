@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/* 
+			数组去重 
+			 */
+			
+			/* 
+			函数的三要素
+			 1.函数的作用 对数组去重
+			 2. 有没有参数 ,有一个
+			 3.有没有return ,有
+			 
+			 */
+			function quchong1(){
+				console.log("arr1",arr1);
+			}
+			
+			var arr1=["a","b","c","b","b","c","a","e"];
+			var arr2=["a","b","c","b","b","c","a"];
+			var arr3=["a","b","c","b","b","c","a"];
+			quchong(arr1);
+			// quchong(arr2);
+			// quchong(arr3);
+			function quchong(arr){
+				// console.log("arr",arr);
+				var arrNew=[];
+				for(var i=0;i<arr.length;i++){
+					// console.log("i:",i,"arr["+i+"]:",arr[i]);
+					// console.log("i:",i,"arr[",i,"]:",arr[i]);
+					// console.log("arrNew.indexOf()",arrNew.indexOf(arr[i]))
+					if(arrNew.indexOf(arr[i])==-1){
+						// console.log(arr[i],"在新数组中不存在,将其添加到新数组尾部");
+						arrNew.push(arr[i]);
+					}else{
+						// console.log(arr[i],"在新数组中存在,不用管");
+					}
+				}
+				return arrNew;
+			}	
+			
+			var r2=quchong2(arr1);
+			
+			console.log("r2:",r2);
+			document.write(r2);
+			
+			function quchong2(arr){
+				var arrNew=[];
+				for(var i=0;i<arr.length;i++){
+					if(arrNew.indexOf(arr[i])==-1){
+						arrNew.push(arr[i]);
+					}
+				}
+				return arrNew;
+			}
+		</script>
+	</body>
+</html>

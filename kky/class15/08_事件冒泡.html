@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#d1,
+			#d2{
+				width: 200px;
+				height: 200px;
+				border: 1px solid red;
+				margin: 10px;
+				padding: 50px;
+			}
+			#d1_1,
+			#d2_1{
+				width: 100px;
+				height: 100px;
+				background-color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app" onclick="fn0()">
+			<div id="d1" onclick="fn1()">
+				<div id="d1_1" onclick="fn2()"></div>
+			</div>
+			<div id="d2" onclick="fn3()">
+				<div id="d2_1" onclick="fn4()"></div>
+			</div>
+		</div>
+		<script>
+			/* 
+	事件冒泡
+		自身和 父级元素 都有相同的事件,
+		自身被执行时,
+		先执行自身对应的函数,在依次执行父级元素对应的函数
+			
+			 
+			 
+			 */
+		
+			function fn0(){
+				console.log("我是app的函数0");
+			}
+			function fn1(){
+				console.log("我是d1的函数1");
+			}
+			function fn2(){
+				console.log("我是d1_1的函数2");
+			}
+			function fn3(){
+				console.log("我是d2的函3");
+			}
+			function fn4(){
+				console.log("我是d2_1的函数4");
+			}
+		</script>
+	</body>
+</html>

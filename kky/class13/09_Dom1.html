@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			节点类型
+		</div>
+		<script>
+			var boxs=document.querySelector("body").childNodes;
+			console.log("boxs:",boxs);
+			for(var i=0;i<boxs.length;i++){
+				console.log(boxs[i].nodeType)
+			}
+			
+			var n=3661;//3600//3600+60//3600+60+1;
+			// var h=parseInt(n/3600);
+			// console.log("h:",h);
+			// var m=parseInt(n%3600/60);
+			// console.log("m:",m);
+			// var s=n%3600%60;
+			// console.log("s:",s);
+			
+			var arr=[1,59,60,61,3599,3600,3601,3660,3661];
+			for(var i=0;i<arr.length;i++){
+				var r=time(arr[i]);
+				console.log("i:",i,"arr["+i+"]=",arr[i],"r:",r);
+			}
+			var r1=time(n);
+			
+			console.log("r1:",r1);
+			function time(n){
+				var h=parseInt(n/3600);
+				// console.log("h:",h);
+				var m=parseInt(n%3600/60);
+				// console.log("m:",m);
+				var s=n%3600%60;
+				// console.log("s:",s);
+				return h+":"+m+":"+s;
+			}
+			
+		</script>
+	</body>
+</html>

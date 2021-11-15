@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/* 
+			在函数内部，有一个特殊的对象，
+			
+			arguments是一个类数组对象也称为伪数组，
+			包含着传入函数中的所有参数(实参)。
+			
+			arguments 并非数组，只是访问单个参数的方式与访问数组元素的方式相同
+			可以通过arguments [0]获取到第一个实参，arguments[1] 获取第二个实参，以此类推，
+			arguments 有length属性，表示实参长度。 
+			
+			arguments.callee==函数本身
+			 
+			 sum()	===>0
+			 sum(1)	====>1
+			 sum(1,2)====>3
+			 sum(1,2,3)===>6
+			 sum(1,2,3,4)===>10
+			 sum(2,3,4)==>9
+			 */
+			
+			// sum();
+			// sum(1);
+			// sum(1,2);
+			// sum(1,2,3);
+			sum(2,4,6,8,10);
+			// sum(2,3,4);
+			
+			function sum(){
+				var s=0;
+				console.log("arguments:",arguments);
+				for(var i=0;i<arguments.length;i++){
+					// s+=
+					console.log("arguments[i]:",arguments[i]);
+					s+=arguments[i];
+				}
+				console.log("s:",s);
+				// console.log("这个函数的名是:",arguments.callee);
+			}
+			
+			
+			var arr=[2,4,6,8,10];
+			console.log("arr:",arr);
+			// arr.length==5;
+			var he=0;
+			for(var a=0;a<arr.length;a++){
+				console.log("arr[a]:",arr[a]);//数组中的每一个值
+				he+=arr[a];
+			}
+			console.log("he:",he);
+			
+			
+			
+		</script>
+	</body>
+</html>

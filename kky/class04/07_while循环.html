@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*  
+			 循环
+			 三条件:1.从谁开始;2.到谁结束;3.每一次变化量
+			 重点在于:循环体(一定由每一次的变化量)
+			 
+			 从谁开始
+			 while(条件表达式){
+				 ....
+				 每一次变化量
+			 }
+			 
+			 do ... while 至少执行一次循环体
+			 
+			 for
+			 
+			
+			*/
+		   //1.while
+		   var a1=1;
+		   while (a1<=10) {
+			   console.log("a1:",a1);
+			   a1+=1;
+		   }
+		   
+		   console.log("do....while");
+		 
+		   //2 do...while 
+		   var b1=1;
+		   do{
+			   //循环体
+			   console.log("b1:",b1);
+			   b1++;//b1+=1;//b1=b1+1;
+		   }while(b1<=10);
+			   
+			   console.log("///////////////for///////////////");
+		 
+		   //3.for 
+		   for(var c1=1;c1<=10;c1++){
+			   console.log("c1:",c1);
+		   }
+		</script>
+	</body>
+</html>

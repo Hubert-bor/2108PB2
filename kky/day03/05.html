@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			pre{
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<pre>
+	自调用函数
+自执行的函数，也可以理解为“立即执行的函数”，在函数声明的后面加()调用自身
+	function(){ 
+		/*code*/ 
+	}();
+因为js在"预编译"阶段, 会解释函数声明，当js执行到function() {//code}();
+时, 由于function() {//code}在"预编译"阶段已经被解释过, 
+js会跳过function(){//code}, 
+试图去执行();, 
+故会报错;
+
+改成：
+;(function(){ 
+	/*code*/ 
+})();
+当js执行到(function {// code})();时, 
+由于;(function {// code})是表达式, 
+js会去对它求解得到返回值, 由于返回值是一 个函数, 
+故而遇到();时, 便会被执行.
+
+;(function(){ 
+	/*code*/ 
+})();
+
+;(function(){ 
+	/*code*/ 
+}());
+		
+		变量提升 	变量提升知识是面试时出现频率高的出奇的问题
+js的解析顺序：
+js引擎读取一段js代码，首先预解析，就是逐行读取js代码，
+寻找全局变量和全局函数，遇到全局变量，
+把变量的值变为undefind,存在内存中，
+遇到全局函数，直接存在内存中，这个过程如果发现语法错误，预解析终止。
+
+
+变量预解析，如：
+alert(a);		//弹出undefined
+var a=100;
+
+实际的解析顺序是这样的：
+
+var a = undefined;
+alert(a);
+a = 100;
+
+函数预解析，如：
+ f( );
+ function f(  ){
+  	alert(1);
+ }
+程序运行的结果是：弹出数字“1”
+之所以可以先调用f1,后定义f1函数，也是因为预解析,f1已经存在内存中。
+
+但是：
+ f( );
+ var f=function (  ){
+ 	alert(1);
+}
+程序运行会发生错误，缺少对象。。
+f在预编译中，只是执行了"var f"没有赋值，即在预编译结束时f 为undefined。
+
+变量声明与函数声明都会提升；函数声明会覆盖变量声明，但不会覆盖变量赋值，
+即：如果声明变量的同时初始化或赋值那么变量优先级高于函数。
+如：
+var a = 3;
+function a(){
+	alert(1);
+}
+a();		//程序报错，a is not a function(…)
+
+
+		</pre>
+	</body>
+</html>

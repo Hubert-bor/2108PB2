@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//求1-1000之间的所有质数
+			//1.编写函数isZhiShu用来判断一个数是不是质数
+			//2.从1-1000中,调用fn去找出所有的质数
+			
+			/**
+			 函数三要素
+			 1.函数的作用
+			 2.函数需不需要参数,如果需要有几个参数
+			 3.有没有返回值(有没有return)
+			 * 
+			 * **/
+			
+			/* 
+				1.作用:判断一个数n是否是质数,是返回true,不是false
+				2.要参数,1个
+				3.有没有return true/false;
+			 */
+			
+			function isZhiShu(n){
+				var f=true;
+				for(var i=2;i<n;i++){
+					if(n%i==0){
+						f=false;
+						break;
+					}
+				}
+				return f;
+			}
+/* 			var r1=isZhiShu(7);
+			var r2=isZhiShu(8);
+			var r3=isZhiShu(9);
+			console.log("r1:",r1);
+			console.log("r2:",r2);
+			console.log("r3:",r3); */
+			
+			//
+			
+			fun(2,100);
+			function fun(a,b){
+				var arr=[];
+				for(var i=a;i<=b;i++){
+					//console.log("i=",i,isZhiShu(i),isZhiShu(i)?"是":"不是","质数");
+					if(isZhiShu(i)){
+						// console.log("i:",i,"是质数");
+						arr.push(i);
+					}
+				}
+				console.log("arr:",arr);
+				return arr;
+				
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

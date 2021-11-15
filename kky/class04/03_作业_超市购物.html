@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/* 
+			顾客购物后，按以下规则进行结算，根据购物金额计算实付金额。
+				非会员购买大于等于100元		打9折
+				
+				会员购物					8折
+				会员购买200元 			7折 
+			 
+			 */
+			var f1=prompt("你是不是会员","不是");
+			var n1=prompt("你买了多少元",100);
+			if(f1=="不是"||f1==null){
+				console.log("你不是会员");
+				if(n1>=100){
+					var n2=n1*0.9;
+					console.log("打9折,你需要支付",n2);
+				}else{
+					console.log("不打折,你需要支付",n1);
+				}
+				
+			}else{
+				console.log("你是会员");
+				if(n1>=200){
+					var n3=n1*0.7;
+					console.log("打7折,你需要支付",n3);
+				}else{
+					var n4=n1*0.8;
+					console.log("打8折,你需要支付",n4);
+				}
+			}
+			
+			
+		</script>
+	</body>
+</html>

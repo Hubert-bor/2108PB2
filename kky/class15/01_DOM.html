@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#d4{
+				padding: 10px;
+				border: 1px solid pink;
+			}
+			div#d4_1,
+			div#d6_1
+			{
+				border: 1px solid red;
+			}
+			div#d4_2,
+			div#d6_2
+			{
+				border: 1px solid blue;
+			}
+			div#d4_3,
+			div#d6_3
+			{
+				border: 1px solid green;
+			}
+			div#d4_4,
+			div#d6_4,
+			div#d8_4
+			{
+				border: 1px solid yellow;
+			}
+			div#d4_5,
+			div#d6_5
+			{
+				border: 1px solid purple;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div id="d1">
+				<p id="p5">p5</p>
+			</div>
+			<div id="d2">
+				<button type="button" id="btn1">createElement() 创建一个元素</button>
+				<br>
+				<button type="button" id="btn2">element.appendChild() 在element中末尾添加一个节点</button>
+				<br>
+				<button type="button" id="btn3">element.append 在element中末尾添加一个/多个节点 DOM str</button>
+			</div>
+			<div id="d3">
+				<p id="p6">P6</p>
+			</div>
+			<div id="d4">
+				<div id="d4_1">4_1</div>
+				<div id="d4_2">4_2</div>
+				<div id="d4_3">4_3</div>
+				<div id="d4_4">4_4</div>
+				<div id="d4_5">4_5</div>
+			</div>
+			<div id="d5">
+				<button type="button" id="btn4">insertBefore()</button>
+			</div>
+			<div id="d6">
+				<div id="d6_1">6_1</div>
+				<div id="d6_2">6_2</div>
+				<div id="d6_3">6_3</div>
+				<div id="d6_4">6_4</div>
+				<div id="d6_5">6_5</div>
+			</div>
+			<div id="d7">
+				<button type="button" id="btn5">replaceChild()</button>
+			</div>
+			<div id="d8">
+				<div id="d8_1">8_1</div>
+				<div id="d8_2">8_2</div>
+				<div id="d8_3">8_3</div>
+				<div id="d8_4">8_4</div>
+				<div id="d8_5">8_5</div>
+			</div>
+			<div id="d9">
+				<button type="button" id="btn7">removeChild()(父他杀)</button>
+				<button type="button" id="btn8">remove()移除自身(自杀)</button>
+			</div>
+		</div>
+		<script>
+	/* 
+	4.DOM文档对象模型(DOM)
+	Document Object Model。文档对象模型
+	
+	标签节点的操作方法
+	1.document.createElement()（最常用）		通过指定名称创建一个元素
+	2.document.createTextNode() 				可创建文本节点。
+	3.element.appendChild() 				可向节点的子节点列表的末尾添加新的子节点。
+			提示：如果文档树中已经存在了 newchild，它将从文档树中删除，然后重新插入它的新位置。
+			如果 newchild 是 DocumentFragment(文档片段节点)节点，则不会直接插入它，
+			而是把它的子节点按序插入当前节点的 childNodes[] 数组的末尾。
+			你可以使用 appendChild() 方法移除元素到另外一个元素。
+		append()
+			parentNode.append()是还在试用期的方法，有兼容问题。
+			是在parendNode节点中最后一个子节点后插入新Node或者DOMString（字符串，插入后为Text节点）.
+			与parentNode.appendChild()的区别在于：
+			parentNode.append()可以同时传入多个节点或字符串，没有返回值；
+			而parentNode.appendChild()只能传一个节点，
+			且不直接支持传字符串(需要parentNode.appendChild(document.createTextElement('字符串'))代替)，
+			返回追加的Node节点
+	4.element.insertBefore(插入的新节点，原节点) 	方法可在已有的子节点前插入一个新的子节点。
+			提示： 如果你想创建一个新的文本列表项，在 LI 元素后你应该添加元素的文本节点，然后在列表中添加 LI元素。
+			你也可以使用 insertBefore 方法来 插入/移除 已存在的元素。
+	5.element.replaceChild(新节点，老节点) 	方法可将某个子节点替换为另一个。
+			新节点可以是文本中已存在的，或者是你新创建的。
+			
+	6.element.parentNode.removeChild(element)	 方法可从父节点下的子节点列表中删除某个节点。
+					如删除成功，此方法可返回被删除的节点，如失败，则返回 NULL。
+	
+	7.element.remove() 将子节点从父节点当中移除 
+	 
+	 */	
+		
+			var app=document.getElementById("app");
+			var d1=document.getElementById("d1");
+			var d3=document.getElementById("d3");
+			var d4=document.getElementById("d4");
+			var d6=document.getElementById("d6");
+			var d8=document.getElementById("d8");
+			
+			
+			var d4_1=document.getElementById("d4_1");
+			var d4_2=document.getElementById("d4_2");
+			var d4_4=document.getElementById("d4_4");
+			
+			var d6_1=document.getElementById("d6_1");
+			var d6_2=document.getElementById("d6_2");
+			var d6_4=document.getElementById("d6_4");
+			
+			var d8_2=document.getElementById("d8_2");
+			var d8_4=document.getElementById("d8_4");
+			
+			var btn1=document.getElementById("btn1");
+			var btn2=document.getElementById("btn2");
+			var btn3=document.getElementById("btn3");
+			var btn4=document.getElementById("btn4");
+			var btn5=document.getElementById("btn5");
+			var btn7=document.getElementById("btn7");
+			var btn8=document.getElementById("btn8");
+			
+			btn1.onclick=function(){
+				var p1=document.createElement("p");// 创建一个元素
+				var p3=document.createElement("p");// 创建一个元素
+				p1.id="p1"
+				p1.className="pa pb";
+				p1.classList.add("pc");
+				p1.style.color="red";
+				p1.innerHTML="这是<b>p</b>元素";
+				
+				var str1=document.createTextNode("这不是字符串,这是文本(节点)");
+				//str1不是字符串,是dom对象(文本节点),不能使用字符串的方法
+				var str2="这是字符串";
+				
+				console.log("str2:",str2,typeof str2);
+				console.log("str1:",str1,typeof str1);
+				
+				
+				
+				var p2="p";
+				console.log("p1:",p1);
+				console.log("p2:",p2);
+				console.log("p3:",p3);
+				
+				
+			}
+			
+			btn2.onclick=function(){
+				var nodeStr=document.createTextNode("这是文本节点");
+				console.log("nodeStr:",nodeStr,typeof nodeStr);
+				d1.appendChild(nodeStr);
+			}
+			
+			btn3.onclick=function(){
+				var nodeStr=document.createTextNode("这是文本节点3");
+				console.log("nodeStr:",nodeStr,typeof nodeStr);
+				d3.append(nodeStr);
+				var br=document.createElement("br");
+				d3.append(nodeStr,br,"<h1>这是字符串也能通过append()添加</h1>");
+			}
+			
+			btn4.onclick=function(){
+				var p=document.createElement("p");
+				p.id="p10";
+				p.className="P10";
+				p.innerHTML="这是p10";
+				console.log("p:",p);
+				
+				d4.insertBefore(p,d4_2);
+				
+				d4.insertBefore(d4_4,d4_1);
+			}
+			
+			btn5.onclick=function(){
+				var p=document.createElement("p");
+				p.id="p11";
+				p.className="P11";
+				p.innerHTML="这是p11";
+				console.log("p:",p);
+				
+				d6.replaceChild(p,d6_2);
+				
+				d6.replaceChild(d6_4,d6_1);
+			}
+			btn7.onclick=function(){
+				d8.removeChild(d8_4);
+				// d8_2.parentElement===d8;
+				d8_2.parentElement.removeChild(d8_2);
+			}
+			btn8.onclick=function(){
+				// btn8.remove();
+				this.remove();
+			}
+			
+		</script>
+	</body>
+</html>

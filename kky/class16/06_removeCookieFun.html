@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+		/* 
+		 removeCookie
+		 删除cookie
+		 通过属性名删除对应的属性值
+		 
+		 思路1:document.cookie="";(一般不要使用)
+		 思路2:document.cookie="user=''";
+		 思路3:
+			var t=(new Date()).totoGMTString();
+		 document.cookie="user=kky;expires="+t;
+		 
+		 参数:1个,要删除的属性名
+		 没有返回值
+		 
+		 */
+		
+		removeCookie1("sex");
+		function removeCookie1(cName){
+			document.cookie=cName+"=''";
+		}
+		function removeCookie2(cName){
+			
+		}
+		function removeCookie3(cName){
+			
+		}
+		
+		</script>
+	</body>
+</html>
