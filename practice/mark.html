@@ -1,80 +1,84 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-		<style type="text/css">
-			#d2{
-				border: 1px solid pink;
-				margin: 5px;
-			}
-			#d2>div>.hreat{
-				width: 50px;
-			}
-		</style>
-	</head>
-	<body>
-		<div id="app">
-			<div id="d1">
-				祝您用餐愉快,请给我一个5星好评!<input id="mark" type="number" min="1" max="5" step="1" />
-				<button type="button" id="btn">提交</button>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#d2 {
+			border: 1px solid pink;
+			margin: 5px;
+		}
+
+		#d2>div>.hreat {
+			width: 50px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app">
+		<div id="d1">
+			祝您用餐愉快,请给我一个5星好评!<input id="mark" type="number" min="1" max="5" step="1" />
+			<button type="button" id="btn">提交</button>
+		</div>
+		<div id="d2">
+			<div id="d2_1">
+				你的评分为:<label id="score">0</label>
 			</div>
-			<div id="d2">
-				<div id="d2_1">
-					你的评分为:<label id="score">0</label>
-				</div>
-				<div id="d2_2">
-					<img src="img/0.png" class="hreat">
-					<img src="img/0.png" class="hreat">
-					<img src="img/0.png" class="hreat">
-					<img src="img/0.png" class="hreat">
-					<img src="img/0.png" class="hreat">
-				</div>
+			<div id="d2_2">
+				<img src="0.png" class="hreat">
+				<img src="0.png" class="hreat">
+				<img src="0.png" class="hreat">
+				<img src="0.png" class="hreat">
+				<img src="0.png" class="hreat">
 			</div>
 		</div>
-		<script type="text/javascript">
-			/**
-			 * 1.获取用户输入的评分
-			 * 2.渲染
-			 */
-			
-			//1.获取dom对象
-			var mark = document.getElementById("mark");
-			var btn = document.getElementById("btn");
-			var score = document.getElementById("score");
-			var d2_2 = document.getElementById("d2_2");
-			//2.给按钮添加一个点击事件
-			btn.onclick=function(){
-				//3.看获取到的评分数据是否合法, 如果不合法,强制合法化
-				if(mark.value){
-					if(mark.value<0){
-						mark.value=0;
-					}
-					if(mark.value>5){
-						mark.value=5;
-					}
-					//4.将空心替换为实心
-					var str=``;
-					for(var i=0;i<mark.value;i++){
-						str += `
-							<img src="img/1.png" class="hreat">
-						`;
-					}
-					//5.补全空心图
-					for(var j=0;j<5-mark.value;j++){
-						str += `
-							<img src="img/0.png" class="hreat">
-						`;
-					}
-					//6.使用innerHTML将HTML框架的字符串输入到页面
-					d2_2.innerHTML=str;
-					score.innerHTML=mark.value;
-				}else{
-					alert("请输入评分!");
+	</div>
+	<script type="text/javascript">
+		/**
+		 * 1.获取用户输入的评分
+		 * 2.渲染
+		 */
+
+		//1.获取dom对象
+		var mark = document.getElementById("mark");
+		var btn = document.getElementById("btn");
+		var score = document.getElementById("score");
+		var d2_2 = document.getElementById("d2_2");
+		//2.给按钮添加一个点击事件
+		btn.onclick = function () {
+			//3.看获取到的评分数据是否合法, 如果不合法,强制合法化
+			if (mark.value) {
+				if (mark.value < 0) {
+					mark.value = 0;
 				}
+				if (mark.value > 5) {
+					mark.value = 5;
+				}
+				//4.将空心替换为实心
+				var str = ``;
+				for (var i = 0; i < mark.value; i++) {
+					str += `
+							<img src="1.png" class="hreat">
+						`;
+				}
+				//5.补全空心图
+				for (var j = 0; j < 5 - mark.value; j++) {
+					str += `
+							<img src="0.png" class="hreat">
+						`;
+				}
+				//6.使用innerHTML将HTML框架的字符串输入到页面
+				d2_2.innerHTML = str;
+				score.innerHTML = mark.value;
+			} else {
+				alert("请输入评分!");
 			}
+		}
 
 			//时间：2021/11/16 17点05分
-		</script>
-	</body>
+	</script>
+</body>
+
 </html>
