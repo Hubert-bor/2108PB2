@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>邮箱</title>
+    <style>
+        button {
+            background-color: rgb(155, 149, 149);
+            color: #fff;
+            border: 1px solid transparent;
+        }
+
+        .xz {
+            background-color: red;
+        }
+
+        #contant>div {
+            display: none;
+        }
+
+        #contant>div.show {
+            display: block;
+        }
+
+        #add {
+            background-color: green;
+            color: #fff;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        #draft table tr,
+        #draft table th,
+        #draft table td {
+            border: 1px solid blue;
+        }
+
+        #draft table td>button {
+            background-color: transparent;
+            color: red;
+            cursor: pointer;
+        }
+
+        #tbodyT tr {
+            width: 500px;
+        }
+
+        .spanT {
+            width: 200px;
+            display: inline-block;
+        }
+
+        .olList {
+            width: 500px;
+        }
+
+        .olList li {
+            width: 500px;
+            height: 25px;
+        }
+
+        .olList li:nth-child(odd) {
+            background-color: rgb(180, 180, 186);
+        }
+        .olList li>span{
+            float: left;
+        }
+        .olList>li>button {
+            background-color: transparent;
+            color: red;
+            cursor: pointer;
+            float: right;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>邮箱</h1>
+    <div id="header">
+        <button type="button" class="xz">写信</button>
+        <button type="button">草稿箱</button>
+        <button type="button">通讯录</button>
+    </div>
+
+    <div id="contant">
+        <div class="show">
+            <h1>写信</h1>
+            <label>
+                收件人：<input type="text" id="userName">
+            </label>
+            <br>
+            <label>
+                主题：<input type="text" id="title">
+            </label>
+            <br>
+            <label>
+                内容：<textarea name="text" id="textN" cols="30" rows="10"></textarea>
+            </label>
+            <br>
+            <button type="button" id="add">保存到草稿箱</button>
+
+        </div>
+        <div id="draft">
+            <h1>草稿箱</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>收件人</th>
+                        <th>主题</th>
+                        <th>内容</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    <!-- <tr>
+                        <td>1</td>
+                        <td>张三</td>
+                        <td>考试</td>
+                        <td>123</td>
+                        <td>2021-06-06 14：15：15</td>
+                        <td>
+                            <button type="button">删除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">
+                            <button type="button" style="width: 100%;text-align:right;" id="delAll">清空草稿箱</button>
+                        </td>
+                    </tr> -->
+                    <tr>
+                        <td colspan="6">
+                            <button type="button" style="width: 100%;text-align:right;" id="delAll">清空草稿箱</button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+        <div>
+            <h1>通讯录</h1>
+            <ol class="olList" id="olList">
+                <!-- <li>
+                    <span class="spanT">a</span>
+                    <button type="button">删除</button>
+                </li>
+                <li>
+                    <span class="spanT">b</span>
+                    <button type="button">删除</button>
+                </li>
+                <li>
+                    <span class="spanT">c</span>
+                    <button type="button">删除</button>
+                </li> -->
+
+            </ol>
+        </div>
+    </div>
+
+
+    <script>
+        //tab切换实现
+        var btns = document.querySelectorAll("#header>button");
+        var divs = document.querySelectorAll("#contant>div");
+
+        window.onload=function (){
+            var arr =getLocaldData();
+            showPage(arr);
+            showPageT(arr);
+        }
+
+        for (let i = 0; i < btns.length; i++) {
+            btns[i].onclick = function () {
+                for (var j = 0; j < btns.length; j++) {
+                    btns[j].classList.remove("xz");
+                    divs[j].classList.remove("show");
+                }
+                this.classList.add("xz");
+                divs[i].classList.add("show");
+                
+            }
+        }
+
+
+        //添加到草稿箱
+
+        var userName=document.getElementById("userName");
+        var title=document.getElementById("title");
+        var textN=document.getElementById("textN");
+        var add=document.getElementById("add");
+        add.onclick=function(){
+            var arr = getLocaldData();
+            var obj={
+                name:userName.value,
+                title:title.value,
+                textN:textN.value,
+                id:+new Date()
+            }
+            arr.push(obj);
+            updateLocalData(arr);
+            showPage(arr);
+            showPageT(arr);
+        }
+
+        //删除
+        function del(id){
+            var arr  = getLocaldData();
+            for(var i = 0;i<arr.length;i++){
+                if(arr[i].id==id){
+                    arr.splice(i,1);
+                    break;
+                }
+            }
+            showPage(arr);
+            updateLocalData(arr);
+        }
+
+        //渲染
+        function showPage(arr){
+            var tbody=document.getElementById("tbody");
+            var str='';
+            for(var i=0;i<arr.length;i++){
+                str+=`
+                <tr>
+                        <td>${i+1}</td>
+                        <td>${arr[i].name}</td>
+                        <td>${arr[i].title}</td>
+                        <td>${arr[i].textN}</td>
+                        <td>${timer(arr[i].id)}</td>
+                        <td>
+                            <button type="button" onclick=del(${arr[i].id})>删除</button>
+                        </td>
+                    </tr>
+                `;
+            }
+            tbody.innerHTML=str+`
+            <tr>
+                        <td colspan="6">
+                            <button type="button" style="width: 100%;text-align:right;" id="delAll" onclick=delAll()>清空草稿箱</button>
+                        </td>
+                    </tr>
+            `;
+
+        }
+        // 清空草稿箱
+        function delAll(){
+            var arr = getLocaldData();
+            arr = [];
+            showPage(arr);
+            showPageT(arr);       
+            updateLocalData(arr);     
+        }
+
+        //草稿删除
+        function del(id){
+            var arr  = getLocaldData();
+            for(var i = 0;i<arr.length;i++){
+                if(arr[i].id==id){
+                    arr.splice(i,1);
+                    break;
+                }
+            }
+            showPage(arr);
+            showPageT(arr);
+            updateLocalData(arr);
+        }
+
+        var olList=document.getElementById("olList");
+        var arrT= getLocaldData();
+        showPageT(arrT);
+        //通讯录渲染
+        function showPageT(arr){
+            var olList=document.getElementById("olList");
+            var str='';
+            for(var i=0;i<arr.length;i++){
+                str+=`
+                <li>
+                    <span class="spanT">${arr[i].name}</span>
+                    <button type="button" onclick=delT(${arr[i].id})>删除</button>
+                </li>
+                `;
+            }
+            olList.innerHTML=str;
+
+        }
+        //通讯录删除
+        function delT(id){
+            var arr  = getLocaldData();
+            for(var i = 0;i<arr.length;i++){
+                if(arr[i].id==id){
+                    arr.splice(i,1);
+                    break;
+                }
+            }
+            showPageT(arr);
+            showPage(arr);
+            updateLocalData(arr);
+        }
+          //获取本地数据
+          function getLocaldData(){
+            if(!localStorage.email){
+                localStorage.email="[]";
+            }
+            return JSON.parse(localStorage.email);
+        }
+
+        //更新本地数据
+        function updateLocalData(arr){
+            localStorage.email=JSON.stringify(arr);
+        }
+
+        //时间格式化
+        function timer(time){
+            var d = new Date(time);
+            var year = d.getFullYear();
+            var month = d.getMonth()+1;
+            var day = d.getDate();
+            var hour = d.getHours();
+            var minute = d.getMinutes();
+            var second = d.getSeconds();
+            return repairZero(year)+"-"+repairZero(month)+"-"+repairZero(day)+"  "+repairZero(hour)+":"+repairZero(minute)+":"+repairZero(second);
+        }   
+
+        //补零函数
+        function repairZero(time){
+            return time<10?"0"+time:time;
+        }
+    </script>
+</body>
+
+</html>
