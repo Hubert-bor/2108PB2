@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>P2考试复盘</title>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        #table .ghbs tr:nth-child(odd){
+            background-color: skyblue;
+        }
+        tr,td{
+            border: 1px solid black;
+            padding: 5px 80px;
+        }
+        #table .yrbs tr:hover{
+            background-color: rgb(250, 145, 8);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+
+        复盘内容：
+
+            1，全选，全不选，反选，全部选择点亮全选框
+            2，获取性别
+            3，隔行变色，移入变色
+
+     -->
+
+
+    <div id="hobby">
+        <div class="hobby">
+            <label>
+                爱好1：<input type="checkbox" value="a1">
+            </label>
+            <label>
+                爱好2：<input type="checkbox" value="a2">
+            </label>
+            <label>
+                爱好3：<input type="checkbox" value="a3">
+            </label>
+            <label>
+                爱好4：<input type="checkbox" value="a4">
+            </label>
+            <label>
+                爱好5：<input type="checkbox" value="a5">
+            </label>
+        </div>
+        <div>
+            <label for="">
+                全选/全不选<input type="checkbox" id="checkAll">
+            </label>
+            <button type="button" id="fanXuan">反选</button>
+        </div>
+    </div>
+
+    <div id="sex">
+        <label for="">
+            男<input type="radio" value="boy" name="sex" checked>
+        </label>
+
+        <label for="">
+            女<input type="radio" value="girl" name="sex">
+        </label>
+    </div>
+
+    <div id="table">
+        <button id="ghbs">开启隔行变色</button>
+        <button id="yrbs">开启移入变色</button>
+        <table id="tab"> 
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+
+        //全选与全不选
+        var checkAll = document.getElementById("checkAll");
+        var hobby = document.querySelectorAll(".hobby input");
+        checkAll.onclick = function () {
+            for (var i = 0; i < hobby.length; i++) {
+                hobby[i].checked = checkAll.checked;
+            }
+            dianLiangQ();
+
+        }
+
+        //反选
+        var fanXuan = document.getElementById("fanXuan");
+        fanXuan.onclick = function () {
+            for (var i = 0; i < hobby.length; i++) {
+                hobby[i].checked = !hobby[i].checked;
+            }
+            dianLiangQ();
+        }
+
+            //当个选择框全部点亮以后，全选按钮也被点亮
+            //首先判断每个小的复选框是否被选中，如果选中的话，全选框则会被点亮
+
+            //自运行函数的目的是：给每个复选框添加点击事件，点击进行判断，要不要点亮全选按钮
+            ; (function () {
+                for (var i = 0; i < hobby.length; i++) {
+                    hobby[i].onclick = function () {
+                        dianLiangQ();
+                    }
+                }
+            })();
+
+        //质数思想
+        function dianLiangQ() {
+            var f = true;
+            for (var i = 0; i < hobby.length; i++) {
+                if (!hobby[i].checked) {
+                    f = false;
+                    break;
+                }
+            }
+            checkAll.checked = f;
+        }
+
+        //获取性别
+        //性别只有两个，可以直接用下标来获取
+        var sex = document.querySelectorAll("#sex input");
+        console.log(sex);
+        ; (function () {
+            if (sex[0].checked) {
+                // return sex[0].value;
+                console.log(sex[0].value);
+            } else {
+                // return sex[1].value;
+                console.log(sex[1].value);
+            }
+        })();
+
+        //开启隔行变色
+        //通过点击事件添加类名，在css样式先设置存在的样式，通过js的对类名的增删来实现对应的效果
+        var ghbs = document.getElementById("ghbs");
+        var tab = document.getElementById("tab");
+        ghbs.onclick=function(){
+            if(this.innerHTML=="开启隔行变色"){
+                this.innerHTML="关闭隔行变色"
+                tab.classList.toggle('ghbs');
+            }else{
+                this.innerHTML="开启隔行变色"
+                tab.classList.toggle('ghbs');
+            }
+        }
+
+        //开启移入变色
+        var yrbs = document.getElementById("yrbs");
+        yrbs.onclick=function(){
+            if(this.innerHTML=="开启移入变色"){
+                this.innerHTML="关闭移入变色"
+                tab.classList.toggle('yrbs');
+            }else{
+                this.innerHTML="开启移入变色"
+                tab.classList.toggle('yrbs');
+            }
+        }
+    </script>
+</body>
+
+</html>

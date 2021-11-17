@@ -1,0 +1,39 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+#info{
+	width: 200px;
+	height: 200px;
+	background-color: blue;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	color: #fff;
+	line-height: 200px;
+	text-align: center;
+	display: none;
+	
+}
+#main{
+	padding-top: 20px;
+	padding-left: 20px;
+	width: 800px;
+	background-color: orange;
+	margin: auto;
+}
+#pingJia{
+	width: 50px;
+}
+#hongxinP img{
+	width: 20px;
+}
+#tab tr:nth-of-type(5)>td :first-child {
+	cursor: not-allowed;
+}
+#tab tr:last-child>td :last-child {
+	cursor: not-allowed;
+}
