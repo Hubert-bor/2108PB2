@@ -3,6 +3,8 @@ var userTel = document.getElementById("userTel");
 var pingJia = document.getElementById("pingJia");
 var add = document.getElementById("add");
 
+
+//页面加载之后获取最新的数据，并把获取到的数据渲染到页面中
 window.onload = function() {
 	var arr = getLocalData();
 	showPage(arr);
@@ -17,9 +19,12 @@ add.onclick = function() {
 		grade: pingJia.value,
 		id: +new Date()
 	}
+
 	if(!userName.value){
 		var info = document.getElementById("info");
 		info.style.display="block";
+
+		//添加延时器，三秒之后把当前的DOM对象进行隐藏，如果弹出提示框，则return，终止此次事件
 		setTimeout(function(){
 			info.style.display="none";
 		},3000)
@@ -101,6 +106,18 @@ function del(id){
 }
 
 //爱心函数
+/* 
+	实现原理：
+		渲染页面定义一个函数，传入评分的数值
+		aiXin()拿到评分之后进行判断：
+			大于5全部为实心
+			小于5全部为空心
+
+			0-5之间的数值：
+				用判断分别拼接成5个小爱心的DOM结构
+			
+		返回拼接完成的小爱心DOM样式，页面渲染
+*/
 function aiXin(num){
 	var kong = '<img src="./img/0.png">';
 	var shi = '<img src="./img/1.png">';
@@ -124,11 +141,21 @@ function aiXin(num){
 	if(num==5){
 		return shi+shi+shi+shi+shi;
 	}
-	
-	
 }
 
 //上下移动
+/* 
+	在渲染页面中直接绑定上移和下移的事件
+	需要传入一个id，通过id进行定位当前的对象，直接通过下标进行操作上下移动
+
+	实现原理:
+		运用变量互换位置的形式进行数组中的位置互换
+		数组后一个元素为arr[i+1]
+		数组前一个元素为arr[i-1]
+		接着通过位置交换的原理来实现数组中元素位置的互换
+
+		位置互换之后当前顺序的数组重新渲染到页面，同时更新到Local Storage中防止二次刷新后页面位置回退（考试要求！无要求可不用上传）
+*/
 function move(id){
 	var arr = getLocalData();
 	var a = null;
